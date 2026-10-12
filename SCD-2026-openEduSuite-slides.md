@@ -126,7 +126,7 @@ für 3 Nodes zu schwer war. Nicht „OpenStack ist schlecht“, sondern „passt
 
 <div class="kicker">Hands-on · pi.dev install · 2 min</div>
 
-## Mitglied werden — installiert pi
+## pi installieren
 
 <div class="lead">Ein Befehl. Kein API-Key nötig für den Free-Tier.</div>
 
