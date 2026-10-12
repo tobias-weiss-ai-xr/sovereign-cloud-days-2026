@@ -147,16 +147,16 @@ curl-Installer pinnt alle Dependencies. 2 min Zeit lassen, herumgehen, helfen.
 
 <div class="kicker">Hands-on · Modell wählen · 3 min</div>
 
-## Kostenlos starten — jev-1.13-free
+## Kostenlos starten — big pickle
 
 - `/login` → Provider **opencode**
-- `/model` → **jev-1.13-free** (groß, gratis)
+- `/model` → **big pickle** (groß, gratis)
 - Oder Free-Tier: `GROQ_API_KEY` / `GOOGLE_API_KEY`
 
 <div class="card green">Der „free big pickle“ reicht für echte agentische Experimente — kein Kostenrisiko.</div>
 
 <!--
-Sprechernotiz: jev-1.13-free auf dem opencode-Provider ist kostenlos und groß.
+Sprechernotiz: big pickle auf dem opencode-Provider ist kostenlos und groß.
 Alternativen: GROQ und Google haben ebenfalls Free-Tier. /thinking für Reasoning-Level,
 Ctrl+P zum Modell-Wechseln. Session wird lokal gespeichert.
 -->

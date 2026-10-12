@@ -34,7 +34,7 @@
 ## Hands-on · pi.dev install + Prompt-Testing (12 min)
 
 - **Install (2 min):** `curl -fsSL https://pi.dev/install.sh | sh` (alternativ `npm i -g @earendil-works/pi-coding-agent`, Node 22.19+). Prüfen: `pi --version`.
-- **Modell wählen (3 min):** `/login` → Provider **opencode**; `/model` → **jev-1.13-free** (kostenlos, groß — „the free big pickle"). Alternativen: `GROQ_API_KEY` / `GOOGLE_API_KEY` für weitere Free-Tier-Modelle.
+- **Modell wählen (3 min):** `/login` → Provider **opencode**; `/model` → **big pickle** (kostenlos, groß — „the free big pickle"). Alternativen: `GROQ_API_KEY` / `GOOGLE_API_KEY` für weitere Free-Tier-Modelle.
 - **Prompt-Testing (7 min):** Starter-Prompts zum Ausprobieren:
   - „Erkläre SCS-0217 Pod-Security in 3 Sätzen."
   - „Schreibe eine default-deny NetworkPolicy für Namespace `llm`."
@@ -195,4 +195,4 @@ Weiterhin offen (vor Ort klären):
 
 ---
 
-*Draft v1.1 erstellt 2026 mit Unterstützung eines KI-Coding-Agenten (pi). Technische Fakten aus den im Repo dokumentierten Quellen (Stand 2026-08); `[verify]`-Marker kennzeichnen Werte, die nur am Cluster/iBMC bestätigt werden können. Slide-Deck: 16 Folien (HTML, self-contained, Inline-SVG, Screenshots). Workshop-Teil: pi.dev-Install + Prompt-Testing mit `jev-1.13-free` (opencode-Free-Tier).*
+*Draft v1.1 erstellt 2026 mit Unterstützung eines KI-Coding-Agenten (pi). Technische Fakten aus den im Repo dokumentierten Quellen (Stand 2026-08); `[verify]`-Marker kennzeichnen Werte, die nur am Cluster/iBMC bestätigt werden können. Slide-Deck: 16 Folien (HTML, self-contained, Inline-SVG, Screenshots). Workshop-Teil: pi.dev-Install + Prompt-Testing mit `big pickle` (opencode-Free-Tier).*
