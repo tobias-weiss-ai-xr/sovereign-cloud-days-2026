@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCD 2026 · openEduSuite on SCS-verified bare-metal</title>
+<style>
+  :root{
+    --bg:#e9edf1; --slide:#f7f9fb; --ink:#14202e; --muted:#5b6b7c;
+    --accent:#0b6e99; --accent2:#1a7f6b; --warn:#b3560e; --line:#d3dae1;
+    --notes:#eef2f5; --ok:#1a7f6b; --bad:#c0392b;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;margin:0;}
+  body{background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    overflow:hidden;}
+  #stage{position:absolute;top:50%;left:50%;width:1280px;height:720px;
+    transform-origin:center center;background:var(--slide);
+    box-shadow:0 18px 60px rgba(20,32,46,.28);border-radius:6px;overflow:hidden;}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;
+    padding:48px 64px 0 64px;}
+  .slide.active{display:flex;}
+  .kicker{font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin-bottom:8px;}
+  h1{font-size:48px;line-height:1.1;margin:0 0 12px 0;font-weight:800;}
+  h2{font-size:34px;line-height:1.15;margin:0 0 20px 0;font-weight:750;}
+  .lead{font-size:22px;color:var(--muted);margin:0 0 20px 0;line-height:1.35;}
+  ul.bullets{margin:0;padding-left:0;list-style:none;}
+  ul.bullets>li{position:relative;padding-left:30px;margin:0 0 14px 0;
+    font-size:23px;line-height:1.3;}
+  ul.bullets>li::before{content:"";position:absolute;left:4px;top:.5em;
+    width:10px;height:10px;border-radius:2px;background:var(--accent);}
+  ul.bullets>li.sub{font-size:19px;color:var(--muted);margin-top:-8px;}
+  ul.bullets>li.sub::before{background:var(--line);}
+  strong{color:var(--ink);}
+  .accent{color:var(--accent2);font-weight:700;}
+  .tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:#fff;background:var(--accent2);
+    padding:3px 9px;border-radius:3px;margin-right:8px;}
+  .card{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent);
+    border-radius:5px;padding:14px 18px;margin:0 0 12px 0;font-size:20px;line-height:1.32;}
+  .card.green{border-left-color:var(--accent2);}
+  .card.warn{border-left-color:var(--warn);}
+  .kv{font-size:22px;line-height:1.32;}
+  .kv b{display:block;font-size:14px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:2px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px 30px;}
+  .muted{color:var(--muted);}
+  .small{font-size:16px;color:var(--muted);line-height:1.4;}
+  code{background:#e8eef3;padding:1px 5px;border-radius:3px;font-size:.88em;color:#0b3a55;}
+  .cmd{background:#0f1c2a;color:#cde8ff;border-radius:6px;padding:14px 18px;
+    font-family:'SF Mono',Consolas,Menlo,monospace;font-size:19px;margin:8px 0;overflow-x:auto;}
+  .cmd .prm{color:#7fd1b8;}
+  .ws{margin-top:auto;margin-bottom:88px;align-self:flex-start;
+    background:#fff6e8;border:1px solid #f0d9b5;border-radius:5px;
+    padding:10px 16px;font-size:18px;color:#7a4a08;font-weight:600;}
+  .notes{position:absolute;left:0;right:0;bottom:0;background:var(--notes);
+    border-top:2px solid var(--accent);padding:10px 60px;font-size:15px;
+    line-height:1.35;color:#33475b;display:none;}
+  .notes.on{display:block;}
+  .notes b{color:var(--accent);text-transform:uppercase;font-size:11px;
+    letter-spacing:.12em;display:block;margin-bottom:2px;}
+  .deckfoot{position:absolute;left:64px;right:64px;bottom:8px;display:flex;
+    justify-content:space-between;font-size:12px;color:#8a97a5;letter-spacing:.04em;}
+  .pageno{position:absolute;top:20px;right:32px;font-size:14px;color:#9aa6b3;
+    font-weight:700;letter-spacing:.06em;}
+  .titlewrap{margin:auto 0;padding-bottom:36px;}
+  .titlewrap .brand{font-size:17px;font-weight:700;color:var(--accent);
+    letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;}
+  .titlewrap h1{font-size:56px;}
+  .titlewrap .sub{font-size:25px;color:var(--muted);margin-bottom:24px;line-height:1.3;}
+  .titlewrap .meta{font-size:18px;color:var(--ink);}
+  .titlewrap .meta span{color:var(--muted);}
+  .shot{margin:8px 0 4px 0;text-align:center;}
+  .shot img{max-height:320px;max-width:100%;border:1px solid var(--line);
+    border-radius:5px;background:#fff;object-fit:contain;}
+  .shot-lg img{max-height:400px;}
+  .cmp{width:100%;border-collapse:collapse;font-size:18px;margin:6px 0;}
+  .cmp th{background:#0f1c2a;color:#fff;padding:8px 12px;text-align:left;font-size:15px;letter-spacing:.06em;text-transform:uppercase;}
+  .cmp td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .cmp tr:nth-child(even) td{background:#f0f4f7;}
+  .cmp code{font-size:.85em;}
+  .shot figcaption{font-size:15px;color:var(--muted);margin-top:5px;}
+  .svg-wrap{margin:6px 0 8px 0;text-align:center;}
+  .svg-wrap svg{max-width:100%;height:auto;}
+  .hud{position:fixed;right:16px;bottom:14px;display:flex;gap:8px;align-items:center;z-index:20;}
+  .hud button{font:inherit;font-size:14px;font-weight:700;color:var(--ink);
+    background:#fff;border:1px solid var(--line);border-radius:5px;
+    padding:7px 12px;cursor:pointer;box-shadow:0 2px 6px rgba(20,32,46,.10);}
+  .hud button:hover{background:#f0f4f7;}
+  #counter{font-size:14px;font-weight:700;color:var(--muted);padding:0 4px;}
+  @media print{body{overflow:visible;}#stage{position:static;transform:none;
+    box-shadow:none;}.slide{display:flex;position:relative;page-break-after:always;}.hud{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="stage">
+
+  <!-- 1 · Title -->
+  <section class="slide active">
+    <div class="titlewrap">
+      <div class="brand">Sovereign Cloud Days 2026 · Workshop Stage</div>
+      <h1>Agentic AI meets Sovereign Cloud</h1>
+      <div class="sub">openEduSuite on SCS-verified legacy bare-metal hardware</div>
+      <div class="meta">So, 25.10.2026 · 11:15 · 60 min inkl. Q&amp;A<br>
+      <span>Tobias Weiß · HRZ Philipps-Universität Marburg</span></div>
+    </div>
+    <div class="deckfoot"><span>SCD 2026 · Workshop</span><span>Not macht erfinderisch.</span></div>
+    <div class="notes"><b>Sprechernotiz</b>Begrüßung. These: souveränes, KI-fähiges Setup auf abgeschriebenem Eisen. openEduSuite = HFD-Preisträger 2026. Ablauf: Motivation → Hands-on pi.dev → Cluster → Workload → Q&amp;A. ~50 min Inhalt + 10 min Q&amp;A. [WS]-Marker = Publikums-interaktion.</div>
+  </section>
+
+  <!-- 2 · Motivation: Thesis -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Motivation · 3 min</div>
+    <h2>Legacy-Hardware ist kein Müll</h2>
+    <ul class="bullets">
+      <li>Rechenzentren haben <strong>aussortierte Server</strong> — oft voll funktionsfähig.</li>
+      <li>Souveränes, KI-fähiges Setup geht auf <span class="accent">abgeschriebenem Eisen</span>.</li>
+      <li>3 × Huawei RH2288E V2 (~2013) → SCS-verified K3s-Cluster.</li>
+    </ul>
+    <div class="card green" style="margin-top:8px">openEduSuite: HFD-Ideenwettbewerb Digitale Souveränität — Preisträger 2026-10-06.</div>
+    <div class="ws"><span class="tag">WS</span>Wer betreibt selbst „Alt-Hardware“ produktiv?</div>
+    <div class="notes"><b>Sprechernotiz</b>Kurz halten. Handzeichen aufgreifen. Kein Marketing — ehrlicher Praxisbericht. HFD-Preis als Vertrauenssignal, nicht als Selbstbeweihräucherung.</div>
+  </section>
+
+  <!-- 3 · Motivation: The Pivot -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Motivation · Der Pivot · 3 min</div>
+    <h2>Von OpenStack zu Bare-Metal K3s</h2>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 1100 200" width="100%" style="max-width:1100px">
+        <!-- OpenStack box (red) -->
+        <rect x="20" y="40" width="380" height="120" rx="8" fill="#fdeaea" stroke="#c0392b" stroke-width="2"/>
+        <text x="210" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#c0392b">OpenStack / OVN auf VMs</text>
+        <text x="210" y="98" text-anchor="middle" font-size="15" fill="#7a3b32">OVN 25.03.1 Gateway-Bug</text>
+        <text x="210" y="118" text-anchor="middle" font-size="15" fill="#7a3b32">FIPs tot, DHCP broke</text>
+        <text x="210" y="142" text-anchor="middle" font-size="14" fill="#9a4a3a">„Reboot zerstört den Fix“</text>
+        <!-- arrow -->
+        <path d="M 415 100 L 525 100" stroke="#5b6b7c" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+        <text x="470" y="88" text-anchor="middle" font-size="14" fill="#5b6b7c" font-weight="600">Pivot</text>
+        <!-- K3s box (green) -->
+        <rect x="540" y="40" width="520" height="120" rx="8" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
+        <text x="800" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#1a7f6b">Bare-Metal K3s (SCS-verified)</text>
+        <text x="800" y="98" text-anchor="middle" font-size="15" fill="#1a5447">3 Nodes · Flannel · MetalLB · Ceph</text>
+        <text x="800" y="118" text-anchor="middle" font-size="15" fill="#1a5447">6/6 KaaS-Standards PASS · 444/444 CNCF</text>
+        <text x="800" y="142" text-anchor="middle" font-size="14" fill="#3a6b5e">weniger Layer, weniger Fehlerquellen</text>
+        <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/></marker></defs>
+      </svg>
+    </div>
+    <div class="small" style="text-align:center;margin-top:4px">Einfachheit gewinnt. Die VM-/SDN-Abstraktion war für 3 Nodes zu schwer — bare-metal ist schlanker.</div>
+    <div class="notes"><b>Sprechernotiz</b>Lernkurve kurz halten: OVN-Gateway-Redirect-Bug zeigte, dass die Abstraktion für 3 Nodes zu schwer war. Nicht „OpenStack ist schlecht“, sondern „passte nicht zur Skalierung“. Der Pivot zu bare-metal war die richtige Entscheidung.</div>
+  </section>
+
+  <!-- 4 · Hands-on: Install pi -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Hands-on · pi.dev install · 2 min</div>
+    <h2>Mitglied werden — installiert pi</h2>
+    <div class="lead" style="font-size:20px">Ein Befehl. Kein API-Key nötig für den Free-Tier.</div>
+    <div class="cmd">curl -fsSL <span class="prm">https://pi.dev/install.sh</span> | sh</div>
+    <ul class="bullets" style="font-size:21px;margin-top:8px">
+      <li>Alternativ: <code>npm i -g @earendil-works/pi-coding-agent</code> (Node 22.19+)</li>
+      <li>Prüfen: <code>pi --version</code></li>
+      <li>Starten: <code>cd &lt;projekt&gt; &amp;&amp; pi</code></li>
+    </ul>
+    <div class="notes"><b>Sprechernotiz</b>Das ist der Einstieg für den Hands-on-Teil. Vorab sagen: „Ihr braucht keinen bezahlten API-Key.“ curl-Installer pinnt alle Dependencies. Wer npm hat: alternativ npm. 2 min Zeit lassen, herumgehen, bei Problemen helfen.</div>
+  </section>
+
+  <!-- 5 · Hands-on: Free Model -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Hands-on · Modell wählen · 3 min</div>
+    <h2>Kostenlos starten — jev-1.13-free</h2>
+    <ul class="bullets">
+      <li><code>/login</code> → Provider <strong>opencode</strong></li>
+      <li><code>/model</code> → <strong>jev-1.13-free</strong> (groß, gratis)</li>
+      <li>Oder Free-Tier: <code>GROQ_API_KEY</code> / <code>GOOGLE_API_KEY</code></li>
+    </ul>
+    <div class="card green" style="font-size:19px;margin-top:8px">Der „free big pickle“ reicht für echte agentische Experimente — kein Kostenrisiko.</div>
+    <div class="notes"><b>Sprechernotiz</b>jev-1.13-free auf dem opencode-Provider ist kostenlos und groß. Alternativen: GROQ und Google haben ebenfalls Free-Tier. /thinking für Reasoning-Level, Ctrl+P zum Modell-Wechseln. Session wird lokal gespeichert.</div>
+  </section>
+
+  <!-- 6 · Hands-on: Prompt Ideas -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Hands-on · Prompt-Ideen · 6 min</div>
+    <h2>Starter-Prompts zum Ausprobieren</h2>
+    <ul class="bullets" style="font-size:21px">
+      <li>„Erkläre SCS-0217 Pod-Security in 3 Sätzen.“</li>
+      <li>„Schreibe eine default-deny NetworkPolicy für Namespace <code>llm</code>.“</li>
+      <li>„PVC auf ceph-rbd, 3-fach Replikation — zeige das Manifest.“</li>
+      <li>„Ceph ist HEALTH_WARN — gib 3 erste Debug-Schritte.“</li>
+      <li>„Skizziere: Studierendenfrage → Retrieval → Ollama-CPU → Antwort.“</li>
+    </ul>
+    <div class="ws"><span class="tag">WS</span>Wer hat pi in 5 Min installiert? → herumgehen, helfen.</div>
+    <div class="notes"><b>Sprechernotiz</b>Herzstück des Workshops. 7 Min für eigene Prompts. Bei Rate-Limits auf GROQ/Google ausweichen. Mit Nachbarn teilen wenn kein Laptop. Fragen für Q&amp;A sammeln.</div>
+  </section>
+
+  <!-- 7 · Cluster: Hardware -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Cluster · Hardware · 3 min</div>
+    <h2>3 × Huawei RH2288E V2 — ohne GPU</h2>
+    <div class="grid2" style="margin-bottom:6px">
+      <div class="kv"><b>CPU</b>2× Xeon E5-2600 v2 (Ivy Bridge-EP) · 6–12 Kerne</div>
+      <div class="kv"><b>RAM</b>24× DDR3 ECC RDIMM · max 768 GB</div>
+      <div class="kv"><b>Storage</b>6× 512 GB SSD · Ceph 8 OSDs · Repl. 3</div>
+      <div class="kv"><b>Netz</b>2× Intel X540 10 GbE · kein GPU</div>
+    </div>
+    <div class="shot shot-lg">
+      <img src="img/scs-imana-hw.png" alt="iBMC iMana Hardware-Ansicht">
+      <figcaption>iBMC iMana — Hardware-Ansicht (clrz14-06/07/08)</figcaption>
+    </div>
+    <div class="small" style="text-align:center">CPU-Modell / RAM-Größe: nur via iBMC/BIOS auslesbar → [verify]</div>
+    <div class="notes"><b>Sprechernotiz</b>Rack clrz14: 8 Server, genutzt 06 (Master) + 07/08 (Worker). ~13 Jahre alt. Ehrlich: CPU-SKU und RAM-Größe sind [verify]. Kein GPU-Framing — KI-Inferenz läuft auf CPU.</div>
+  </section>
+
+  <!-- 8 · Cluster: Network (SVG) -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Cluster · Netzwerk · 3 min</div>
+    <h2>Drei Netzwerke, eine Firewall</h2>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 1000 280" width="100%" style="max-width:1080px">
+        <!-- nodes -->
+        <g font-size="14" font-weight="700" fill="#14202e">
+          <rect x="130" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+          <text x="190" y="45" text-anchor="middle">clrz14-06 (Master)</text>
+          <rect x="290" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+          <text x="350" y="45" text-anchor="middle">clrz14-07 (Worker)</text>
+          <rect x="450" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+          <text x="510" y="45" text-anchor="middle">clrz14-08 (Worker)</text>
+        </g>
+        <!-- mgmt layer -->
+        <rect x="40" y="90" width="620" height="46" rx="5" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="1"/>
+        <text x="60" y="118" font-size="15" font-weight="700" fill="#5b6b7c">Mgmt RZ24</text>
+        <text x="350" y="118" font-size="14" fill="#14202e" text-anchor="middle">172.25.24.36–.38 · ens3f0 untagged · SSH</text>
+        <!-- internal layer -->
+        <rect x="40" y="150" width="620" height="46" rx="5" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="1"/>
+        <text x="60" y="178" font-size="15" font-weight="700" fill="#1a7f6b">Intern</text>
+        <text x="350" y="178" font-size="14" fill="#14202e" text-anchor="middle">VLAN 424 · 172.17.0.0/18 · .6/.7/.8 · Flannel VXLAN</text>
+        <!-- FIP layer -->
+        <rect x="40" y="210" width="620" height="46" rx="5" fill="#fff6e8" stroke="#b3560e" stroke-width="1"/>
+        <text x="60" y="238" font-size="15" font-weight="700" fill="#b3560e">FIP RZ03</text>
+        <text x="350" y="238" font-size="14" fill="#14202e" text-anchor="middle">172.25.3.181–.196 · MetalLB L2 · .181 haproxy · .182 argocd · .183–.186 …</text>
+        <!-- firewall annotation -->
+        <rect x="700" y="90" width="260" height="166" rx="5" fill="#fdeaea" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="830" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#c0392b">SCS-FIREWALL</text>
+        <text x="830" y="142" text-anchor="middle" font-size="13" fill="#7a3b32">allow: 80/443/22</text>
+        <text x="830" y="160" text-anchor="middle" font-size="13" fill="#7a3b32">5001/31080/31443</text>
+        <text x="830" y="178" text-anchor="middle" font-size="13" fill="#7a3b32">123/ICMP</text>
+        <text x="830" y="200" text-anchor="middle" font-size="13" fill="#7a3b32">drop: 6443/10250</text>
+        <text x="830" y="218" text-anchor="middle" font-size="13" fill="#7a3b32">8472</text>
+      </svg>
+    </div>
+    <div class="small" style="text-align:center">ens3f0: Mgmt + FIP (VLAN 3) · ens6f0: intern (VLAN 424) · iBMC Out-of-Band</div>
+    <div class="notes"><b>Sprechernotiz</b>Drei Netzwerke auf 2× 10 GbE. Mgmt RZ24 (SSH), intern VLAN 424 (K3s-Pods), FIP RZ03 (MetalLB L2, externe Services). Firewall auf ens3f0. iBMC separat (Out-of-Band).</div>
+  </section>
+
+  <!-- 9 · Cluster: K3s Stack (SVG) -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Cluster · K3s-Stack · 4 min</div>
+    <h2>Der Stack — alles bare-metal, alles real</h2>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 700 360" width="100%" style="max-width:880px">
+        <g font-size="18" font-weight="700" text-anchor="middle">
+          <rect x="40" y="10"  width="620" height="44" rx="6" fill="#0b6e99" stroke="#0b6e99"/><text x="350" y="38" fill="#fff">openEduSuite Workloads (edu · staff · students · sme · llm)</text>
+          <rect x="40" y="62"  width="620" height="44" rx="6" fill="#1a7f6b" stroke="#1a7f6b"/><text x="350" y="90" fill="#fff">ArgoCD (GitOps) · K8up/Restic (Backup → SeaweedFS S3)</text>
+          <rect x="40" y="114" width="620" height="44" rx="6" fill="#e8f0f7" stroke="#0b6e99"/><text x="350" y="142" fill="#14202e">Ceph 18.2.8 Reef — 8 OSDs, RBD + CephFS, Repl. 3</text>
+          <rect x="40" y="166" width="620" height="44" rx="6" fill="#e8f0f7" stroke="#0b6e99"/><text x="350" y="194" fill="#14202e">Flannel VXLAN · MetalLB L2 · HAProxy Ingress</text>
+          <rect x="40" y="218" width="620" height="44" rx="6" fill="#e8f0f7" stroke="#0b6e99"/><text x="350" y="246" fill="#14202e">K3s v1.36.3+k3s1 · Single-Server · eingebetteter Datastore</text>
+          <rect x="40" y="270" width="620" height="44" rx="6" fill="#f0f4f7" stroke="#5b6b7c"/><text x="350" y="298" fill="#5b6b7c">Ubuntu 24.04 LTS · containerd 2.3.3 · runc 1.4.3</text>
+          <rect x="40" y="322" width="620" height="34" rx="6" fill="#1a1a1a" stroke="#1a1a1a"/><text x="350" y="344" fill="#fff" font-size="15">3 × Huawei RH2288E V2 (bare metal)</text>
+        </g>
+      </svg>
+    </div>
+    <div class="small" style="text-align:center">444/444 CNCF Conformance · 6/6 SCS KaaS-Standards · DevSecOps 78/100</div>
+    <div class="notes"><b>Sprechernotiz</b>Von unten nach oben lesen: Blech → OS → K3s → CNI/LB → Ceph → GitOps → Workloads. Alles real im Betrieb, kein Lab. ArgoCD managt ~40 Workloads. K3s-Datastore: eingebettet (etcd/SQLite — [verify]).</div>
+  </section>
+
+  <!-- 10 · Cluster: SCS-verified -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Cluster · SCS-verified · 2 min</div>
+    <h2>6/6 KaaS-Standards PASS — messbar</h2>
+    <div class="shot shot-lg">
+      <img src="img/scs-compliance-check.png" alt="SCS KaaS Compliance-Report" style="max-height:340px">
+      <figcaption>SCS KaaS Compliance-Check (2026-08-23)</figcaption>
+    </div>
+    <ul class="bullets" style="font-size:22px;margin-top:8px">
+      <li><strong>SCS-0201</strong> CNCF 444/444 · <strong>0210</strong> v1.36.3 · <strong>0211</strong> ceph-rbd</li>
+      <li><strong>0214</strong> 3 Nodes · <strong>0217</strong> Pod-Security · <strong>0219</strong> Networking</li>
+    </ul>
+    <div class="card warn" style="font-size:19px;margin-top:6px">Offen: OIDC als 2. Auth · Pod-Security 17/22 NS · Loki/Trivy-CI · Ceph-at-rest · DSGVO-Freigabe.</div>
+    <div class="notes"><b>Sprechernotiz</b>„Verified“ = messbare Tests, kein Bullshit-Bingo. Aber die offenen Lücken klar benennen — das ist das Verkaufsargument bei Behörden/Unis. DSGVO: Cluster noch NICHT für personenbezogene Daten freigegeben.</div>
+  </section>
+
+  <!-- 11 · Cluster: Betrieb -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Cluster · Betrieb · 2 min</div>
+    <h2>Was wir im Betrieb gelernt haben</h2>
+    <div class="shot shot-lg">
+      <img src="img/grafana-k3s.png" alt="Grafana K3s Dashboard" style="max-height:340px">
+      <figcaption>Grafana K3s-Dashboard (7 Dashboards, predictive-agent)</figcaption>
+    </div>
+    <ul class="bullets" style="font-size:22px;margin-top:8px">
+      <li>Stale Digests, default-deny NetworkPolicies, OIDC-Migration — alle gelöst und dokumentiert</li>
+      <li>Updates: Ceph-first, rollierend, Rollback-Skript · Backup: K8up → SeaweedFS S3</li>
+    </ul>
+    <div class="notes"><b>Sprechernotiz</b>Positiv rahmen: jeder Stolperstein wurde gelöst und dokumentiert. Firewall: SCS-FIREWALL auf ens3f0. 2–3 Lektionen als Story, nicht als Klage. openEduSuite kommt gleich.</div>
+  </section>
+
+  <!-- 12 · openEduSuite: Workload -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">openEduSuite · Workload · 4 min</div>
+    <h2>Souveräne Bildungsplattform, multi-tenant</h2>
+    <div class="grid2" style="margin-bottom:6px">
+      <div class="kv"><b>Tenants</b>edu · staff · students · sme · llm · predictive-agent</div>
+      <div class="kv"><b>Auth</b>Keycloak / OIDC · OpenLDAP (.186)</div>
+      <div class="kv"><b>E-Mail</b>Postfix (.185) · Stalwart (.183) · DKIMpy (.184)</div>
+      <div class="kv"><b>Kollaboration</b>Nextcloud · XWiki · Matrix · SOGo6 · OpenProject</div>
+    </div>
+    <div class="small" style="margin-top:4px">Images: eigene Nix-Builds auf GHCR → lokale Zot-Registry. <code>opendesk-sme</code> noch Degraded (stale Digests) — transparent.</div>
+    <div class="notes"><b>Sprechernotiz</b>Multi-Tenant-Plattform für Bildung. Auth über Keycloak/OIDC. E-Mail-Stack komplett sovereign. opendesk-sme ehrlich als Degraded benennen — zeigt Betriebsrealität.</div>
+  </section>
+
+  <!-- 13 · openEduSuite: Agentic Workflow (SVG) -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">openEduSuite · Agentic Workflow · 4 min</div>
+    <h2>Lern-Kurzantwort in 4 Schritten</h2>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 1100 200" width="100%" style="max-width:1100px">
+        <g font-size="15" font-weight="600" text-anchor="middle">
+          <!-- step 1 -->
+          <rect x="20" y="50" width="200" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+          <text x="120" y="80" fill="#0b6e99" font-weight="700">1 · Frage</text>
+          <text x="120" y="105" fill="#14202e" font-size="13">Studierendenfrage</text>
+          <text x="120" y="125" fill="#5b6b7c" font-size="13">open-webui (ns llm)</text>
+          <!-- arrow -->
+          <path d="M 225 100 L 285 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/>
+          <!-- step 2 -->
+          <rect x="290" y="50" width="200" height="100" rx="8" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
+          <text x="390" y="80" fill="#1a7f6b" font-weight="700">2 · Retrieval</text>
+          <text x="390" y="105" fill="#14202e" font-size="13">Kursmaterial</text>
+          <text x="390" y="125" fill="#5b6b7c" font-size="13">+ Prometheus-Metriken</text>
+          <!-- arrow -->
+          <path d="M 495 100 L 555 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/>
+          <!-- step 3 -->
+          <rect x="560" y="50" width="200" height="100" rx="8" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
+          <text x="660" y="80" fill="#b3560e" font-weight="700">3 · Inferenz</text>
+          <text x="660" y="105" fill="#14202e" font-size="13">Ollama auf CPU</text>
+          <text x="660" y="125" fill="#5b6b7c" font-size="13">quantisiertes Modell</text>
+          <!-- arrow -->
+          <path d="M 765 100 L 825 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/>
+          <!-- step 4 -->
+          <rect x="830" y="50" width="250" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+          <text x="955" y="80" fill="#0b6e99" font-weight="700">4 · Antwort + Quellen</text>
+          <text x="955" y="105" fill="#14202e" font-size="13">mit Quellenangabe</text>
+          <text x="955" y="125" fill="#5b6b7c" font-size="13">an die Nutzerin</text>
+        </g>
+        <defs><marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/></marker></defs>
+      </svg>
+    </div>
+    <div class="card green" style="font-size:18px;margin-top:4px"><strong>predictive-agent v8.11-nix:</strong> Risk-Scoring (Kalman + Markov) für 62 Pods — proaktives Alerting.</div>
+    <div class="notes"><b>Sprechernotiz</b>„Agentic“ = tool-nutzend, mehrschrittig (Retrieval → Inferenz → Verifikation), kein Einzel-Prompt. Der Agent trägt den Cluster-Zustand mit — das ist die Brücke „Agentic AI meets Sovereign Cloud“. Modellname [verify].</div>
+  </section>
+
+  <!-- 14 · openEduSuite: Live-Demo -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">openEduSuite · Live-Demo · 4 min</div>
+    <h2>Cluster, Login, Agent-Trace</h2>
+    <div class="shot shot-lg">
+      <img src="img/scs-ibmc-desktop-kvm.png" alt="iBMC KVM-Konsole (live)" style="max-height:340px">
+      <figcaption>Live iBMC KVM-Konsole — Server-Console via Pale Moon + Java Web Start</figcaption>
+    </div>
+    <ul class="bullets" style="font-size:22px;margin-top:6px">
+      <li>Dashboard: 3 Nodes · Ceph HEALTH OK (8/8) · SCS-Board</li>
+      <li>Login via Keycloak/OIDC → agentischer Workflow (§ 13)</li>
+    </ul>
+    <div class="card warn" style="font-size:19px;margin-top:6px"><strong>Fallback:</strong> Screencast + Architektur-Diagramm, falls die Demo hakt.</div>
+    <div class="notes"><b>Sprechernotiz</b>Vorher testen: Tunnel/Login, Ceph-Status, open-webui. Bei Haken: ruhig auf Fallback umschalten. Zeit im Blick — 4 Min. hart.</div>
+  </section>
+
+  <!-- 15 · Lessons -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Lessons · 3 min</div>
+    <h2>Fünf Dinge zum Mitnehmen</h2>
+    <ul class="bullets" style="font-size:22px">
+      <li><strong>Fang klein an, lerne schnell</strong> — OpenStack passte nicht zur Skalierung.</li>
+      <li><strong>Bare metal statt VM-Schicht</strong> — weniger Abstraktion, mehr Kontrolle.</li>
+      <li><strong>Constraints sind Features</strong> — Quantisierung schlägt GPU-Käufe.</li>
+      <li><strong>„Verified“ überzeugt</strong> — SCS-Tests öffnen Türen, mit ehrlichem Lücken-Reporting.</li>
+      <li><strong>Dokumentiere wie ein Verrückter</strong> — Runbooks, DSFA, Checklisten.</li>
+    </ul>
+    <div class="notes"><b>Sprechernotiz</b>Essenz. Punkt 4 betonen: Verified öffnet Türen bei Behörden/Unis — aber nur mit ehrlichen Lücken. Punkt 5: Runbooks, DSFA, Checklisten — sonst ist Wissen eine Einbahnstraße.</div>
+  </section>
+
+  <!-- 16 · Q&A -->
+  <section class="slide">
+    <div class="pageno"></div>
+    <div class="kicker">Q&amp;A · 10 min</div>
+    <h2>Fragen &amp; Diskussion</h2>
+    <ul class="bullets" style="font-size:22px">
+      <li>Architektur, Nachbauen, SCS-/openEduSuite-Lizenzthemen</li>
+      <li>Hands-on: pi.dev-Installation und Prompts aus dem Workshop</li>
+      <li>Kontakt: tobias-weiss.org · graphwiz.ai · ki-kompetenz-training.org</li>
+    </ul>
+    <div class="card green" style="margin-top:12px;font-size:19px"><strong>Backup-Folien:</strong> Architektur-Diagramm · Agent-Trace · Screencast · Cluster-Faktenblatt.</div>
+    <div class="notes"><b>Sprechernotiz</b>Q&amp;A-Moderation: „What if“-Fragen sammeln. Bei Detailfragen zu [verify]-Werten ehrlich auf Quelle/iBMC verweisen. Backup-Folien bereithalten. Kontakt-Links für Follow-up.</div>
+  </section>
+
+</div>
+
+<div class="hud">
+  <button id="prev" title="Zurück (←)">‹ Zurück</button>
+  <span id="counter">1 / 18</span>
+  <button id="next" title="Weiter (→)">Weiter ›</button>
+  <button id="toggleNotes" title="Sprechernotizen (n)">Notizen</button>
+</div>
+
+<script>
+(function(){
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage=document.getElementById('stage');
+  var counter=document.getElementById('counter');
+  var i=0,notesOn=false;
+  function render(){slides.forEach(function(s,idx){s.classList.toggle('active',idx===i);});counter.textContent=(i+1)+' / '+slides.length;var pg=slides[i].querySelector('.pageno');if(pg){pg.textContent=(i+1);}}
+  function go(n){i=Math.max(0,Math.min(slides.length-1,n));render();}
+  function next(){go(i+1);}function prev(){go(i-1);}
+  function toggleNotes(){notesOn=!notesOn;document.querySelectorAll('.notes').forEach(function(el){el.classList.toggle('on',notesOn);});document.querySelectorAll('.slide').forEach(function(el){el.classList.toggle('notes-on',notesOn);});}
+  function fit(){var s=Math.min(window.innerWidth/1280,window.innerHeight/720);stage.style.transform='translate(-50%,-50%) scale('+s+')';}
+  window.addEventListener('resize',fit);fit();render();
+  document.getElementById('next').addEventListener('click',next);
+  document.getElementById('prev').addEventListener('click',prev);
+  document.getElementById('toggleNotes').addEventListener('click',toggleNotes);
+  document.addEventListener('keydown',function(e){var k=e.key;if(k==='ArrowRight'||k==='PageDown'||k===' '||k==='Enter'){e.preventDefault();next();}else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();prev();}else if(k==='Home'){e.preventDefault();go(0);}else if(k==='End'){e.preventDefault();go(slides.length-1);}else if(k==='n'||k==='N'){toggleNotes();}});
+})();
+</script>
+</body>
+</html>
