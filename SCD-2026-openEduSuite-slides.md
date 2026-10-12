@@ -115,7 +115,7 @@ HFD-Preis als Vertrauenssignal, nicht als Selbstbeweihräucherung.
 </svg>
 </div>
 
-<div class="small center">Einfachheit gewinnt. Die VM-/SDN-Abstraktion war für 3 Nodes zu schwer — bare-metal ist schlanker.</div>
+<div class="small center">Die VM-/SDN-Abstraktion war für 3 Nodes zu schwer — bare-metal ist schlanker.</div>
 
 <!--
 Sprechernotiz: Lernkurve kurz halten: OVN-Gateway-Redirect-Bug zeigte, dass die Abstraktion
@@ -128,7 +128,7 @@ für 3 Nodes zu schwer war. Nicht „OpenStack ist schlecht“, sondern „passt
 
 ## pi installieren
 
-<div class="lead">Ein Befehl. Kein API-Key nötig für den Free-Tier.</div>
+<div class="lead">Ein Befehl genügt — für den Free-Tier ist kein API-Key nötig.</div>
 
 ```
 curl -fsSL https://pi.dev/install.sh | sh
@@ -153,7 +153,7 @@ curl-Installer pinnt alle Dependencies. 2 min Zeit lassen, herumgehen, helfen.
 - `/model` → **big pickle** (groß, gratis)
 - Oder Free-Tier: `GROQ_API_KEY` / `GOOGLE_API_KEY`
 
-<div class="card green">Der „free big pickle“ reicht für echte agentische Experimente — kein Kostenrisiko.</div>
+<div class="card green">Der „free big pickle“ reicht für agentische Experimente — kein Kostenrisiko.</div>
 
 <!--
 Sprechernotiz: big pickle auf dem opencode-Provider ist kostenlos und groß.
@@ -251,7 +251,7 @@ FIP RZ03 (MetalLB L2, externe Services). Firewall auf ens3f0. iBMC separat (Out-
 
 <div class="kicker">Cluster · K3s-Stack · 4 min</div>
 
-## Der Stack — alles bare-metal, alles real
+## Der Stack — bare-metal im Betrieb
 
 <div class="svg-wrap">
 <svg viewBox="0 0 700 360" width="100%">
@@ -328,7 +328,7 @@ Firewall: SCS-FIREWALL auf ens3f0. 2–3 Lektionen als Story, nicht als Klage.
   <div class="kv"><b>Kollaboration</b>Nextcloud · XWiki · Matrix · SOGo6 · OpenProject</div>
 </div>
 
-<div class="small">Images: eigene Nix-Builds auf GHCR → lokale Zot-Registry. `opendesk-sme` noch Degraded (stale Digests) — transparent.</div>
+<div class="small">Images: eigene Nix-Builds auf GHCR → lokale Zot-Registry. `opendesk-sme` noch Degraded (stale Digests).</div>
 
 <!--
 Sprechernotiz: Multi-Tenant-Plattform für Bildung. Auth über Keycloak/OIDC.

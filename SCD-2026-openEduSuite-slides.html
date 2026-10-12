@@ -151,7 +151,7 @@
         <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/></marker></defs>
       </svg>
     </div>
-    <div class="small" style="text-align:center;margin-top:4px">Einfachheit gewinnt. Die VM-/SDN-Abstraktion war für 3 Nodes zu schwer — bare-metal ist schlanker.</div>
+    <div class="small" style="text-align:center;margin-top:4px">Die VM-/SDN-Abstraktion war für 3 Nodes zu schwer — bare-metal ist schlanker.</div>
     <div class="notes"><b>Sprechernotiz</b>Lernkurve kurz halten: OVN-Gateway-Redirect-Bug zeigte, dass die Abstraktion für 3 Nodes zu schwer war. Nicht „OpenStack ist schlecht“, sondern „passte nicht zur Skalierung“. Der Pivot zu bare-metal war die richtige Entscheidung.</div>
   </section>
 
@@ -160,7 +160,7 @@
     <div class="pageno"></div>
     <div class="kicker">Hands-on · pi.dev install · 2 min</div>
     <h2>pi installieren</h2>
-    <div class="lead" style="font-size:20px">Ein Befehl. Kein API-Key nötig für den Free-Tier.</div>
+    <div class="lead" style="font-size:20px">Ein Befehl genügt — für den Free-Tier ist kein API-Key nötig.</div>
     <div class="cmd">curl -fsSL <span class="prm">https://pi.dev/install.sh</span> | sh</div>
     <ul class="bullets" style="font-size:21px;margin-top:8px">
       <li>Alternativ: <code>npm i -g @earendil-works/pi-coding-agent</code> (Node 22.19+)</li>
@@ -180,7 +180,7 @@
       <li><code>/model</code> → <strong>big pickle</strong> (groß, gratis)</li>
       <li>Oder Free-Tier: <code>GROQ_API_KEY</code> / <code>GOOGLE_API_KEY</code></li>
     </ul>
-    <div class="card green" style="font-size:19px;margin-top:8px">Der „free big pickle“ reicht für echte agentische Experimente — kein Kostenrisiko.</div>
+    <div class="card green" style="font-size:19px;margin-top:8px">Der „free big pickle“ reicht für agentische Experimente — kein Kostenrisiko.</div>
     <div class="notes"><b>Sprechernotiz</b>big pickle auf dem opencode-Provider ist kostenlos und groß. Alternativen: GROQ und Google haben ebenfalls Free-Tier. /thinking für Reasoning-Level, Ctrl+P zum Modell-Wechseln. Session wird lokal gespeichert.</div>
   </section>
 
@@ -265,7 +265,7 @@
   <section class="slide">
     <div class="pageno"></div>
     <div class="kicker">Cluster · K3s-Stack · 4 min</div>
-    <h2>Der Stack — alles bare-metal, alles real</h2>
+    <h2>Der Stack — bare-metal im Betrieb</h2>
     <div class="svg-wrap">
       <svg viewBox="0 0 700 360" width="100%" style="max-width:880px">
         <g font-size="18" font-weight="700" text-anchor="middle">
@@ -327,7 +327,7 @@
       <div class="kv"><b>E-Mail</b>Postfix (.185) · Stalwart (.183) · DKIMpy (.184)</div>
       <div class="kv"><b>Kollaboration</b>Nextcloud · XWiki · Matrix · SOGo6 · OpenProject</div>
     </div>
-    <div class="small" style="margin-top:4px">Images: eigene Nix-Builds auf GHCR → lokale Zot-Registry. <code>opendesk-sme</code> noch Degraded (stale Digests) — transparent.</div>
+    <div class="small" style="margin-top:4px">Images: eigene Nix-Builds auf GHCR → lokale Zot-Registry. <code>opendesk-sme</code> noch Degraded (stale Digests).</div>
     <div class="notes"><b>Sprechernotiz</b>Multi-Tenant-Plattform für Bildung. Auth über Keycloak/OIDC. E-Mail-Stack komplett sovereign. opendesk-sme ehrlich als Degraded benennen — zeigt Betriebsrealität.</div>
   </section>
 
