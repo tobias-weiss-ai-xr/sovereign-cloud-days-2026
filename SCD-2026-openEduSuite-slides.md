@@ -37,6 +37,13 @@ style: |
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:16px 30px; }
   .kv{ font-size:21px; line-height:1.3; }
   .kv b{ display:block; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:2px; }
+  table{ border-collapse:collapse; width:100%; font-size:18px; margin:8px 0; }
+  th{ background:#0f1c2a; color:#fff; padding:7px 12px; text-align:left; font-size:14px; letter-spacing:.05em; text-transform:uppercase; }
+  td{ padding:7px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:nth-child(even) td{ background:#f0f4f7; }
+  .seal{ font-weight:700; color:var(--warn); }
+  .big{ font-size:34px; font-weight:800; }
+  .ok{ color:var(--accent2); font-weight:700; }
   .ws{ background:#fff6e8; border:1px solid #f0d9b5; border-radius:5px; padding:10px 16px;
     font-size:18px; color:#7a4a08; font-weight:600; }
   .tag{ display:inline-block; font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
@@ -294,6 +301,38 @@ All real in production, not a lab. ArgoCD manages ~40 workloads. K3s datastore: 
 Speaker note: “Verified” = measurable tests, no bullshit bingo. But name the open gaps clearly
 — that's the selling point with public authorities and universities. GDPR: the cluster is NOT
 yet cleared for personal data.
+-->
+
+---
+
+<div class="kicker">Self-check · EU Cloud Sovereignty score · 2 min</div>
+
+## 73.5 % Sovereignty Score — SEAL-1
+
+Method: **EU Cloud Sovereignty Framework** (official calculator, Jun 2026) —
+weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 criteria).
+
+| Objective | W | Score | SEAL |
+|---|---|---|---|
+| SOV-1 Strategic | 20 % | <span class="ok">**94 %**</span> | SEAL-4 |
+| SOV-4 Operational | 15 % | <span class="ok">**83 %**</span> | SEAL-3 |
+| SOV-6 Technology | 15 % | <span class="ok">**80 %**</span> | SEAL-3 |
+| SOV-3 Data & AI | 10 % | 75 % | SEAL-1 |
+| SOV-2 Legal & Jurisdictional | 10 % | 71 % | SEAL-1 |
+| SOV-7 Security & Compliance | 15 % | 64 % | SEAL-1 |
+| SOV-5 Supply Chain | 10 % | 50 % | SEAL-1 |
+| SOV-8 Environmental | 5 % | 19 % | SEAL-1 |
+
+<div class="card warn">High score — low SEAL. SEAL is the <strong>weakest link</strong>: non-EU hardware
+(Huawei/Intel, SOV-5), no formal EAL certification (SOV-7), no PUE/emissions reporting (SOV-8).</div>
+
+<div class="card green">Levers to SEAL ≥ 3: EU-fabricated platform / hardware provenance · formal EAL cert · PUE &amp; CSRD reporting.</div>
+
+<!--
+Speaker note: This is a self-assessment against the EU framework, not an official certification.
+Honest framing on purpose: the reused Huawei/Intel hardware caps the SEAL at 1 despite a 73.5%
+score — strategy/ops/tech are strong, the supply chain and energy reporting are the drags.
+Re-run: self-assessment/self-assessment-score.js (48 criteria, mapped in EU-sovereignty-assessment.md).
 -->
 
 ---
