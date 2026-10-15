@@ -10,47 +10,45 @@ A practical case study on running agentic AI workloads (openEduSuite) on a sover
 
 | | |
 |---|---|
-| **Format** | Interactive workshop · 60 min incl. Q&A (plus a 25 min talk submission) |
+| **Format** | Talk with workshop elements · 60 min incl. Q&A |
 | **Slot** | Sun, 25.10.2026 · 11:15 · Workshop Stage |
-| **Speaker** | Tobias Weiß · HRZ, Philipps-Universität Marburg |
-| **Tracks** | AI/ML in Cloud (primary) · Sovereign Cloud Infrastructure (secondary) |
+| **Speaker** | Tobias Weiß · HRZ, Philipps-Universität Marburg · tobias@tobias-weiss.org |
+| **Tags** | AI Infrastructure · Kubernetes & Cloud Native · Sovereign Cloud Stack |
 
 ## Repository structure
 
 ```
 sovereign-cloud-days-2026/
 ├── README.md
-├── proposal/                  # submission materials (abstract, runbook, portrait)
-│   ├── sovereign-cloud-days-2026-proposal.md / .txt
-│   ├── SCD-2026-openEduSuite-draft.md        # workshop runbook v1.1
-│   └── 1780135484292.jpeg                    # speaker portrait (1:1)
-├── slides/                    # the slide deck (source + renders + its screenshots)
-│   ├── SCD-2026-openEduSuite-slides.md       # Marp Markdown source, 17 slides, 16:9
-│   ├── SCD-2026-openEduSuite-slides.html     # legacy self-contained HTML deck
+├── slides/                    # the slide deck (source + renders + screenshots)
+│   ├── SCD-2026-openEduSuite-slides.md       # Marp Markdown source, 20 slides, 16:9
 │   ├── SCD-2026-openEduSuite-slides-marp.html
 │   ├── SCD-2026-openEduSuite-slides-marp.pdf
-│   └── img/                   # cluster screenshots (iBMC/iMana, Grafana, ArgoCD, SCS, Ceph, VLAN)
-├── self-assessment/           # EU Cloud Sovereignty self-assessment
-│   ├── EU-sovereignty-assessment.md         # results, breakdown, binding criteria, levers
-│   └── self-assessment-score.js             # reproducible scorer (re-runs via SCOPE, see file header)
-└── .gitignore
+│   └── img/                   # cluster screenshots (iBMC/iMana, Grafana, ArgoCD, SCS, Ceph)
+├── compliance/                # compliance artifacts backing the talk's claims
+│   ├── references/            # SCS KaaS compliance report, status report
+│   ├── operations/            # DevSecOps hardening, update routine, incident response
+│   ├── architecture/          # network configuration
+│   └── monitoring/            # Grafana compliance dashboard definition
+└── self-assessment/           # EU Cloud Sovereignty self-assessment
+    ├── EU-sovereignty-assessment.md         # results, breakdown, binding criteria, levers
+    └── self-assessment-score.js             # reproducible scorer (re-runs via SCOPE, see file header)
 ```
 
-| File | Description |
+| Path | Description |
 |---|---|
-| `proposal/sovereign-cloud-days-2026-proposal.md` / `.txt` | Talk submission (25 min + 5 min Q&A): abstract, description, bio, topic area |
-| `proposal/SCD-2026-openEduSuite-draft.md` | Workshop runbook / draft v1.1 — 60 min, interactive, with speaker notes |
-| `slides/SCD-2026-openEduSuite-slides.md` | Slide source — [Marp](https://marp.app/) Markdown, 17 slides, 16:9 |
-| `slides/SCD-2026-openEduSuite-slides.html` | Self-contained single-file HTML deck (inline SVG + screenshots) |
+| `slides/SCD-2026-openEduSuite-slides.md` | Slide source — [Marp](https://marp.app/) Markdown, 20 slides (17 talk + 3 backup), 16:9 |
 | `slides/SCD-2026-openEduSuite-slides-marp.html` | Marp HTML render |
-| `slides/SCD-2026-openEduSuite-slides-marp.pdf` | Marp PDF export (17 pages) |
-| `slides/img/` | Cluster screenshots — iBMC/iMana, Grafana, ArgoCD, SCS compliance, Ceph, VLAN setup |
-| `proposal/1780135484292.jpeg` | Speaker portrait (400×400, 1:1) |
-| `self-assessment/` | EU Cloud Sovereignty Framework self-assessment (73.5% score, SEAL-1) + reproducible scorer |
+| `slides/SCD-2026-openEduSuite-slides-marp.pdf` | Marp PDF export (20 pages) |
+| `slides/img/` | Cluster screenshots — iBMC/iMana, Grafana, ArgoCD, SCS compliance, Ceph |
+| `compliance/` | Evidence for the talk's compliance claims — SCS KaaS report (6/6 PASS), status report, DevSecOps hardening (78/100), SCS-compliant update routine, incident response plan, network config, Grafana dashboard |
+| `self-assessment/` | EU Cloud Sovereignty Framework self-assessment (73.5 % score, SEAL-1) + reproducible scorer |
+
+Submission materials (abstract, talk plan, bio) are maintained outside this repository.
 
 ## Rendering the slides
 
-The Marp deck is generated from `slides/SCD-2026-openEduSuite-slides.md`:
+The deck is generated from `slides/SCD-2026-openEduSuite-slides.md`:
 
 ```bash
 # HTML
@@ -64,17 +62,17 @@ Deck options (`marp: true`, `size: 16:9`, `paginate: true`, theme styles) live i
 
 ## Hands-on
 
-The workshop installs [pi](https://pi.dev) and runs first prompts against a free opencode model — **big pickle**:
+The workshop element installs [opencode](https://opencode.ai) and runs first prompts against the free **Big Pickle** model (OpenCode Zen):
 
 ```bash
-curl -fsSL https://pi.dev/install.sh | sh   # or: npm i -g @earendil-works/pi-coding-agent  (Node 22.19+)
-pi --version
+curl -fsSL https://opencode.ai/install | bash   # or: npm install -g opencode-ai
+opencode --version
 ```
 
-Then `/login` → provider **opencode**, `/model` → **big pickle**.
+Then `/connect` → **OpenCode Zen** → pick **Big Pickle** from the free model list. Switch models with `/models`.
 
 ## Notes
 
-Slides, workshop runbook, and talk proposal are all in English. Technical claims reflect the cluster state as documented (2026-08); values only verifiable on the hardware are marked `[verify]`.
+Slides are in English. Technical claims reflect the cluster state as documented (2026-08); values only verifiable on the hardware are marked `[verify]`.
 
-Drafted with the assistance of an AI coding agent (pi). The talk itself is human-authored.
+Drafted with the assistance of an AI coding agent. The talk itself is human-authored.

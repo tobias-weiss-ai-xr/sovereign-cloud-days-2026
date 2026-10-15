@@ -75,7 +75,7 @@ style: |
 
 <!--
 Speaker note: Welcome. Thesis: a sovereign, AI-capable setup on written-off iron.
-openEduSuite = HFD award winner 2026. Agenda: motivation → hands-on pi.dev → cluster → workload → Q&A.
+openEduSuite = HFD award winner 2026. Agenda: motivation → hands-on opencode → cluster → workload → Q&A.
 ~50 min content + 10 min Q&A. [WS] marker = audience interaction.
 -->
 
@@ -131,23 +131,23 @@ was too heavy for 3 nodes. Not “OpenStack is bad,” but “it didn't fit the 
 
 ---
 
-<div class="kicker">Hands-on · pi.dev install · 2 min</div>
+<div class="kicker">Hands-on · opencode install · 2 min</div>
 
-## Install pi
+## Install opencode
 
 <div class="lead">One command is enough — the free tier needs no API key.</div>
 
 ```
-curl -fsSL https://pi.dev/install.sh | sh
+curl -fsSL https://opencode.ai/install | bash
 ```
 
-- Alternatively: `npm i -g @earendil-works/pi-coding-agent` (Node 22.19+)
-- Verify: `pi --version`
-- Start: `cd <projekt> && pi`
+- Alternatively: `npm install -g opencode-ai`
+- Verify: `opencode --version`
+- Start: `cd <project> && opencode`
 
 <!--
-Speaker note: Start of the hands-on part. Say upfront: “You don't need a paid API key.”
-The curl installer pins all dependencies. Allow 2 min, walk around, help.
+Speaker note: Start of the workshop element. Say upfront: “You don't need a paid API key.”
+Allow 2 min, walk around, help.
 -->
 
 ---
@@ -156,16 +156,16 @@ The curl installer pins all dependencies. Allow 2 min, walk around, help.
 
 ## Start for free — big pickle
 
-- `/login` → provider **opencode**
-- `/model` → **big pickle** (large, free)
-- Or free tier: `GROQ_API_KEY` / `GOOGLE_API_KEY`
+- `/connect` → **OpenCode Zen**
+- Pick **Big Pickle** from the free model list
+- Alternatives: any provider via `/connect` (75+) or your own API key
 
-<div class="card green">The “free big pickle” is enough for agentic experiments — no cost risk.</div>
+<div class="card green">The free “Big Pickle” is enough for agentic experiments — no cost risk.</div>
 
 <!--
-Speaker note: big pickle on the opencode provider is free and large.
-Alternatives: GROQ and Google also have a free tier. /thinking for reasoning level,
-Ctrl+P to switch models. The session is stored locally.
+Speaker note: Big Pickle is on OpenCode Zen's free list (lineup rotates — check opencode.ai/zen).
+Alternatives: own provider key via /connect (outside the TUI: opencode auth login).
+Switch models with /models. Sessions are stored locally.
 -->
 
 ---
@@ -180,11 +180,11 @@ Ctrl+P to switch models. The session is stored locally.
 - “Ceph is HEALTH_WARN — give 3 first debugging steps.”
 - “Outline: student question → retrieval → Ollama CPU → answer.”
 
-<div class="ws"><span class="tag">WS</span>Who installed pi in 5 min? → walk around, help.</div>
+<div class="ws"><span class="tag">WS</span>Who has opencode running in 5 min? → walk around, help.</div>
 
 <!--
-Speaker note: The heart of the workshop. 7 min for your own prompts. If rate-limited,
-fall back to GROQ/Google. Share with a neighbor if you have no laptop. Collect questions for Q&A.
+Speaker note: The heart of the interactive part. 7 min for your own prompts. If a model is
+rate-limited, switch via /models. Share with a neighbor if you have no laptop. Collect questions for Q&A.
 -->
 
 ---
@@ -197,7 +197,7 @@ fall back to GROQ/Google. Share with a neighbor if you have no laptop. Collect q
   <div class="kv"><b>CPU</b>2× Xeon E5-2600 v2 (Ivy Bridge-EP) · 6–12 cores</div>
   <div class="kv"><b>RAM</b>24× DDR3 ECC RDIMM · max 768 GB</div>
   <div class="kv"><b>Storage</b>6× 512 GB SSD · Ceph 8 OSDs · Repl. 3</div>
-  <div class="kv"><b>Network</b>2× Intel X540 10 GbE · no GPU</div>
+  <div class="kv"><b>Network</b>2× Intel X540-AT2 10 GbE</div>
 </div>
 
 <figure>
@@ -230,13 +230,13 @@ Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference run
   </g>
   <rect x="40" y="90" width="620" height="46" rx="5" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="1"/>
   <text x="60" y="118" font-size="15" font-weight="700" fill="#5b6b7c">Mgmt RZ24</text>
-  <text x="350" y="118" font-size="14" fill="#14202e" text-anchor="middle">172.25.24.36–.38 · ens3f0 untagged · SSH</text>
+  <text x="350" y="118" font-size="14" fill="#14202e" text-anchor="middle">192.0.2.11–13 · ens3f0 untagged · SSH</text>
   <rect x="40" y="150" width="620" height="46" rx="5" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="1"/>
   <text x="60" y="178" font-size="15" font-weight="700" fill="#1a7f6b">Internal</text>
-  <text x="350" y="178" font-size="14" fill="#14202e" text-anchor="middle">VLAN 424 · 172.17.0.0/18 · .6/.7/.8 · Flannel VXLAN</text>
+  <text x="350" y="178" font-size="14" fill="#14202e" text-anchor="middle">VLAN 424 · 198.51.100.0/18 · .11/.12/.13 · Flannel VXLAN</text>
   <rect x="40" y="210" width="620" height="46" rx="5" fill="#fff6e8" stroke="#b3560e" stroke-width="1"/>
   <text x="60" y="238" font-size="15" font-weight="700" fill="#b3560e">FIP RZ03</text>
-  <text x="350" y="238" font-size="14" fill="#14202e" text-anchor="middle">172.25.3.181–.196 · MetalLB L2 · .181 haproxy · .182 argocd · .183–.186 …</text>
+  <text x="350" y="238" font-size="14" fill="#14202e" text-anchor="middle">203.0.113.181–.196 · MetalLB L2 · .181 ingress · .182 argocd · .183–.186 …</text>
   <rect x="700" y="90" width="260" height="166" rx="5" fill="#fdeaea" stroke="#c0392b" stroke-width="1.5"/>
   <text x="830" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#c0392b">SCS-FIREWALL</text>
   <text x="830" y="142" text-anchor="middle" font-size="13" fill="#7a3b32">allow: 80/443/22</text>
@@ -261,24 +261,23 @@ FIP RZ03 (MetalLB L2, external services). Firewall on ens3f0. iBMC separate (out
 ## The stack — bare-metal in production
 
 <div class="svg-wrap">
-<svg viewBox="0 0 700 360" width="100%">
-  <g font-size="18" font-weight="700" text-anchor="middle">
-    <rect x="40" y="10"  width="620" height="44" rx="6" fill="#0b6e99"/><text x="350" y="38" fill="#fff">openEduSuite Workloads (edu · staff · students · sme · llm)</text>
-    <rect x="40" y="62"  width="620" height="44" rx="6" fill="#1a7f6b"/><text x="350" y="90" fill="#fff">ArgoCD (GitOps) · K8up/Restic (backup → SeaweedFS S3)</text>
-    <rect x="40" y="114" width="620" height="44" rx="6" fill="#e8f0f7" stroke="#0b6e99"/><text x="350" y="142" fill="#14202e">Ceph 18.2.8 Reef — 8 OSDs, RBD + CephFS, Repl. 3</text>
-    <rect x="40" y="166" width="620" height="44" rx="6" fill="#e8f0f7" stroke="#0b6e99"/><text x="350" y="194" fill="#14202e">Flannel VXLAN · MetalLB L2 · HAProxy Ingress</text>
-    <rect x="40" y="218" width="620" height="44" rx="6" fill="#e8f0f7" stroke="#0b6e99"/><text x="350" y="246" fill="#14202e">K3s v1.36.3+k3s1 · Single-server · embedded datastore</text>
-    <rect x="40" y="270" width="620" height="44" rx="6" fill="#f0f4f7" stroke="#5b6b7c"/><text x="350" y="298" fill="#5b6b7c">Ubuntu 24.04 LTS · containerd 2.3.3 · runc 1.4.3</text>
-    <rect x="40" y="322" width="620" height="34" rx="6" fill="#1a1a1a"/><text x="350" y="344" fill="#fff" font-size="15">3 × Huawei RH2288E V2 (bare metal)</text>
+<svg viewBox="0 0 700 292" width="100%">
+  <g font-size="17" font-weight="700" text-anchor="middle">
+    <rect x="40" y="6"   width="620" height="36" rx="6" fill="#0b6e99"/><text x="350" y="30" fill="#fff">openEduSuite Workloads (edu · staff · students · sme · llm)</text>
+    <rect x="40" y="48"  width="620" height="36" rx="6" fill="#1a7f6b"/><text x="350" y="72" fill="#fff">ArgoCD (GitOps) · K8up/Restic (backup → SeaweedFS S3)</text>
+    <rect x="40" y="90"  width="620" height="36" rx="6" fill="#e8f0f7" stroke="#0b6e99"/><text x="350" y="114" fill="#14202e">Ceph 18.2.8 Reef — 8 OSDs, RBD + CephFS, Repl. 3</text>
+    <rect x="40" y="132" width="620" height="36" rx="6" fill="#e8f0f7" stroke="#0b6e99"/><text x="350" y="156" fill="#14202e">Flannel VXLAN · MetalLB L2 · HAProxy Ingress</text>
+    <rect x="40" y="174" width="620" height="36" rx="6" fill="#e8f0f7" stroke="#0b6e99"/><text x="350" y="198" fill="#14202e">K3s v1.36.3+k3s1 · Single-server · embedded datastore</text>
+    <rect x="40" y="216" width="620" height="36" rx="6" fill="#f0f4f7" stroke="#5b6b7c"/><text x="350" y="240" fill="#5b6b7c">Ubuntu 24.04 LTS · containerd 2.3.3 · runc 1.4.3</text>
+    <rect x="40" y="258" width="620" height="28" rx="6" fill="#1a1a1a"/><text x="350" y="277" fill="#fff" font-size="15">3 × Huawei RH2288E V2 (bare metal)</text>
   </g>
 </svg>
 </div>
 
-<div class="small center">444/444 CNCF conformance · 6/6 SCS KaaS standards · DevSecOps 78/100</div>
-
 <!--
 Speaker note: Read from the bottom up: metal → OS → K3s → CNI/LB → Ceph → GitOps → workloads.
 All real in production, not a lab. ArgoCD manages ~40 workloads. K3s datastore: embedded ([verify]).
+Compliance numbers come on the next slide — don't preempt them here.
 -->
 
 ---
@@ -358,61 +357,64 @@ Firewall: SCS-FIREWALL on ens3f0. 2–3 lessons as a story, not a complaint.
 
 <div class="kicker">openEduSuite · Workload · 4 min</div>
 
-## Sovereign education platform, multi-tenant
+## The dimensions of openEduSuite
 
-<div class="grid2">
-  <div class="kv"><b>Tenants</b>edu · staff · students · sme · llm · predictive-agent</div>
-  <div class="kv"><b>Auth</b>Keycloak / OIDC · OpenLDAP (.186)</div>
-  <div class="kv"><b>Email</b>Postfix (.185) · Stalwart (.183) · DKIMpy (.184)</div>
-  <div class="kv"><b>Collaboration</b>Nextcloud · XWiki · Matrix · SOGo6 · OpenProject</div>
-</div>
+| Dimension | Components |
+|---|---|
+| **Tenants — who** | edu · staff · students · sme · llm · predictive-agent |
+| **Identity & access** | Keycloak / OIDC · OpenLDAP (.186) |
+| **Communication** | Postfix (.185) · Stalwart (.183) · DKIMpy (.184) · Matrix |
+| **Collaboration** | Nextcloud · XWiki · SOGo6 · OpenProject |
+| **Delivery** | Own Nix builds on GHCR → local Zot registry |
 
-<div class="small">Images: our own Nix builds on GHCR → local Zot registry. `opendesk-sme` still Degraded (stale digests).</div>
+<div class="card warn"><strong>Honest status:</strong> `opendesk-sme` still Degraded (stale digests).</div>
 
 <!--
-Speaker note: Multi-tenant platform for education. Auth via Keycloak/OIDC.
-Email stack fully sovereign. Honestly call out opendesk-sme as Degraded.
+Speaker note: The platform in five sorted dimensions: who (tenants), identity,
+communication, collaboration, delivery. Auth via Keycloak/OIDC. Email stack
+fully sovereign. Honestly call out opendesk-sme as Degraded.
 -->
 
 ---
 
 <div class="kicker">openEduSuite · Agentic Workflow · 4 min</div>
 
-## Learning answer in 4 steps
+## Cluster maintenance in 4 steps
 
 <div class="svg-wrap">
 <svg viewBox="0 0 1100 200" width="100%">
   <g font-size="15" font-weight="600" text-anchor="middle">
-    <rect x="20" y="50" width="200" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="120" y="80" fill="#0b6e99" font-weight="700">1 · Question</text>
-    <text x="120" y="105" fill="#14202e" font-size="13">Student question</text>
-    <text x="120" y="125" fill="#5b6b7c" font-size="13">open-webui (ns llm)</text>
-    <path d="M 225 100 L 285 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/>
-    <rect x="290" y="50" width="200" height="100" rx="8" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
-    <text x="390" y="80" fill="#1a7f6b" font-weight="700">2 · Retrieval</text>
-    <text x="390" y="105" fill="#14202e" font-size="13">Course material</text>
-    <text x="390" y="125" fill="#5b6b7c" font-size="13">+ Prometheus metrics</text>
-    <path d="M 495 100 L 555 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/>
-    <rect x="560" y="50" width="200" height="100" rx="8" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
-    <text x="660" y="80" fill="#b3560e" font-weight="700">3 · Inference</text>
-    <text x="660" y="105" fill="#14202e" font-size="13">Ollama on CPU</text>
-    <text x="660" y="125" fill="#5b6b7c" font-size="13">quantized model</text>
-    <path d="M 765 100 L 825 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/>
-    <rect x="830" y="50" width="250" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="955" y="80" fill="#0b6e99" font-weight="700">4 · Answer + sources</text>
-    <text x="955" y="105" fill="#14202e" font-size="13">with source citation</text>
-    <text x="955" y="125" fill="#5b6b7c" font-size="13">to the user</text>
+    <rect x="20" y="50" width="230" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="135" y="80" fill="#0b6e99" font-weight="700">1 · Observe</text>
+    <text x="135" y="105" fill="#14202e" font-size="13">Prometheus metrics</text>
+    <text x="135" y="125" fill="#5b6b7c" font-size="13">62 pods · 3 nodes</text>
+    <path d="M 255 100 L 295 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/>
+    <rect x="300" y="50" width="230" height="100" rx="8" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
+    <text x="415" y="80" fill="#1a7f6b" font-weight="700">2 · Predict</text>
+    <text x="415" y="105" fill="#14202e" font-size="13">Kalman + Markov</text>
+    <text x="415" y="125" fill="#5b6b7c" font-size="13">risk score per pod</text>
+    <path d="M 535 100 L 575 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/>
+    <rect x="580" y="50" width="230" height="100" rx="8" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
+    <text x="695" y="80" fill="#b3560e" font-weight="700">3 · Alert</text>
+    <text x="695" y="105" fill="#14202e" font-size="13">Proactive alerting</text>
+    <text x="695" y="125" fill="#5b6b7c" font-size="13">before the outage</text>
+    <path d="M 815 100 L 855 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/>
+    <rect x="860" y="50" width="230" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="975" y="80" fill="#0b6e99" font-weight="700">4 · Maintain</text>
+    <text x="975" y="105" fill="#14202e" font-size="13">Fix early, planned</text>
+    <text x="975" y="125" fill="#5b6b7c" font-size="13">maintenance, not firefighting</text>
   </g>
   <defs><marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/></marker></defs>
 </svg>
 </div>
 
-<div class="card green" style="font-size:18px"><strong>predictive-agent v8.11-nix:</strong> Risk scoring (Kalman + Markov) for 62 pods — proactive alerting.</div>
+<div class="card green" style="font-size:18px"><strong>predictive-agent v8.11-nix</strong> (own tenant): Risk scoring (Kalman + Markov) for 62 pods — alerts before users notice.</div>
 
 <!--
-Speaker note: “Agentic” = tool-using, multi-step (retrieval → inference → verification),
+Speaker note: “Agentic” = tool-using, multi-step (observe → predict → alert → verify),
 not a single prompt. The agent carries the cluster state with it — the bridge
-“Agentic AI meets Sovereign Cloud.” Model name [verify].
+“Agentic AI meets Sovereign Cloud.” Student Q&A flow (open-webui) is shown live
+on the demo slide. Version [verify].
 -->
 
 ---
@@ -429,11 +431,12 @@ not a single prompt. The agent carries the cluster state with it — the bridge
 - Dashboard: 3 nodes · Ceph HEALTH OK (8/8) · SCS board
 - Login via Keycloak/OIDC → agentic workflow
 
-<div class="card warn"><strong>Fallback:</strong> Screencast + architecture diagram in case the demo stalls.</div>
+<div class="card warn"><strong>Fallback:</strong> Screenshots (Grafana, KVM, open-webui) + stack diagram if the demo stalls.</div>
 
 <!--
 Speaker note: Test beforehand: tunnel/login, Ceph status, open-webui.
-If it stalls: calmly switch to the fallback. Watch the time — 4 min. hard stop.
+If it stalls: calmly switch to the screenshots and the stack diagram — no screencast exists.
+Watch the time — 4 min. hard stop.
 -->
 
 ---
@@ -460,12 +463,129 @@ Point 5: runbooks, DPIAs, checklists — otherwise knowledge is a one-way street
 ## Questions & discussion
 
 - Architecture, rebuilding it, SCS/openEduSuite licensing topics
-- Hands-on: pi.dev installation and prompts from the workshop
+- Workshop element: opencode install + the prompts — try them at home
 - Contact: tobias-weiss.org · graphwiz.ai · ki-kompetenz-training.org
 
-<div class="card green"><strong>Backup slides:</strong> architecture diagram · agent trace · screencast · cluster fact sheet.</div>
+<div class="card green"><strong>Backup slides:</strong> architecture diagram · agent trace · cluster fact sheet.</div>
 
 <!--
 Speaker note: Q&A moderation: collect “what if” questions. For detailed questions on [verify] values,
 honestly point to the source/iBMC. Have backup slides ready. Contact links for follow-up.
+-->
+
+---
+
+<div class="kicker">Backup · Architecture</div>
+
+## Cluster architecture — full picture
+
+<div class="svg-wrap">
+<svg viewBox="0 0 1000 430" width="100%">
+  <g font-size="14" font-weight="700" text-anchor="middle">
+    <rect x="40" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="180" y="40" fill="#0b6e99">clrz14-06 — master</text>
+    <text x="180" y="62" font-size="13" fill="#14202e">K3s server (single) · Ceph MON · 4 OSDs</text>
+    <text x="180" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.11 · int .11</text>
+    <text x="180" y="100" font-size="13" fill="#5b6b7c">2× Xeon E5-2600 v2 · no GPU</text>
+    <rect x="360" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="500" y="40" fill="#0b6e99">clrz14-07 — worker</text>
+    <text x="500" y="62" font-size="13" fill="#14202e">K3s agent · Ceph MON · 2 OSDs</text>
+    <text x="500" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.12 · int .12</text>
+    <text x="500" y="100" font-size="13" fill="#5b6b7c">openEduSuite + llm workloads</text>
+    <rect x="680" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="820" y="40" fill="#0b6e99">clrz14-08 — worker</text>
+    <text x="820" y="62" font-size="13" fill="#14202e">K3s agent · Ceph MON · 2 OSDs</text>
+    <text x="820" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.13 · int .13</text>
+    <text x="820" y="100" font-size="13" fill="#5b6b7c">predictive-agent · monitoring</text>
+  </g>
+  <g font-size="15" font-weight="700">
+    <rect x="40" y="124" width="920" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b"/>
+    <text x="500" y="149" text-anchor="middle" fill="#1a5447">K3s v1.36.3+k3s1 · Flannel VXLAN 10.42.0.0/16 · MetalLB L2 · HAProxy Ingress · ArgoCD v2.12.6</text>
+    <rect x="40" y="172" width="920" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99"/>
+    <text x="500" y="197" text-anchor="middle" fill="#0b3a55">Ceph 18.2.8 Reef — 8 OSDs · 3 MONs · repl. 3 · RBD + CephFS · K8up/Restic → SeaweedFS S3</text>
+    <rect x="40" y="220" width="920" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c"/>
+    <text x="500" y="245" text-anchor="middle" fill="#5b6b7c">Ubuntu 24.04 LTS · containerd 2.3.3 · runc 1.4.3 · firewall SCS-FIREWALL on ens3f0</text>
+  </g>
+  <g font-size="14">
+    <rect x="40" y="276" width="140" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c"/>
+    <text x="110" y="301" text-anchor="middle" font-weight="700" fill="#5b6b7c">Mgmt</text>
+    <text x="200" y="301" fill="#14202e">192.0.2.11–13 · ens3f0 untagged · SSH</text>
+    <rect x="40" y="324" width="140" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b"/>
+    <text x="110" y="349" text-anchor="middle" font-weight="700" fill="#1a7f6b">Internal</text>
+    <text x="200" y="349" fill="#14202e">VLAN 424 · 198.51.100.0/18 · .11/.12/.13</text>
+    <rect x="40" y="372" width="140" height="40" rx="5" fill="#fff6e8" stroke="#b3560e"/>
+    <text x="110" y="397" text-anchor="middle" font-weight="700" fill="#b3560e">FIP</text>
+    <text x="200" y="397" fill="#14202e">203.0.113.181–.196 · .181 ingress · .182 argocd · .183–.186 mail/ldap</text>
+  </g>
+</svg>
+</div>
+
+<!--
+Speaker note: BACKUP — only show on demand. Generic documentation IPs (RFC 5737),
+not the real ones. Node roles, versions, networks in one picture.
+-->
+
+---
+
+<div class="kicker">Backup · Agent trace</div>
+
+## How an agent call traces through the cluster
+
+<div class="svg-wrap">
+<svg viewBox="0 0 1000 360" width="100%">
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <rect x="40" y="20" width="200" height="46" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="140" y="49" fill="#0b6e99">open-webui (ns llm)</text>
+    <rect x="380" y="20" width="200" height="46" rx="6" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
+    <text x="480" y="49" fill="#1a7f6b">Agent loop</text>
+    <rect x="720" y="20" width="240" height="46" rx="6" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
+    <text x="840" y="49" fill="#b3560e">Prometheus · Ollama</text>
+    <path d="M 140 66 L 140 300" stroke="#5b6b7c" stroke-width="2"/>
+    <path d="M 480 66 L 480 300" stroke="#5b6b7c" stroke-width="2"/>
+    <path d="M 840 66 L 840 300" stroke="#5b6b7c" stroke-width="2"/>
+  </g>
+  <g font-size="13" fill="#14202e">
+    <path d="M 245 110 L 470 110" stroke="#0b6e99" stroke-width="2.5" marker-end="url(#arr3)"/>
+    <text x="358" y="102" text-anchor="middle" font-weight="700">1 · question</text>
+    <path d="M 485 150 L 830 150" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/>
+    <text x="660" y="142" text-anchor="middle" font-weight="700">2 · tool call: query metrics</text>
+    <path d="M 830 190 L 495 190" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/>
+    <text x="660" y="182" text-anchor="middle" font-weight="700">3 · pod/node state (62 pods)</text>
+    <path d="M 485 230 L 830 230" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/>
+    <text x="660" y="222" text-anchor="middle" font-weight="700">4 · context + question → prompt</text>
+    <path d="M 830 270 L 495 270" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/>
+    <text x="660" y="262" text-anchor="middle" font-weight="700">5 · tokens (quantized, CPU)</text>
+    <path d="M 245 310 L 470 310" stroke="#0b6e99" stroke-width="2.5" marker-end="url(#arr3)"/>
+    <text x="358" y="302" text-anchor="middle" font-weight="700">6 · answer + sources</text>
+  </g>
+  <defs><marker id="arr3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/></marker></defs>
+</svg>
+</div>
+
+<div class="small center">Multi-step, tool-using, verifiable — not a single prompt. Same pattern as the predictive-agent risk loop.</div>
+
+<!--
+Speaker note: BACKUP — only show on demand. Walk the 6 steps left to right;
+emphasize the tool call (2–3) as what makes it “agentic”.
+-->
+
+---
+
+<div class="kicker">Backup · Cluster fact sheet</div>
+
+## openEduSuite cluster — fact sheet
+
+<div class="grid2">
+  <div class="kv"><b>Hardware</b>3 × Huawei RH2288E V2 · 2 × Xeon E5-2600 v2 · no GPU · 6 × 512 GB SSD each · 2 × Intel X540-AT2 10 GbE <span class="seal">[verify]</span></div>
+  <div class="kv"><b>Platform</b>K3s v1.36.3+k3s1 (single server) · Flannel VXLAN · MetalLB L2 · HAProxy Ingress · ArgoCD v2.12.6</div>
+  <div class="kv"><b>Storage</b>Ceph 18.2.8 Reef · 8 OSDs / 3 MONs · repl. 3 · RBD + CephFS · K8up/Restic → SeaweedFS S3</div>
+  <div class="kv"><b>SCS compliance</b>6/6 KaaS standards PASS · 444/444 CNCF · DevSecOps 78/100 (C+) · ~40 NetworkPolicies</div>
+  <div class="kv"><b>Workloads</b>openEduSuite (edu · staff · students · sme) · llm (open-webui, Ollama) · predictive-agent v8.11-nix · 62 pods</div>
+  <div class="kv"><b>OS / Ops</b>Ubuntu 24.04 LTS · containerd 2.3.3 · Prometheus + Grafana (7 dashboards) · firewall SCS-FIREWALL</div>
+</div>
+
+<div class="small">Nix-built images on GHCR → local Zot registry · opendesk-sme still Degraded (stale digests) · DPIA/TOM/ROPA documented, personal data approval pending.</div>
+
+<!--
+Speaker note: BACKUP — only show on demand. All values as of 2026-08, [verify] = readable only via iBMC/BIOS.
 -->

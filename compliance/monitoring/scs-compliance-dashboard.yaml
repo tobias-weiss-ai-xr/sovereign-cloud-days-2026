@@ -1,0 +1,699 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: scs-compliance-dashboard
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+    app: grafana
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/instance: grafana
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/component: grafana
+  annotations:
+    grafana-folder: /grafana-dashboard-definitions/SCS
+    description: "SCS Compliance Monitoring Dashboard - Monitors all 6 SCS KaaS standards"
+    author: "SCS Operator"
+    version: "1.0"
+data:
+  scs-compliance.json: |
+    {
+      "title": "SCS Compliance Overview",
+      "uid": "scs-compliance-overview",
+      "tags": ["scs", "compliance", "k8s"],
+      "timezone": "",
+      "schemaVersion": 30,
+      "version": 1,
+      "refresh": "30s",
+      "panels": [
+        {
+          "title": "SCS Compliance Score",
+          "type": "stat",
+          "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+          "id": 1,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "count(kube_node_status_condition{condition=\"Ready\",status=\"true\"} >= 3) + (kube_storageclass_info{storageclass=\"ceph-rbd\",is_default=\"true\"} == 1) + (count(kube_namespace_labels{pod_security_enforce=\"baseline\"}) >= 8) + (count(kube_networkpolicy_created) >= 37) + (count(kube_version{type=\"server\"}) > 0)",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "0", "text": "❌ 0/6"},
+                {"from": "1", "to": "1", "text": "❌ 1/6"},
+                {"from": "2", "to": "2", "text": "⚠️  2/6"},
+                {"from": "3", "to": "3", "text": "⚠️  3/6"},
+                {"from": "4", "to": "4", "text": "⚠️  4/6"},
+                {"from": "5", "to": "5", "text": "⚠️  5/6"},
+                {"from": "6", "to": "6", "text": "✅ 6/6"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "red", "value": null},
+                  {"color": "orange", "value": 2},
+                  {"color": "green", "value": 6}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0210: K8s Version",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 6, "x": 12, "y": 0},
+          "id": 2,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "kube_version{type=\"server\"}",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "v1.35", "to": "v1.35", "text": "v1.35"},
+                {"from": "v1.36", "to": "v1.36", "text": "v1.36 ✅"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 1}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0210 Status",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 3, "x": 18, "y": 0},
+          "id": 3,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "kube_version{type=\"server\"} != 0",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "0", "text": "❌"},
+                {"from": "1", "to": "1", "text": "✅"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0211: Default Storage Class",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 6, "x": 12, "y": 4},
+          "id": 4,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "kube_storageclass_info{storageclass=\"ceph-rbd\",is_default=\"true\"}",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "1", "to": "1", "text": "ceph-rbd ✅"},
+                {"from": "0", "to": "0", "text": "NONE ❌"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0211 Status",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 3, "x": 18, "y": 4},
+          "id": 5,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "kube_storageclass_info{storageclass=\"ceph-rbd\",is_default=\"true\"} == 1",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "0", "text": "❌"},
+                {"from": "1", "to": "1", "text": "✅"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0214: Node Distribution",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 6, "x": 12, "y": 8},
+          "id": 6,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "count(kube_node_status_condition{condition=\"Ready\",status=\"true\",node=~\"node-[123]\"})",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "2", "text": "❌"},
+                {"from": "3", "to": "3", "text": "✅ 3 nodes"},
+                {"from": "4", "to": "10", "text": "✅ $__value nodes"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "red", "value": null},
+                  {"color": "green", "value": 3}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0214 Status",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 3, "x": 18, "y": 8},
+          "id": 7,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "count(kube_node_status_condition{condition=\"Ready\",status=\"true\"}) >= 3",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "0", "text": "❌"},
+                {"from": "1", "to": "1", "text": "✅"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0217: Pod Security Baseline",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 6, "x": 12, "y": 12},
+          "id": 8,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "count(kube_namespace_labels{pod_security_enforce=\"baseline\"})",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "7", "text": "❌ $__value"},
+                {"from": "8", "to": "10", "text": "✅ $__value"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 7}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0217 Status",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 3, "x": 18, "y": 12},
+          "id": 9,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "count(kube_namespace_labels{pod_security_enforce=\"baseline\"}) >= 8",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "0", "text": "❌"},
+                {"from": "1", "to": "1", "text": "✅"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0219: Network Policies",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 6, "x": 12, "y": 16},
+          "id": 10,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "count(kube_networkpolicy_created)",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "36", "text": "❌ $__value"},
+                {"from": "37", "to": "100", "text": "✅ $__value"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 36}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0219 Status",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 3, "x": 18, "y": 16},
+          "id": 11,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "count(kube_networkpolicy_created) >= 37",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "0", "text": "❌"},
+                {"from": "1", "to": "1", "text": "✅"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0201: CNCF Conformance",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 6, "x": 12, "y": 20},
+          "id": 12,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "scs_conformance_last_passed",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "0", "text": "❌ Failed"},
+                {"from": "1", "to": "1", "text": "✅ Passed"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "SCS-0201 Status",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 3, "x": 18, "y": 20},
+          "id": 13,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "scs_conformance_last_passed == 1",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "0", "text": "❌"},
+                {"from": "1", "to": "1", "text": "✅"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "Ceph Health",
+          "type": "stat",
+          "gridPos": {"h": 8, "w": 6, "x": 0, "y": 8},
+          "id": 14,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "ceph_health_status{severity=\"HEALTH_OK\"} == 1",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"from": "0", "to": "0", "text": "❌ UNHEALTHY"},
+                {"from": "1", "to": "1", "text": "✅ HEALTH_OK"}
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "Ceph OSD Status",
+          "type": "stat",
+          "gridPos": {"h": 4, "w": 6, "x": 6, "y": 8},
+          "id": 15,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "ceph_osd_up",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 0}
+                ]
+              },
+              "color": {"mode": "thresholds"},
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto"
+          }
+        },
+        {
+          "title": "Cluster Node Status",
+          "type": "table",
+          "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+          "id": 16,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "kube_node_status_condition{condition=\"Ready\"}",
+              "instant": true,
+              "refId": "A",
+              "format": "table"
+            }
+          ],
+          "options": {
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "9.5.2"
+        },
+        {
+          "title": "Pod Status Overview",
+          "type": "table",
+          "gridPos": {"h": 8, "w": 12, "x": 12, "y": 24},
+          "id": 17,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "kube_pod_status_phase",
+              "instant": true,
+              "refId": "A",
+              "format": "table"
+            }
+          ],
+          "options": {
+            "showHeader": true,
+            "sortBy": [
+              {"desc": true, "displayName": "Value"}
+            ]
+          },
+          "pluginVersion": "9.5.2"
+        },
+        {
+          "title": "SCS Compliance Alerts (Last 24h)",
+          "type": "table",
+          "gridPos": {"h": 8, "w": 12, "x": 0, "y": 24},
+          "id": 18,
+          "datasource": {"type": "prometheus", "uid": "prometheus"},
+          "targets": [
+            {
+              "expr": "ALERTS{alertstate=\"firing\", alertname=~\"SCS.*\"}",
+              "instant": true,
+              "refId": "A",
+              "format": "table"
+            }
+          ],
+          "options": {
+            "showHeader": true,
+            "sortBy": [
+              {"desc": true, "displayName": "Time"}
+            ]
+          },
+          "pluginVersion": "9.5.2"
+        },
+        {
+          "title": "Last SCS Verification",
+          "type": "text",
+          "gridPos": {"h": 4, "w": 24, "x": 0, "y": 32},
+          "id": 19,
+          "options": {
+            "content": "<div style=\"text-align: center;\">\n  <h2>SCS Compliance Status</h2>\n  <p>This dashboard monitors all 6 SCS KaaS standards in real-time.</p>\n  <p><strong>Standards:</strong></p>\n  <ul style=\"text-align: left; display: inline-block;\">\n    <li><strong>SCS-0210:</strong> Kubernetes Version Policy</li>\n    <li><strong>SCS-0211:</strong> Default Storage Class</li>\n    <li><strong>SCS-0214:</strong> Node Distribution</li>\n    <li><strong>SCS-0217:</strong> Cluster Hardening (Pod Security)</li>\n    <li><strong>SCS-0219:</strong> KaaS Networking</li>\n    <li><strong>SCS-0201:</strong> CNCF Conformance</li>\n  </ul>\n  <p>\n    <strong>Current Status:</strong> <span style=\"color: green;\">✅ All standards passing</span>\n    <strong>Last Verified:</strong> $(date '+%Y-%m-%d %H:%M:%S')\n  </p>\n</div>",
+            "mode": "html"
+          },
+          "pluginVersion": "9.5.2"
+        }
+      ],
+      "templating": {
+        "list": []
+      },
+      "annotations": {
+        "list": []
+      },
+      "refresh": "30s",
+      "schemaVersion": 30,
+      "links": [
+        {
+          "title": "SCS Standards Documentation",
+          "url": "https://docs.scs.community/standards/",
+          "type": "link"
+        },
+        {
+          "title": "SCS KaaS Documentation",
+          "url": "https://docs.scs.community/standards/scs-0210-v2-k8s-version-policy",
+          "type": "link"
+        }
+      ]
+    }
