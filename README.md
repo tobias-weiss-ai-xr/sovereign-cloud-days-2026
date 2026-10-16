@@ -12,7 +12,7 @@ A practical case study on running agentic AI workloads (openEduSuite) on a sover
 |---|---|
 | **Format** | Talk with workshop elements · 60 min incl. Q&A |
 | **Slot** | Sun, 25.10.2026 · 11:15 · Workshop Stage |
-| **Speaker** | Tobias Weiß · HRZ, Philipps-Universität Marburg · tobias@tobias-weiss.org |
+| **Speaker** | Tobias Weiß · tobias@tobias-weiss.org |
 | **Tags** | AI Infrastructure · Kubernetes & Cloud Native · Sovereign Cloud Stack |
 
 ## Repository structure
