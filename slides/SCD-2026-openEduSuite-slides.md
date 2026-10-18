@@ -131,19 +131,32 @@ was too heavy for 3 nodes. Not “OpenStack is bad,” but “it didn't fit the 
 
 ---
 
-<div class="kicker">Hands-on · opencode install · 2 min</div>
+<div class="kicker">Hands-on · Install · 2 min</div>
 
-## Install opencode
+## Install your tool — pick one
 
-<div class="lead">One command is enough — the free tier needs no API key.</div>
-
+<div class="grid2">
+  <div>
+    <div class="card green"><b>Beginners · opencode</b></div>
 ```
 curl -fsSL https://opencode.ai/install | bash
 ```
+    - Or: `npm install -g opencode-ai`
+    - Verify: `opencode --version`
+    - Start: `cd <project> && opencode`
+  </div>
+  <div>
+    <div class="card"><b>Advanced · pi.dev</b></div>
+```
+curl -fsSL https://pi.dev/install.sh | sh
+```
+    - Or: `npm i -g @earendil-works/pi-coding-agent` (Node 22.19+)
+    - Verify: `pi --version`
+    - Start: `cd <project> && pi`
+  </div>
+</div>
 
-- Alternatively: `npm install -g opencode-ai`
-- Verify: `opencode --version`
-- Start: `cd <project> && opencode`
+<div class="small center">Both are free to start — no paid API key required.</div>
 
 <!--
 Speaker note: Start of the workshop element. Say upfront: “You don't need a paid API key.”
@@ -156,8 +169,8 @@ Allow 2 min, walk around, help.
 
 ## Start for free — big pickle
 
-- `/connect` → **OpenCode Zen**
-- Pick **Big Pickle** from the free model list
+- **opencode (beginners):** `/connect` → **OpenCode Zen** → pick **Big Pickle**
+- **pi.dev (advanced):** `/login` → provider **opencode**, then `/model` → **big pickle**
 - Alternatives: any provider via `/connect` (75+) or your own API key
 
 <div class="card green">The free “Big Pickle” is enough for agentic experiments — no cost risk.</div>

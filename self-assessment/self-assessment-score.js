@@ -8,12 +8,14 @@
 // Fehlt der SCOPE-Ordner, wird versucht, ihn via git zu holen.
 const fs = require('fs'), vm = require('vm'), cp = require('child_process');
 
-const scope = process.env.SCOPE || (async () => {
+let scope = process.env.SCOPE;
+if (!scope) {
   const p = require('os').homedir() + '/git/cloud-sovereignty-score';
-  if (fs.existsSync(p + '/questions.js')) return p;
-  cp.execSync('git clone --depth 1 https://github.com/flavienbwk/cloud-sovereignty-score.git ' + p);
-  return p;
-})();
+  if (!fs.existsSync(p + '/questions.js')) {
+    cp.execSync('git clone --depth 1 https://github.com/flavienbwk/cloud-sovereignty-score.git ' + p);
+  }
+  scope = p;
+}
 
 const src = fs.readFileSync(scope + '/questions.js', 'utf8')
   .replace('const assessmentData = ', 'globalThis.assessmentData = ');
