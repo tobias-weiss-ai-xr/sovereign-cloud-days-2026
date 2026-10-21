@@ -359,21 +359,21 @@ section.title .meta span{ color:var(--muted); }
 <div class="kicker">Motivation · The pivot · 3 min</div>
 <h2 id="from-openstack-to-bare-metal-k3s">From OpenStack to bare-metal K3s</h2>
 <div class="svg-wrap">
-<svg viewBox="0 0 1100 200" width="100%">
-  <rect x="20" y="40" width="380" height="120" rx="8" fill="#fdeaea" stroke="#c0392b" stroke-width="2" />
-  <text x="210" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#c0392b">OpenStack / OVN on VMs</text>
-  <text x="210" y="98" text-anchor="middle" font-size="15" fill="#7a3b32">OVN 25.03.1 gateway bug</text>
-  <text x="210" y="118" text-anchor="middle" font-size="15" fill="#7a3b32">FIPs dead, DHCP broke</text>
-  <text x="210" y="142" text-anchor="middle" font-size="14" fill="#9a4a3a">“Reboot destroys the fix”</text>
-  <path d="M 415 100 L 525 100" stroke="#5b6b7c" stroke-width="3" fill="none" marker-end="url(#arr)" />
-  <text x="470" y="88" text-anchor="middle" font-size="14" fill="#5b6b7c" font-weight="600">Pivot</text>
-  <rect x="540" y="40" width="520" height="120" rx="8" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2" />
-  <text x="800" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#1a7f6b">Bare-metal K3s (SCS-verified)</text>
-  <text x="800" y="98" text-anchor="middle" font-size="15" fill="#1a5447">3 nodes · Flannel · MetalLB · Ceph</text>
-  <text x="800" y="118" text-anchor="middle" font-size="15" fill="#1a5447">6/6 KaaS standards PASS · 444/444 CNCF</text>
-  <text x="800" y="142" text-anchor="middle" font-size="14" fill="#3a6b5e">fewer layers, fewer failure points</text>
-  <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c" /></marker></defs>
-</svg>
+&lt;svg viewBox="0 0 1100 200" width="100%"&gt;
+  &lt;rect x="20" y="40" width="380" height="120" rx="8" fill="#fdeaea" stroke="#c0392b" stroke-width="2"/&gt;
+  &lt;text x="210" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#c0392b"&gt;OpenStack / OVN on VMs&lt;/text&gt;
+  &lt;text x="210" y="98" text-anchor="middle" font-size="15" fill="#7a3b32"&gt;OVN 25.03.1 gateway bug&lt;/text&gt;
+  &lt;text x="210" y="118" text-anchor="middle" font-size="15" fill="#7a3b32"&gt;FIPs dead, DHCP broke&lt;/text&gt;
+  &lt;text x="210" y="142" text-anchor="middle" font-size="14" fill="#9a4a3a"&gt;“Reboot destroys the fix”&lt;/text&gt;
+  &lt;path d="M 415 100 L 525 100" stroke="#5b6b7c" stroke-width="3" fill="none" marker-end="url(#arr)"/&gt;
+  &lt;text x="470" y="88" text-anchor="middle" font-size="14" fill="#5b6b7c" font-weight="600"&gt;Pivot&lt;/text&gt;
+  &lt;rect x="540" y="40" width="520" height="120" rx="8" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/&gt;
+  &lt;text x="800" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#1a7f6b"&gt;Bare-metal K3s (SCS-verified)&lt;/text&gt;
+  &lt;text x="800" y="98" text-anchor="middle" font-size="15" fill="#1a5447"&gt;3 nodes · Flannel · MetalLB · Ceph&lt;/text&gt;
+  &lt;text x="800" y="118" text-anchor="middle" font-size="15" fill="#1a5447"&gt;6/6 KaaS standards PASS · 444/444 CNCF&lt;/text&gt;
+  &lt;text x="800" y="142" text-anchor="middle" font-size="14" fill="#3a6b5e"&gt;fewer layers, fewer failure points&lt;/text&gt;
+  &lt;defs&gt;&lt;marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"&gt;&lt;path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/&gt;&lt;/marker&gt;&lt;/defs&gt;
+&lt;/svg&gt;
 </div>
 <div class="small center">The VM/SDN abstraction was too heavy for 3 nodes — bare metal is leaner.</div>
 </section>
@@ -488,16 +488,29 @@ section.title .sub{ font-size:25px; color:var(--muted); margin-bottom:24px; line
 section.title .meta{ font-size:18px; }
 section.title .meta span{ color:var(--muted); }
 ;" data-marpit-pagination-total="20" data-size="16:9">
-<div class="kicker">Hands-on · opencode install · 2 min</div>
-<h2 id="install-opencode">Install opencode</h2>
-<div class="lead">One command is enough — the free tier needs no API key.</div>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>curl -fsSL https://opencode.ai/install | bash
+<div class="kicker">Hands-on · Install · 2 min</div>
+<h2 id="install-your-tool--pick-one">Install your tool — pick one</h2>
+<div class="grid2">
+  <div>
+    <div class="card green"><b>Beginners · opencode</b></div>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">curl -fsSL https://opencode.ai/install | bash
+<span class="hljs-comment"># Or: npm install -g opencode-ai</span>
+<span class="hljs-comment"># Or: bun add -g opencode-ai (much faster)</span>
+<span class="hljs-comment"># Verify: opencode --version</span>
+<span class="hljs-comment"># Start: cd &lt;project&gt; &amp;&amp; opencode</span>
 </code></pre>
-<ul>
-<li>Alternatively: <code>npm install -g opencode-ai</code></li>
-<li>Verify: <code>opencode --version</code></li>
-<li>Start: <code>cd &lt;project&gt; &amp;&amp; opencode</code></li>
-</ul>
+  </div>
+  <div>
+    <div class="card"><b>Advanced · pi.dev</b></div>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">curl -fsSL https://pi.dev/install.sh | sh
+<span class="hljs-comment"># Or: npm i -g @earendil-works/pi-coding-agent (Node 22.19+)</span>
+<span class="hljs-comment"># Or: bun add -g @earendil-works/pi-coding-agent (much faster)</span>
+<span class="hljs-comment"># Verify: pi --version</span>
+<span class="hljs-comment"># Start: cd &lt;project&gt; &amp;&amp; pi</span>
+</code></pre>
+  </div>
+</div>
+<div class="small center">Both are free to start — no paid API key required. Using <strong>bun</strong> gives a noticeable speedup.</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" data-style=":root{
   --bg:#e9edf1; --slide:#f7f9fb; --ink:#14202e; --muted:#5b6b7c;
@@ -611,13 +624,14 @@ section.title .meta{ font-size:18px; }
 section.title .meta span{ color:var(--muted); }
 ;" data-marpit-pagination-total="20" data-size="16:9">
 <div class="kicker">Hands-on · Choosing a model · 3 min</div>
-<h2 id="start-for-free--big-pickle">Start for free — big pickle</h2>
+<h2 id="start-for-free--big-pickle-or-beam">Start for free — Big Pickle or Beam</h2>
 <ul>
-<li><code>/connect</code> → <strong>OpenCode Zen</strong></li>
-<li>Pick <strong>Big Pickle</strong> from the free model list</li>
+<li><strong>opencode (beginners):</strong> <code>/connect</code> → <strong>OpenCode Zen</strong> → pick <strong>Big Pickle</strong> or <strong>Beam Free</strong></li>
+<li><strong>pi.dev (advanced):</strong> <code>/login</code> → provider <strong>opencode</strong>, then <code>/model</code> → <code>big-pickle</code> or <code>beam-free</code></li>
 <li>Alternatives: any provider via <code>/connect</code> (75+) or your own API key</li>
 </ul>
-<div class="card green">The free “Big Pickle” is enough for agentic experiments — no cost risk.</div>
+<div class="card green">Both are free on OpenCode Zen — enough for agentic experiments, no cost risk.</div>
+<div class="card warn">⚠️ <strong>Privacy — read before you paste.</strong> Free cloud models differ in how they handle your data. <strong>Big Pickle</strong> is a stealth model; its provider <em>may use your input to train</em>. <strong>Beam Free</strong> (Reflection's open-weight 501B model, 1M-token context) does <strong>not</strong> train on your data (retains it 30 days for safety). <strong>Never paste private, customer, or unpublished data into a model that trains on user input.</strong> For sensitive work, run a local model (Ollama, <code>ollama run beam</code>) or your own sovereign endpoint.</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="default" data-style=":root{
   --bg:#e9edf1; --slide:#f7f9fb; --ink:#14202e; --muted:#5b6b7c;
@@ -980,32 +994,32 @@ section.title .meta span{ color:var(--muted); }
 <div class="kicker">Cluster · Network · 3 min</div>
 <h2 id="three-networks-one-firewall">Three networks, one firewall</h2>
 <div class="svg-wrap">
-<svg viewBox="0 0 1000 280" width="100%">
-  <g font-size="14" font-weight="700" fill="#14202e">
-    <rect x="130" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="190" y="45" text-anchor="middle">clrz14-06</text>
-    <rect x="290" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="350" y="45" text-anchor="middle">clrz14-07</text>
-    <rect x="450" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="510" y="45" text-anchor="middle">clrz14-08</text>
-  </g>
-  <rect x="40" y="90" width="620" height="46" rx="5" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="1" />
-  <text x="60" y="118" font-size="15" font-weight="700" fill="#5b6b7c">Mgmt RZ24</text>
-  <text x="350" y="118" font-size="14" fill="#14202e" text-anchor="middle">192.0.2.11–13 · ens3f0 untagged · SSH</text>
-  <rect x="40" y="150" width="620" height="46" rx="5" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="1" />
-  <text x="60" y="178" font-size="15" font-weight="700" fill="#1a7f6b">Internal</text>
-  <text x="350" y="178" font-size="14" fill="#14202e" text-anchor="middle">VLAN 424 · 198.51.100.0/18 · .11/.12/.13 · Flannel VXLAN</text>
-  <rect x="40" y="210" width="620" height="46" rx="5" fill="#fff6e8" stroke="#b3560e" stroke-width="1" />
-  <text x="60" y="238" font-size="15" font-weight="700" fill="#b3560e">FIP RZ03</text>
-  <text x="350" y="238" font-size="14" fill="#14202e" text-anchor="middle">203.0.113.181–.196 · MetalLB L2 · .181 ingress · .182 argocd · .183–.186 …</text>
-  <rect x="700" y="90" width="260" height="166" rx="5" fill="#fdeaea" stroke="#c0392b" stroke-width="1.5" />
-  <text x="830" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#c0392b">SCS-FIREWALL</text>
-  <text x="830" y="142" text-anchor="middle" font-size="13" fill="#7a3b32">allow: 80/443/22</text>
-  <text x="830" y="160" text-anchor="middle" font-size="13" fill="#7a3b32">5001/31080/31443</text>
-  <text x="830" y="178" text-anchor="middle" font-size="13" fill="#7a3b32">123/ICMP</text>
-  <text x="830" y="200" text-anchor="middle" font-size="13" fill="#7a3b32">drop: 6443/10250</text>
-  <text x="830" y="218" text-anchor="middle" font-size="13" fill="#7a3b32">8472</text>
-</svg>
+&lt;svg viewBox="0 0 1000 280" width="100%"&gt;
+  &lt;g font-size="14" font-weight="700" fill="#14202e"&gt;
+    &lt;rect x="130" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/&gt;
+    &lt;text x="190" y="45" text-anchor="middle"&gt;clrz14-06&lt;/text&gt;
+    &lt;rect x="290" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/&gt;
+    &lt;text x="350" y="45" text-anchor="middle"&gt;clrz14-07&lt;/text&gt;
+    &lt;rect x="450" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/&gt;
+    &lt;text x="510" y="45" text-anchor="middle"&gt;clrz14-08&lt;/text&gt;
+  &lt;/g&gt;
+  &lt;rect x="40" y="90" width="620" height="46" rx="5" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="1"/&gt;
+  &lt;text x="60" y="118" font-size="15" font-weight="700" fill="#5b6b7c"&gt;Mgmt RZ24&lt;/text&gt;
+  &lt;text x="350" y="118" font-size="14" fill="#14202e" text-anchor="middle"&gt;192.0.2.11–13 · ens3f0 untagged · SSH&lt;/text&gt;
+  &lt;rect x="40" y="150" width="620" height="46" rx="5" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="1"/&gt;
+  &lt;text x="60" y="178" font-size="15" font-weight="700" fill="#1a7f6b"&gt;Internal&lt;/text&gt;
+  &lt;text x="350" y="178" font-size="14" fill="#14202e" text-anchor="middle"&gt;VLAN 424 · 198.51.100.0/18 · .11/.12/.13 · Flannel VXLAN&lt;/text&gt;
+  &lt;rect x="40" y="210" width="620" height="46" rx="5" fill="#fff6e8" stroke="#b3560e" stroke-width="1"/&gt;
+  &lt;text x="60" y="238" font-size="15" font-weight="700" fill="#b3560e"&gt;FIP RZ03&lt;/text&gt;
+  &lt;text x="350" y="238" font-size="14" fill="#14202e" text-anchor="middle"&gt;203.0.113.181–.196 · MetalLB L2 · .181 ingress · .182 argocd · .183–.186 …&lt;/text&gt;
+  &lt;rect x="700" y="90" width="260" height="166" rx="5" fill="#fdeaea" stroke="#c0392b" stroke-width="1.5"/&gt;
+  &lt;text x="830" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#c0392b"&gt;SCS-FIREWALL&lt;/text&gt;
+  &lt;text x="830" y="142" text-anchor="middle" font-size="13" fill="#7a3b32"&gt;allow: 80/443/22&lt;/text&gt;
+  &lt;text x="830" y="160" text-anchor="middle" font-size="13" fill="#7a3b32"&gt;5001/31080/31443&lt;/text&gt;
+  &lt;text x="830" y="178" text-anchor="middle" font-size="13" fill="#7a3b32"&gt;123/ICMP&lt;/text&gt;
+  &lt;text x="830" y="200" text-anchor="middle" font-size="13" fill="#7a3b32"&gt;drop: 6443/10250&lt;/text&gt;
+  &lt;text x="830" y="218" text-anchor="middle" font-size="13" fill="#7a3b32"&gt;8472&lt;/text&gt;
+&lt;/svg&gt;
 </div>
 <div class="small center">ens3f0: mgmt + FIP (VLAN 3) · ens6f0: internal (VLAN 424) · iBMC out-of-band</div>
 </section>
@@ -1123,17 +1137,17 @@ section.title .meta span{ color:var(--muted); }
 <div class="kicker">Cluster · K3s stack · 4 min</div>
 <h2 id="the-stack--bare-metal-in-production">The stack — bare-metal in production</h2>
 <div class="svg-wrap">
-<svg viewBox="0 0 700 292" width="100%">
-  <g font-size="17" font-weight="700" text-anchor="middle">
-    <rect x="40" y="6"   width="620" height="36" rx="6" fill="#0b6e99" /><text x="350" y="30" fill="#fff">openEduSuite Workloads (edu · staff · students · sme · llm)</text>
-    <rect x="40" y="48"  width="620" height="36" rx="6" fill="#1a7f6b" /><text x="350" y="72" fill="#fff">ArgoCD (GitOps) · K8up/Restic (backup → SeaweedFS S3)</text>
-    <rect x="40" y="90"  width="620" height="36" rx="6" fill="#e8f0f7" stroke="#0b6e99" /><text x="350" y="114" fill="#14202e">Ceph 18.2.8 Reef — 8 OSDs, RBD + CephFS, Repl. 3</text>
-    <rect x="40" y="132" width="620" height="36" rx="6" fill="#e8f0f7" stroke="#0b6e99" /><text x="350" y="156" fill="#14202e">Flannel VXLAN · MetalLB L2 · HAProxy Ingress</text>
-    <rect x="40" y="174" width="620" height="36" rx="6" fill="#e8f0f7" stroke="#0b6e99" /><text x="350" y="198" fill="#14202e">K3s v1.36.3+k3s1 · Single-server · embedded datastore</text>
-    <rect x="40" y="216" width="620" height="36" rx="6" fill="#f0f4f7" stroke="#5b6b7c" /><text x="350" y="240" fill="#5b6b7c">Ubuntu 24.04 LTS · containerd 2.3.3 · runc 1.4.3</text>
-    <rect x="40" y="258" width="620" height="28" rx="6" fill="#1a1a1a" /><text x="350" y="277" fill="#fff" font-size="15">3 × Huawei RH2288E V2 (bare metal)</text>
-  </g>
-</svg>
+&lt;svg viewBox="0 0 700 292" width="100%"&gt;
+  &lt;g font-size="17" font-weight="700" text-anchor="middle"&gt;
+    &lt;rect x="40" y="6"   width="620" height="36" rx="6" fill="#0b6e99"/&gt;&lt;text x="350" y="30" fill="#fff"&gt;openEduSuite Workloads (edu · staff · students · sme · llm)&lt;/text&gt;
+    &lt;rect x="40" y="48"  width="620" height="36" rx="6" fill="#1a7f6b"/&gt;&lt;text x="350" y="72" fill="#fff"&gt;ArgoCD (GitOps) · K8up/Restic (backup → SeaweedFS S3)&lt;/text&gt;
+    &lt;rect x="40" y="90"  width="620" height="36" rx="6" fill="#e8f0f7" stroke="#0b6e99"/&gt;&lt;text x="350" y="114" fill="#14202e"&gt;Ceph 18.2.8 Reef — 8 OSDs, RBD + CephFS, Repl. 3&lt;/text&gt;
+    &lt;rect x="40" y="132" width="620" height="36" rx="6" fill="#e8f0f7" stroke="#0b6e99"/&gt;&lt;text x="350" y="156" fill="#14202e"&gt;Flannel VXLAN · MetalLB L2 · HAProxy Ingress&lt;/text&gt;
+    &lt;rect x="40" y="174" width="620" height="36" rx="6" fill="#e8f0f7" stroke="#0b6e99"/&gt;&lt;text x="350" y="198" fill="#14202e"&gt;K3s v1.36.3+k3s1 · Single-server · embedded datastore&lt;/text&gt;
+    &lt;rect x="40" y="216" width="620" height="36" rx="6" fill="#f0f4f7" stroke="#5b6b7c"/&gt;&lt;text x="350" y="240" fill="#5b6b7c"&gt;Ubuntu 24.04 LTS · containerd 2.3.3 · runc 1.4.3&lt;/text&gt;
+    &lt;rect x="40" y="258" width="620" height="28" rx="6" fill="#1a1a1a"/&gt;&lt;text x="350" y="277" fill="#fff" font-size="15"&gt;3 × Huawei RH2288E V2 (bare metal)&lt;/text&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
 </div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" data-style=":root{
@@ -1250,7 +1264,7 @@ section.title .meta span{ color:var(--muted); }
 <div class="kicker">Cluster · SCS-verified · 2 min</div>
 <h2 id="66-kaas-standards-pass--measurable">6/6 KaaS standards PASS — measurable</h2>
 <figure>
-<img src="img/scs-compliance-check.png" alt="SCS KaaS compliance report" style="max-height:320px" />
+<img src="img/scs-compliance-check.png" alt="SCS KaaS compliance report" />
 <figcaption class="center">SCS KaaS compliance check (2026-08-23)</figcaption>
 </figure>
 <ul>
@@ -1552,7 +1566,7 @@ section.title .meta span{ color:var(--muted); }
 <div class="kicker">Cluster · Operations · 2 min</div>
 <h2 id="what-we-learned-in-operation">What we learned in operation</h2>
 <figure>
-<img src="img/grafana-k3s.png" alt="Grafana K3s Dashboard" style="max-height:320px" />
+<img src="img/grafana-k3s.png" alt="Grafana K3s Dashboard" />
 <figcaption class="center">Grafana K3s dashboard (7 dashboards, predictive-agent)</figcaption>
 </figure>
 <ul>
@@ -1819,32 +1833,32 @@ section.title .meta span{ color:var(--muted); }
 <div class="kicker">openEduSuite · Agentic Workflow · 4 min</div>
 <h2 id="cluster-maintenance-in-4-steps">Cluster maintenance in 4 steps</h2>
 <div class="svg-wrap">
-<svg viewBox="0 0 1100 200" width="100%">
-  <g font-size="15" font-weight="600" text-anchor="middle">
-    <rect x="20" y="50" width="230" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="135" y="80" fill="#0b6e99" font-weight="700">1 · Observe</text>
-    <text x="135" y="105" fill="#14202e" font-size="13">Prometheus metrics</text>
-    <text x="135" y="125" fill="#5b6b7c" font-size="13">62 pods · 3 nodes</text>
-    <path d="M 255 100 L 295 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)" />
-    <rect x="300" y="50" width="230" height="100" rx="8" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2" />
-    <text x="415" y="80" fill="#1a7f6b" font-weight="700">2 · Predict</text>
-    <text x="415" y="105" fill="#14202e" font-size="13">Kalman + Markov</text>
-    <text x="415" y="125" fill="#5b6b7c" font-size="13">risk score per pod</text>
-    <path d="M 535 100 L 575 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)" />
-    <rect x="580" y="50" width="230" height="100" rx="8" fill="#fff6e8" stroke="#b3560e" stroke-width="2" />
-    <text x="695" y="80" fill="#b3560e" font-weight="700">3 · Alert</text>
-    <text x="695" y="105" fill="#14202e" font-size="13">Proactive alerting</text>
-    <text x="695" y="125" fill="#5b6b7c" font-size="13">before the outage</text>
-    <path d="M 815 100 L 855 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)" />
-    <rect x="860" y="50" width="230" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="975" y="80" fill="#0b6e99" font-weight="700">4 · Maintain</text>
-    <text x="975" y="105" fill="#14202e" font-size="13">Fix early, planned</text>
-    <text x="975" y="125" fill="#5b6b7c" font-size="13">maintenance, not firefighting</text>
-  </g>
-  <defs><marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c" /></marker></defs>
-</svg>
+&lt;svg viewBox="0 0 1100 200" width="100%"&gt;
+  &lt;g font-size="15" font-weight="600" text-anchor="middle"&gt;
+    &lt;rect x="20" y="50" width="230" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/&gt;
+    &lt;text x="135" y="80" fill="#0b6e99" font-weight="700"&gt;1 · Observe&lt;/text&gt;
+    &lt;text x="135" y="105" fill="#14202e" font-size="13"&gt;Prometheus metrics&lt;/text&gt;
+    &lt;text x="135" y="125" fill="#5b6b7c" font-size="13"&gt;62 pods · 3 nodes&lt;/text&gt;
+    &lt;path d="M 255 100 L 295 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/&gt;
+    &lt;rect x="300" y="50" width="230" height="100" rx="8" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/&gt;
+    &lt;text x="415" y="80" fill="#1a7f6b" font-weight="700"&gt;2 · Predict&lt;/text&gt;
+    &lt;text x="415" y="105" fill="#14202e" font-size="13"&gt;Kalman + Markov&lt;/text&gt;
+    &lt;text x="415" y="125" fill="#5b6b7c" font-size="13"&gt;risk score per pod&lt;/text&gt;
+    &lt;path d="M 535 100 L 575 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/&gt;
+    &lt;rect x="580" y="50" width="230" height="100" rx="8" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/&gt;
+    &lt;text x="695" y="80" fill="#b3560e" font-weight="700"&gt;3 · Alert&lt;/text&gt;
+    &lt;text x="695" y="105" fill="#14202e" font-size="13"&gt;Proactive alerting&lt;/text&gt;
+    &lt;text x="695" y="125" fill="#5b6b7c" font-size="13"&gt;before the outage&lt;/text&gt;
+    &lt;path d="M 815 100 L 855 100" stroke="#5b6b7c" stroke-width="2.5" fill="none" marker-end="url(#arr2)"/&gt;
+    &lt;rect x="860" y="50" width="230" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/&gt;
+    &lt;text x="975" y="80" fill="#0b6e99" font-weight="700"&gt;4 · Maintain&lt;/text&gt;
+    &lt;text x="975" y="105" fill="#14202e" font-size="13"&gt;Fix early, planned&lt;/text&gt;
+    &lt;text x="975" y="125" fill="#5b6b7c" font-size="13"&gt;maintenance, not firefighting&lt;/text&gt;
+  &lt;/g&gt;
+  &lt;defs&gt;&lt;marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"&gt;&lt;path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/&gt;&lt;/marker&gt;&lt;/defs&gt;
+&lt;/svg&gt;
 </div>
-<div class="card green" style="font-size:18px"><strong>predictive-agent v8.11-nix</strong> (own tenant): Risk scoring (Kalman + Markov) for 62 pods — alerts before users notice.</div>
+<div class="card green"><strong>predictive-agent v8.11-nix</strong> (own tenant): Risk scoring (Kalman + Markov) for 62 pods — alerts before users notice.</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="default" data-style=":root{
   --bg:#e9edf1; --slide:#f7f9fb; --ink:#14202e; --muted:#5b6b7c;
@@ -1960,7 +1974,7 @@ section.title .meta span{ color:var(--muted); }
 <div class="kicker">openEduSuite · Live demo · 4 min</div>
 <h2 id="cluster-login-agent-trace">Cluster, login, agent trace</h2>
 <figure>
-<img src="img/scs-ibmc-desktop-kvm.png" alt="iBMC KVM console (live)" style="max-height:320px" />
+<img src="img/scs-ibmc-desktop-kvm.png" alt="iBMC KVM console (live)" />
 <figcaption class="center">Live iBMC KVM console — server console via Pale Moon + Java Web Start</figcaption>
 </figure>
 <ul>
@@ -2324,44 +2338,44 @@ section.title .meta span{ color:var(--muted); }
 <div class="kicker">Backup · Architecture</div>
 <h2 id="cluster-architecture--full-picture">Cluster architecture — full picture</h2>
 <div class="svg-wrap">
-<svg viewBox="0 0 1000 430" width="100%">
-  <g font-size="14" font-weight="700" text-anchor="middle">
-    <rect x="40" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="180" y="40" fill="#0b6e99">clrz14-06 — master</text>
-    <text x="180" y="62" font-size="13" fill="#14202e">K3s server (single) · Ceph MON · 4 OSDs</text>
-    <text x="180" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.11 · int .11</text>
-    <text x="180" y="100" font-size="13" fill="#5b6b7c">2× Xeon E5-2600 v2 · no GPU</text>
-    <rect x="360" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="500" y="40" fill="#0b6e99">clrz14-07 — worker</text>
-    <text x="500" y="62" font-size="13" fill="#14202e">K3s agent · Ceph MON · 2 OSDs</text>
-    <text x="500" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.12 · int .12</text>
-    <text x="500" y="100" font-size="13" fill="#5b6b7c">openEduSuite + llm workloads</text>
-    <rect x="680" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="820" y="40" fill="#0b6e99">clrz14-08 — worker</text>
-    <text x="820" y="62" font-size="13" fill="#14202e">K3s agent · Ceph MON · 2 OSDs</text>
-    <text x="820" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.13 · int .13</text>
-    <text x="820" y="100" font-size="13" fill="#5b6b7c">predictive-agent · monitoring</text>
-  </g>
-  <g font-size="15" font-weight="700">
-    <rect x="40" y="124" width="920" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b" />
-    <text x="500" y="149" text-anchor="middle" fill="#1a5447">K3s v1.36.3+k3s1 · Flannel VXLAN 10.42.0.0/16 · MetalLB L2 · HAProxy Ingress · ArgoCD v2.12.6</text>
-    <rect x="40" y="172" width="920" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" />
-    <text x="500" y="197" text-anchor="middle" fill="#0b3a55">Ceph 18.2.8 Reef — 8 OSDs · 3 MONs · repl. 3 · RBD + CephFS · K8up/Restic → SeaweedFS S3</text>
-    <rect x="40" y="220" width="920" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c" />
-    <text x="500" y="245" text-anchor="middle" fill="#5b6b7c">Ubuntu 24.04 LTS · containerd 2.3.3 · runc 1.4.3 · firewall SCS-FIREWALL on ens3f0</text>
-  </g>
-  <g font-size="14">
-    <rect x="40" y="276" width="140" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c" />
-    <text x="110" y="301" text-anchor="middle" font-weight="700" fill="#5b6b7c">Mgmt</text>
-    <text x="200" y="301" fill="#14202e">192.0.2.11–13 · ens3f0 untagged · SSH</text>
-    <rect x="40" y="324" width="140" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b" />
-    <text x="110" y="349" text-anchor="middle" font-weight="700" fill="#1a7f6b">Internal</text>
-    <text x="200" y="349" fill="#14202e">VLAN 424 · 198.51.100.0/18 · .11/.12/.13</text>
-    <rect x="40" y="372" width="140" height="40" rx="5" fill="#fff6e8" stroke="#b3560e" />
-    <text x="110" y="397" text-anchor="middle" font-weight="700" fill="#b3560e">FIP</text>
-    <text x="200" y="397" fill="#14202e">203.0.113.181–.196 · .181 ingress · .182 argocd · .183–.186 mail/ldap</text>
-  </g>
-</svg>
+&lt;svg viewBox="0 0 1000 430" width="100%"&gt;
+  &lt;g font-size="14" font-weight="700" text-anchor="middle"&gt;
+    &lt;rect x="40" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/&gt;
+    &lt;text x="180" y="40" fill="#0b6e99"&gt;clrz14-06 — master&lt;/text&gt;
+    &lt;text x="180" y="62" font-size="13" fill="#14202e"&gt;K3s server (single) · Ceph MON · 4 OSDs&lt;/text&gt;
+    &lt;text x="180" y="82" font-size="13" fill="#5b6b7c"&gt;mgmt 192.0.2.11 · int .11&lt;/text&gt;
+    &lt;text x="180" y="100" font-size="13" fill="#5b6b7c"&gt;2× Xeon E5-2600 v2 · no GPU&lt;/text&gt;
+    &lt;rect x="360" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/&gt;
+    &lt;text x="500" y="40" fill="#0b6e99"&gt;clrz14-07 — worker&lt;/text&gt;
+    &lt;text x="500" y="62" font-size="13" fill="#14202e"&gt;K3s agent · Ceph MON · 2 OSDs&lt;/text&gt;
+    &lt;text x="500" y="82" font-size="13" fill="#5b6b7c"&gt;mgmt 192.0.2.12 · int .12&lt;/text&gt;
+    &lt;text x="500" y="100" font-size="13" fill="#5b6b7c"&gt;openEduSuite + llm workloads&lt;/text&gt;
+    &lt;rect x="680" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/&gt;
+    &lt;text x="820" y="40" fill="#0b6e99"&gt;clrz14-08 — worker&lt;/text&gt;
+    &lt;text x="820" y="62" font-size="13" fill="#14202e"&gt;K3s agent · Ceph MON · 2 OSDs&lt;/text&gt;
+    &lt;text x="820" y="82" font-size="13" fill="#5b6b7c"&gt;mgmt 192.0.2.13 · int .13&lt;/text&gt;
+    &lt;text x="820" y="100" font-size="13" fill="#5b6b7c"&gt;predictive-agent · monitoring&lt;/text&gt;
+  &lt;/g&gt;
+  &lt;g font-size="15" font-weight="700"&gt;
+    &lt;rect x="40" y="124" width="920" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b"/&gt;
+    &lt;text x="500" y="149" text-anchor="middle" fill="#1a5447"&gt;K3s v1.36.3+k3s1 · Flannel VXLAN 10.42.0.0/16 · MetalLB L2 · HAProxy Ingress · ArgoCD v2.12.6&lt;/text&gt;
+    &lt;rect x="40" y="172" width="920" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99"/&gt;
+    &lt;text x="500" y="197" text-anchor="middle" fill="#0b3a55"&gt;Ceph 18.2.8 Reef — 8 OSDs · 3 MONs · repl. 3 · RBD + CephFS · K8up/Restic → SeaweedFS S3&lt;/text&gt;
+    &lt;rect x="40" y="220" width="920" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c"/&gt;
+    &lt;text x="500" y="245" text-anchor="middle" fill="#5b6b7c"&gt;Ubuntu 24.04 LTS · containerd 2.3.3 · runc 1.4.3 · firewall SCS-FIREWALL on ens3f0&lt;/text&gt;
+  &lt;/g&gt;
+  &lt;g font-size="14"&gt;
+    &lt;rect x="40" y="276" width="140" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c"/&gt;
+    &lt;text x="110" y="301" text-anchor="middle" font-weight="700" fill="#5b6b7c"&gt;Mgmt&lt;/text&gt;
+    &lt;text x="200" y="301" fill="#14202e"&gt;192.0.2.11–13 · ens3f0 untagged · SSH&lt;/text&gt;
+    &lt;rect x="40" y="324" width="140" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b"/&gt;
+    &lt;text x="110" y="349" text-anchor="middle" font-weight="700" fill="#1a7f6b"&gt;Internal&lt;/text&gt;
+    &lt;text x="200" y="349" fill="#14202e"&gt;VLAN 424 · 198.51.100.0/18 · .11/.12/.13&lt;/text&gt;
+    &lt;rect x="40" y="372" width="140" height="40" rx="5" fill="#fff6e8" stroke="#b3560e"/&gt;
+    &lt;text x="110" y="397" text-anchor="middle" font-weight="700" fill="#b3560e"&gt;FIP&lt;/text&gt;
+    &lt;text x="200" y="397" fill="#14202e"&gt;203.0.113.181–.196 · .181 ingress · .182 argocd · .183–.186 mail/ldap&lt;/text&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
 </div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="default" data-style=":root{
@@ -2478,34 +2492,34 @@ section.title .meta span{ color:var(--muted); }
 <div class="kicker">Backup · Agent trace</div>
 <h2 id="how-an-agent-call-traces-through-the-cluster">How an agent call traces through the cluster</h2>
 <div class="svg-wrap">
-<svg viewBox="0 0 1000 360" width="100%">
-  <g font-size="15" font-weight="700" text-anchor="middle">
-    <rect x="40" y="20" width="200" height="46" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="140" y="49" fill="#0b6e99">open-webui (ns llm)</text>
-    <rect x="380" y="20" width="200" height="46" rx="6" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2" />
-    <text x="480" y="49" fill="#1a7f6b">Agent loop</text>
-    <rect x="720" y="20" width="240" height="46" rx="6" fill="#fff6e8" stroke="#b3560e" stroke-width="2" />
-    <text x="840" y="49" fill="#b3560e">Prometheus · Ollama</text>
-    <path d="M 140 66 L 140 300" stroke="#5b6b7c" stroke-width="2" />
-    <path d="M 480 66 L 480 300" stroke="#5b6b7c" stroke-width="2" />
-    <path d="M 840 66 L 840 300" stroke="#5b6b7c" stroke-width="2" />
-  </g>
-  <g font-size="13" fill="#14202e">
-    <path d="M 245 110 L 470 110" stroke="#0b6e99" stroke-width="2.5" marker-end="url(#arr3)" />
-    <text x="358" y="102" text-anchor="middle" font-weight="700">1 · question</text>
-    <path d="M 485 150 L 830 150" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)" />
-    <text x="660" y="142" text-anchor="middle" font-weight="700">2 · tool call: query metrics</text>
-    <path d="M 830 190 L 495 190" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)" />
-    <text x="660" y="182" text-anchor="middle" font-weight="700">3 · pod/node state (62 pods)</text>
-    <path d="M 485 230 L 830 230" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)" />
-    <text x="660" y="222" text-anchor="middle" font-weight="700">4 · context + question → prompt</text>
-    <path d="M 830 270 L 495 270" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)" />
-    <text x="660" y="262" text-anchor="middle" font-weight="700">5 · tokens (quantized, CPU)</text>
-    <path d="M 245 310 L 470 310" stroke="#0b6e99" stroke-width="2.5" marker-end="url(#arr3)" />
-    <text x="358" y="302" text-anchor="middle" font-weight="700">6 · answer + sources</text>
-  </g>
-  <defs><marker id="arr3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c" /></marker></defs>
-</svg>
+&lt;svg viewBox="0 0 1000 360" width="100%"&gt;
+  &lt;g font-size="15" font-weight="700" text-anchor="middle"&gt;
+    &lt;rect x="40" y="20" width="200" height="46" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/&gt;
+    &lt;text x="140" y="49" fill="#0b6e99"&gt;open-webui (ns llm)&lt;/text&gt;
+    &lt;rect x="380" y="20" width="200" height="46" rx="6" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/&gt;
+    &lt;text x="480" y="49" fill="#1a7f6b"&gt;Agent loop&lt;/text&gt;
+    &lt;rect x="720" y="20" width="240" height="46" rx="6" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/&gt;
+    &lt;text x="840" y="49" fill="#b3560e"&gt;Prometheus · Ollama&lt;/text&gt;
+    &lt;path d="M 140 66 L 140 300" stroke="#5b6b7c" stroke-width="2"/&gt;
+    &lt;path d="M 480 66 L 480 300" stroke="#5b6b7c" stroke-width="2"/&gt;
+    &lt;path d="M 840 66 L 840 300" stroke="#5b6b7c" stroke-width="2"/&gt;
+  &lt;/g&gt;
+  &lt;g font-size="13" fill="#14202e"&gt;
+    &lt;path d="M 245 110 L 470 110" stroke="#0b6e99" stroke-width="2.5" marker-end="url(#arr3)"/&gt;
+    &lt;text x="358" y="102" text-anchor="middle" font-weight="700"&gt;1 · question&lt;/text&gt;
+    &lt;path d="M 485 150 L 830 150" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/&gt;
+    &lt;text x="660" y="142" text-anchor="middle" font-weight="700"&gt;2 · tool call: query metrics&lt;/text&gt;
+    &lt;path d="M 830 190 L 495 190" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/&gt;
+    &lt;text x="660" y="182" text-anchor="middle" font-weight="700"&gt;3 · pod/node state (62 pods)&lt;/text&gt;
+    &lt;path d="M 485 230 L 830 230" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/&gt;
+    &lt;text x="660" y="222" text-anchor="middle" font-weight="700"&gt;4 · context + question → prompt&lt;/text&gt;
+    &lt;path d="M 830 270 L 495 270" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/&gt;
+    &lt;text x="660" y="262" text-anchor="middle" font-weight="700"&gt;5 · tokens (quantized, CPU)&lt;/text&gt;
+    &lt;path d="M 245 310 L 470 310" stroke="#0b6e99" stroke-width="2.5" marker-end="url(#arr3)"/&gt;
+    &lt;text x="358" y="302" text-anchor="middle" font-weight="700"&gt;6 · answer + sources&lt;/text&gt;
+  &lt;/g&gt;
+  &lt;defs&gt;&lt;marker id="arr3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"&gt;&lt;path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/&gt;&lt;/marker&gt;&lt;/defs&gt;
+&lt;/svg&gt;
 </div>
 <div class="small center">Multi-step, tool-using, verifiable — not a single prompt. Same pattern as the predictive-agent risk loop.</div>
 </section>
@@ -2638,9 +2652,18 @@ openEduSuite = HFD award winner 2026. Agenda: motivation → hands-on opencode �
 ~50 min content + 10 min Q&amp;A. [WS] marker = audience interaction.</p></div><div class="bespoke-marp-note" data-index="1" tabindex="0"><p>Speaker note: Keep it short. Acknowledge the show of hands. No marketing — an honest field report.
 The HFD prize as a signal of trust, not self-congratulation.</p></div><div class="bespoke-marp-note" data-index="2" tabindex="0"><p>Speaker note: Keep the learning curve brief: the OVN gateway redirect bug showed that the abstraction
 was too heavy for 3 nodes. Not “OpenStack is bad,” but “it didn't fit the scale.”</p></div><div class="bespoke-marp-note" data-index="3" tabindex="0"><p>Speaker note: Start of the workshop element. Say upfront: “You don't need a paid API key.”
-Allow 2 min, walk around, help.</p></div><div class="bespoke-marp-note" data-index="4" tabindex="0"><p>Speaker note: Big Pickle is on OpenCode Zen's free list (lineup rotates — check opencode.ai/zen).
-Alternatives: own provider key via /connect (outside the TUI: opencode auth login).
-Switch models with /models. Sessions are stored locally.</p></div><div class="bespoke-marp-note" data-index="5" tabindex="0"><p>Speaker note: The heart of the interactive part. 7 min for your own prompts. If a model is
+Allow 2 min, walk around, help.</p></div><div class="bespoke-marp-note" data-index="4" tabindex="0"><p>Speaker note: Big Pickle and Beam Free are both on OpenCode Zen's free list
+(lineup rotates — check opencode.ai/zen). Big Pickle is a stealth model whose
+provider may train on your input; Beam Free (Reflection's open-weight 501B MoE,
+Apache 2.0, 1M-token context) does not train on your data but retains it 30 days.
+The privacy line matters: this is a sovereign-cloud workshop — never paste private
+or customer data into a model that trains on user input. For sensitive work, run
+Ollama locally (ollama run beam — Beam is on Ollama too, zero data retention) or
+your own sovereign endpoint. Alternatives: own provider key via /connect (outside
+the TUI: opencode auth login). Switch models with /models. Sessions are stored
+locally. If opencode.ai does not resolve on the workshop network, set DNS to
+1.1.1.1 / 8.8.8.8 or add a hosts entry: `dig +short opencode.ai @1.1.1.1` then
+append `&lt;IP&gt; opencode.ai` to /etc/hosts (verified 19 Oct 2026: 172.65.90.20).</p></div><div class="bespoke-marp-note" data-index="5" tabindex="0"><p>Speaker note: The heart of the interactive part. 7 min for your own prompts. If a model is
 rate-limited, switch via /models. Share with a neighbor if you have no laptop. Collect questions for Q&amp;A.</p></div><div class="bespoke-marp-note" data-index="6" tabindex="0"><p>Speaker note: Rack clrz14: 8 servers, 06 (master) + 07/08 (worker) in use. ~13 years old.
 Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference runs on CPU.</p></div><div class="bespoke-marp-note" data-index="7" tabindex="0"><p>Speaker note: Three networks on 2× 10 GbE. Mgmt RZ24 (SSH), internal VLAN 424 (K3s pods),
 FIP RZ03 (MetalLB L2, external services). Firewall on ens3f0. iBMC separate (out-of-band).</p></div><div class="bespoke-marp-note" data-index="8" tabindex="0"><p>Speaker note: Read from the bottom up: metal → OS → K3s → CNI/LB → Ceph → GitOps → workloads.

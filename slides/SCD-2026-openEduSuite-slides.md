@@ -138,25 +138,29 @@ was too heavy for 3 nodes. Not “OpenStack is bad,” but “it didn't fit the 
 <div class="grid2">
   <div>
     <div class="card green"><b>Beginners · opencode</b></div>
-```
+
+```bash
 curl -fsSL https://opencode.ai/install | bash
+# Or: npm install -g opencode-ai
+# Or: bun add -g opencode-ai (much faster)
+# Verify: opencode --version
+# Start: cd <project> && opencode
 ```
-    - Or: `npm install -g opencode-ai`
-    - Verify: `opencode --version`
-    - Start: `cd <project> && opencode`
   </div>
   <div>
     <div class="card"><b>Advanced · pi.dev</b></div>
-```
+
+```bash
 curl -fsSL https://pi.dev/install.sh | sh
+# Or: npm i -g @earendil-works/pi-coding-agent (Node 22.19+)
+# Or: bun add -g @earendil-works/pi-coding-agent (much faster)
+# Verify: pi --version
+# Start: cd <project> && pi
 ```
-    - Or: `npm i -g @earendil-works/pi-coding-agent` (Node 22.19+)
-    - Verify: `pi --version`
-    - Start: `cd <project> && pi`
   </div>
 </div>
 
-<div class="small center">Both are free to start — no paid API key required.</div>
+<div class="small center">Both are free to start — no paid API key required. Using <strong>bun</strong> gives a noticeable speedup.</div>
 
 <!--
 Speaker note: Start of the workshop element. Say upfront: “You don't need a paid API key.”
@@ -167,18 +171,29 @@ Allow 2 min, walk around, help.
 
 <div class="kicker">Hands-on · Choosing a model · 3 min</div>
 
-## Start for free — big pickle
+## Start for free — Big Pickle or Beam
 
-- **opencode (beginners):** `/connect` → **OpenCode Zen** → pick **Big Pickle**
-- **pi.dev (advanced):** `/login` → provider **opencode**, then `/model` → **big pickle**
+- **opencode (beginners):** `/connect` → **OpenCode Zen** → pick **Big Pickle** or **Beam Free**
+- **pi.dev (advanced):** `/login` → provider **opencode**, then `/model` → `big-pickle` or `beam-free`
 - Alternatives: any provider via `/connect` (75+) or your own API key
 
-<div class="card green">The free “Big Pickle” is enough for agentic experiments — no cost risk.</div>
+<div class="card green">Both are free on OpenCode Zen — enough for agentic experiments, no cost risk.</div>
+
+<div class="card warn">⚠️ <strong>Privacy — read before you paste.</strong> Free cloud models differ in how they handle your data. <strong>Big Pickle</strong> is a stealth model; its provider <em>may use your input to train</em>. <strong>Beam Free</strong> (Reflection's open-weight 501B model, 1M-token context) does <strong>not</strong> train on your data (retains it 30 days for safety). <strong>Never paste private, customer, or unpublished data into a model that trains on user input.</strong> For sensitive work, run a local model (Ollama, <code>ollama run beam</code>) or your own sovereign endpoint.</div>
 
 <!--
-Speaker note: Big Pickle is on OpenCode Zen's free list (lineup rotates — check opencode.ai/zen).
-Alternatives: own provider key via /connect (outside the TUI: opencode auth login).
-Switch models with /models. Sessions are stored locally.
+Speaker note: Big Pickle and Beam Free are both on OpenCode Zen's free list
+(lineup rotates — check opencode.ai/zen). Big Pickle is a stealth model whose
+provider may train on your input; Beam Free (Reflection's open-weight 501B MoE,
+Apache 2.0, 1M-token context) does not train on your data but retains it 30 days.
+The privacy line matters: this is a sovereign-cloud workshop — never paste private
+or customer data into a model that trains on user input. For sensitive work, run
+Ollama locally (ollama run beam — Beam is on Ollama too, zero data retention) or
+your own sovereign endpoint. Alternatives: own provider key via /connect (outside
+the TUI: opencode auth login). Switch models with /models. Sessions are stored
+locally. If opencode.ai does not resolve on the workshop network, set DNS to
+1.1.1.1 / 8.8.8.8 or add a hosts entry: `dig +short opencode.ai @1.1.1.1` then
+append `<IP> opencode.ai` to /etc/hosts (verified 19 Oct 2026: 172.65.90.20).
 -->
 
 ---

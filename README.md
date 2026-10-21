@@ -62,14 +62,16 @@ Deck options (`marp: true`, `size: 16:9`, `paginate: true`, theme styles) live i
 
 ## Hands-on
 
-The workshop element installs [opencode](https://opencode.ai) and runs first prompts against the free **Big Pickle** model (OpenCode Zen):
+The workshop element installs [opencode](https://opencode.ai) and runs first prompts against a free **OpenCode Zen** model — **Big Pickle** (stealth, free) or **Beam Free** (Reflection's open-weight 501B model, 1M-token context, no training on your data):
 
 ```bash
 curl -fsSL https://opencode.ai/install | bash   # or: npm install -g opencode-ai
 opencode --version
 ```
 
-Then `/connect` → **OpenCode Zen** → pick **Big Pickle** from the free model list. Switch models with `/models`.
+Then `/connect` → **OpenCode Zen** → pick **Big Pickle** or **Beam Free** from the free model list. Switch models with `/models`.
+
+> ⚠️ **Privacy:** Big Pickle's provider may train on your input; Beam Free does not (retains data 30 days for safety). **Never paste private, customer, or unpublished data into a model that trains on user input.** For sensitive work, run a local model (Ollama, `ollama run beam`) or your own sovereign endpoint. If `opencode.ai` does not resolve on the workshop network, set DNS to `1.1.1.1` / `8.8.8.8` or add a hosts entry (`dig +short opencode.ai @1.1.1.1`, then `<IP> opencode.ai` in `/etc/hosts`; verified 19 Oct 2026: `172.65.90.20`).
 
 ## Notes
 
