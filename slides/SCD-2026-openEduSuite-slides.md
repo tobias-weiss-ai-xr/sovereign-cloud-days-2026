@@ -73,6 +73,8 @@ style: |
 <div class="meta">Sun, 25.10.2026 · 11:15 · 60 min incl. Q&A<br>
 <span>Tobias Weiß · HRZ Philipps-Universität Marburg</span></div>
 
+![w:780](img/hero-agentic-scs.svg)
+
 <!--
 Speaker note: Welcome. Thesis: a sovereign, AI-capable setup on written-off iron.
 openEduSuite = HFD award winner 2026. Agenda: motivation → hands-on opencode → cluster → workload → Q&A.

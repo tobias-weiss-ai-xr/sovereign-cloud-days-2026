@@ -6,6 +6,10 @@ Materials for **Sovereign Cloud Days 2026**:
 
 A practical case study on running agentic AI workloads (openEduSuite) on a sovereign, SCS-verified bare-metal K3s cluster built from reused Huawei servers — *"Not macht erfinderisch"* (necessity breeds invention).
 
+<p align="center">
+  <img src="slides/img/hero-agentic-scs.svg" alt="Agentic AI on Sovereign Cloud — Model · Harness · Loop → Sovereign Cloud" width="700" />
+</p>
+
 ## Session
 
 | | |

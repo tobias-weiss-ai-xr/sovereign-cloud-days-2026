@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="200" viewBox="0 0 1200 200" font-family="Segoe UI,system-ui,sans-serif">
+  <defs>
+    <marker id="scs-ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#5b6b7c"/>
+    </marker>
+  </defs>
+
+  <!-- Model -->
+  <rect x="30" y="35" width="250" height="130" rx="12" fill="#f7f9fb" stroke="#0b6e99" stroke-width="2"/>
+  <text x="155" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#0b6e99">Model</text>
+  <text x="155" y="90" text-anchor="middle" font-size="14" fill="#5b6b7c">the reasoning engine</text>
+  <path d="M 131 102 C 125 94 129 84 139 82 C 141 74 153 72 159 76 C 169 74 177 82 175 90 C 181 96 179 106 171 108 C 169 114 159 116 153 112 C 145 116 135 114 133 108 C 129 106 129 102 131 102 Z" fill="none" stroke="#14202e" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M 147 98 C 153 92 161 94 163 100" fill="none" stroke="#14202e" stroke-width="1.5" opacity="0.6"/>
+  <text x="155" y="148" text-anchor="middle" font-size="13" fill="#5b6b7c">thinks · reasons · decides</text>
+
+  <!-- arrow 1 -->
+  <line x1="284" y1="100" x2="316" y2="100" stroke="#5b6b7c" stroke-width="2" marker-end="url(#scs-ar)"/>
+
+  <!-- Harness -->
+  <rect x="320" y="35" width="250" height="130" rx="12" fill="#f7f9fb" stroke="#0b6e99" stroke-width="2"/>
+  <text x="445" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#0b6e99">Harness</text>
+  <text x="445" y="90" text-anchor="middle" font-size="14" fill="#5b6b7c">tools + rules + memory</text>
+  <rect x="415" y="100" width="60" height="12" rx="3" fill="#e8eef3" stroke="#d3dae1" stroke-width="1.5"/>
+  <rect x="415" y="116" width="60" height="12" rx="3" fill="#e8eef3" stroke="#d3dae1" stroke-width="1.5"/>
+  <rect x="415" y="132" width="60" height="12" rx="3" fill="#e8eef3" stroke="#d3dae1" stroke-width="1.5"/>
+  <text x="445" y="158" text-anchor="middle" font-size="13" fill="#5b6b7c">opencode · pi · MCP</text>
+
+  <!-- arrow 2 -->
+  <line x1="574" y1="100" x2="606" y2="100" stroke="#5b6b7c" stroke-width="2" marker-end="url(#scs-ar)"/>
+
+  <!-- Loop -->
+  <rect x="610" y="35" width="250" height="130" rx="12" fill="#f7f9fb" stroke="#0b6e99" stroke-width="2"/>
+  <text x="735" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#0b6e99">Loop</text>
+  <text x="735" y="90" text-anchor="middle" font-size="14" fill="#5b6b7c">the work cycle</text>
+  <path d="M 715 108 A 22 14 0 1 1 755 108" fill="none" stroke="#b3560e" stroke-width="2.5" marker-end="url(#scs-ar)"/>
+  <path d="M 755 120 A 22 14 0 1 0 715 120" fill="none" stroke="#b3560e" stroke-width="2.5" marker-end="url(#scs-ar)"/>
+  <text x="735" y="148" text-anchor="middle" font-size="13" fill="#5b6b7c">plan · act · check · correct</text>
+
+  <!-- arrow 3 -->
+  <line x1="864" y1="100" x2="896" y2="100" stroke="#5b6b7c" stroke-width="2" marker-end="url(#scs-ar)"/>
+
+  <!-- Sovereign Cloud (outcome — green accent) -->
+  <rect x="900" y="35" width="270" height="130" rx="12" fill="#e8f5f0" stroke="#1a7f6b" stroke-width="2"/>
+  <text x="1035" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#1a7f6b">Sovereign Cloud</text>
+  <text x="1035" y="90" text-anchor="middle" font-size="14" fill="#5b6b7c">SCS-verified · your iron</text>
+  <!-- server icon -->
+  <rect x="1010" y="100" width="50" height="14" rx="3" fill="none" stroke="#1a7f6b" stroke-width="2"/>
+  <circle cx="1018" cy="107" r="2" fill="#1a7f6b"/>
+  <circle cx="1026" cy="107" r="2" fill="#1a7f6b"/>
+  <rect x="1010" y="118" width="50" height="14" rx="3" fill="none" stroke="#1a7f6b" stroke-width="2"/>
+  <circle cx="1018" cy="125" r="2" fill="#1a7f6b"/>
+  <circle cx="1026" cy="125" r="2" fill="#1a7f6b"/>
+  <text x="1035" y="158" text-anchor="middle" font-size="13" fill="#5b6b7c">self-hosted · your data</text>
+</svg>
