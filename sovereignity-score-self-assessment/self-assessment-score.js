@@ -23,7 +23,7 @@ const ctx = {}; vm.createContext(ctx); vm.runInContext(src, ctx);
 const D = ctx.assessmentData;
 
 // ---- Antwort-Mapping (Answer-Index pro Kriterium, 0-basiert) ----
-// Begründung je Kriterium: siehe self-assessment/EU-sovereignty-assessment.md
+// Begründung je Kriterium: siehe sovereignity-score-self-assessment/EU-sovereignty-assessment.md
 const A = {
   'SOV-1': [3, 4, 3, 4, 4, 2, 3, 4],
   'SOV-2': [2, 1, 4, 4, 2, 2],

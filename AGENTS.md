@@ -6,8 +6,8 @@
 sovereign-cloud-days-2026/
 ├── README.md
 ├── AGENTS.md
-├── compliance/                # SCS/compliance source docs + dashboard
-├── self-assessment/           # EU Cloud Sovereignty self-assessment
+├── KaaS-compliance/          # SCS/KaaS compliance source docs + dashboard
+├── sovereignity-score-self-assessment/  # EU Cloud Sovereignty self-assessment
 │   ├── EU-sovereignty-assessment.md
 │   └── self-assessment-score.js
 ├── slides/                    # slide deck (source + renders + screenshots)

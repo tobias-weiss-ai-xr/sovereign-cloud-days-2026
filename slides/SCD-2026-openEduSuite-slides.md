@@ -369,7 +369,7 @@ weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 crit
 Speaker note: This is a self-assessment against the EU framework, not an official certification.
 Honest framing on purpose: the reused Huawei/Intel hardware caps the SEAL at 1 despite a 73.5%
 score — strategy/ops/tech are strong, the supply chain and energy reporting are the drags.
-Re-run: self-assessment/self-assessment-score.js (48 criteria, mapped in EU-sovereignty-assessment.md).
+Re-run: sovereignity-score-self-assessment/self-assessment-score.js (48 criteria, mapped in EU-sovereignty-assessment.md).
 -->
 
 ---
