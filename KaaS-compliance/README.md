@@ -9,3 +9,4 @@ Source documents and dashboard for the SCS KaaS compliance of the openEduSuite c
 - `operations/` — SCS-compliant update routine (part 1 + 2/rollback)
 - `monitoring/` — SCS compliance dashboard (Grafana)
 - `references/` — compliance status, full implementation, KaaS test report
+- `scripts/` — automated SCS KaaS compliance check (`scs-compliance-check.sh`)
