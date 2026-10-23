@@ -19,50 +19,9 @@ A practical case study on running agentic AI workloads (openEduSuite) on a sover
 | **Speaker** | Tobias Weiß · tobias@tobias-weiss.org |
 | **Tags** | AI Infrastructure · Kubernetes & Cloud Native · Sovereign Cloud Stack |
 
-## Repository structure
 
-```
-sovereign-cloud-days-2026/
-├── README.md
-├── slides/                    # the slide deck (source + renders + screenshots)
-│   ├── SCD-2026-openEduSuite-slides.md       # Marp Markdown source, 20 slides, 16:9
-│   ├── SCD-2026-openEduSuite-slides-marp.html
-│   ├── SCD-2026-openEduSuite-slides-marp.pdf
-│   └── img/                   # cluster screenshots (iBMC/iMana, Grafana, ArgoCD, SCS, Ceph)
-├── compliance/                # compliance artifacts backing the talk's claims
-│   ├── references/            # SCS KaaS compliance report, status report
-│   ├── operations/            # DevSecOps hardening, update routine, incident response
-│   ├── architecture/          # network configuration
-│   └── monitoring/            # Grafana compliance dashboard definition
-└── self-assessment/           # EU Cloud Sovereignty self-assessment
-    ├── EU-sovereignty-assessment.md         # results, breakdown, binding criteria, levers
-    └── self-assessment-score.js             # reproducible scorer (re-runs via SCOPE, see file header)
-```
 
-| Path | Description |
-|---|---|
-| `slides/SCD-2026-openEduSuite-slides.md` | Slide source — [Marp](https://marp.app/) Markdown, 20 slides (17 talk + 3 backup), 16:9 |
-| `slides/SCD-2026-openEduSuite-slides-marp.html` | Marp HTML render |
-| `slides/SCD-2026-openEduSuite-slides-marp.pdf` | Marp PDF export (20 pages) |
-| `slides/img/` | Cluster screenshots — iBMC/iMana, Grafana, ArgoCD, SCS compliance, Ceph |
-| `compliance/` | Evidence for the talk's compliance claims — SCS KaaS report (6/6 PASS), status report, DevSecOps hardening (78/100), SCS-compliant update routine, incident response plan, network config, Grafana dashboard |
-| `self-assessment/` | EU Cloud Sovereignty Framework self-assessment (73.5 % score, SEAL-1) + reproducible scorer |
-
-Submission materials (abstract, talk plan, bio) are maintained outside this repository.
-
-## Rendering the slides
-
-The deck is generated from `slides/SCD-2026-openEduSuite-slides.md`:
-
-```bash
-# HTML
-marp --html slides/SCD-2026-openEduSuite-slides.md -o slides/SCD-2026-openEduSuite-slides-marp.html
-
-# PDF — local screenshots in slides/img/ require --allow-local-files
-marp --html --pdf --allow-local-files slides/SCD-2026-openEduSuite-slides.md -o slides/SCD-2026-openEduSuite-slides-marp.pdf
-```
-
-Deck options (`marp: true`, `size: 16:9`, `paginate: true`, theme styles) live in the front-matter of the Markdown file.
+See `AGENTS.md` for repository structure and Marp rendering instructions.
 
 ## Hands-on
 

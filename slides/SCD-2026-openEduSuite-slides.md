@@ -312,19 +312,27 @@ Compliance numbers come on the next slide — don't preempt them here.
 
 ---
 
-<div class="kicker">Cluster · SCS-verified · 2 min</div>
+<div class="kicker">Cluster · SCS-verified · 3 min</div>
 
 ## 6/6 KaaS standards PASS — measurable
 
 <figure>
-<img src="img/scs-compliance-check.png" alt="SCS KaaS compliance report" style="max-height:320px">
+<img src="img/scs-compliance-check.png" alt="SCS KaaS compliance report" style="max-height:300px">
 <figcaption class="center">SCS KaaS compliance check (2026-08-23)</figcaption>
 </figure>
 
-- **SCS-0201** CNCF 444/444 · **0210** v1.36.3 · **0211** ceph-rbd
-- **0214** 3 nodes · **0217** Pod-Security · **0219** Networking
+| Standard | Test | Result |
+|---|---|---|
+| **SCS-0201** CNCF conformance | `cncf-k8s-conformance` (444/444 specs) | ✅ PASS |
+| **SCS-0210** version policy | `version-policy-check` (v1.36.3 in window) | ✅ PASS |
+| **SCS-0211** default storage class | manual (ceph-rbd, repl. 3) | ✅ PASS |
+| **SCS-0214** node distribution | manual (3 nodes, zones a/b/c) | ✅ PASS |
+| **SCS-0217** pod security | manual (8 NS baseline; 2 system NS privileged) | ✅ PASS |
+| **SCS-0219** KaaS networking | `kaas-networking-check` (37 NetworkPolicies) | ✅ PASS |
 
-<div class="card warn">Open: OIDC as 2nd auth · Pod-Security 17/22 NS · Loki/Trivy CI · Ceph at rest · GDPR clearance.</div>
+<div class="card warn">Open: OIDC as 2nd auth · Pod-Security on more NS · Loki/Trivy CI · Ceph at rest · GDPR clearance.</div>
+
+<div class="small center">Tests: SCS test suite + CNCF conformance image registry.k8s.io/conformance:v1.36.3 (7482 s, 0 failed).</div>
 
 <!--
 Speaker note: “Verified” = measurable tests, no bullshit bingo. But name the open gaps clearly
