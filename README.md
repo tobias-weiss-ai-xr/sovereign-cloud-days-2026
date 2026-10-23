@@ -1,4 +1,4 @@
-# Sovereign Cloud Days 2026 — Agentic AI meets Sovereign Cloud
+# SCD26 — Agentic AI meets Sovereign Cloud
 
 Materials for **Sovereign Cloud Days 2026**:
 
