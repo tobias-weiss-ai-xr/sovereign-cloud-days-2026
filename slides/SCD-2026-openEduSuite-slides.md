@@ -456,21 +456,24 @@ Re-run: sovereignity-score-self-assessment/self-assessment-score.js (48 criteria
 
 ---
 
-<div class="kicker">Cluster · Operations · 2 min</div>
+<div class="kicker">openEduSuite · Live demo · 4 min</div>
 
-## What we learned in operation
+## Cluster, login, agent trace
 
 <figure>
-<img src="img/grafana-k3s.png" alt="Grafana K3s Dashboard" style="max-height:320px">
-<figcaption class="center">Grafana K3s dashboard (7 dashboards, predictive-agent)</figcaption>
+<img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:320px">
+<figcaption class="center">openEduSuite — bird's-eye view of the platform</figcaption>
 </figure>
 
-- Stale digests, default-deny NetworkPolicies, OIDC migration — all resolved and documented
-- Updates: Ceph-first, rolling, rollback script · backup: K8up → SeaweedFS S3
+- Dashboard: 3 nodes · Ceph HEALTH OK (8/8) · SCS board
+- Login via Keycloak/OIDC → agentic workflow
+
+<div class="card warn"><strong>Fallback:</strong> Screenshots (Grafana, KVM, open-webui) + stack diagram if the demo stalls.</div>
 
 <!--
-Speaker note: Frame it positively: every stumbling block was resolved and documented.
-Firewall: SCS-FIREWALL on ens3f0. 2–3 lessons as a story, not a complaint.
+Speaker note: Test beforehand: tunnel/login, Ceph status, open-webui.
+If it stalls: calmly switch to the screenshots and the stack diagram — no screencast exists.
+Watch the time — 4 min. hard stop.
 -->
 
 ---
@@ -539,24 +542,21 @@ on the demo slide. Version [verify].
 
 ---
 
-<div class="kicker">openEduSuite · Live demo · 4 min</div>
+<div class="kicker">Cluster · Operations · 2 min</div>
 
-## Cluster, login, agent trace
+## What we learned in operation
 
 <figure>
-<img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:320px">
-<figcaption class="center">openEduSuite — bird's-eye view of the platform</figcaption>
+<img src="img/grafana-k3s.png" alt="Grafana K3s Dashboard" style="max-height:320px">
+<figcaption class="center">Grafana K3s dashboard (7 dashboards, predictive-agent)</figcaption>
 </figure>
 
-- Dashboard: 3 nodes · Ceph HEALTH OK (8/8) · SCS board
-- Login via Keycloak/OIDC → agentic workflow
-
-<div class="card warn"><strong>Fallback:</strong> Screenshots (Grafana, KVM, open-webui) + stack diagram if the demo stalls.</div>
+- Stale digests, default-deny NetworkPolicies, OIDC migration — all resolved and documented
+- Updates: Ceph-first, rolling, rollback script · backup: K8up → SeaweedFS S3
 
 <!--
-Speaker note: Test beforehand: tunnel/login, Ceph status, open-webui.
-If it stalls: calmly switch to the screenshots and the stack diagram — no screencast exists.
-Watch the time — 4 min. hard stop.
+Speaker note: Frame it positively: every stumbling block was resolved and documented.
+Firewall: SCS-FIREWALL on ens3f0. 2–3 lessons as a story, not a complaint.
 -->
 
 ---
