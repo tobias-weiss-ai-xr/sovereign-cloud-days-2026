@@ -437,7 +437,7 @@ yet cleared for personal data.
 
 <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin:4px 0 8px 0">
   <div style="display:flex; align-items:center; gap:10px"><img src="img/openEduSuite-icon.svg" alt="openEduSuite" style="max-height:48px"><a href="https://openedusuite.org" style="font-size:18px; font-weight:600">openedusuite.org</a></div>
-  <img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:150px">
+  <img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:200px; object-fit:cover; object-position:top center; clip-path:inset(0 0 12% 0)">
 </div>
 
 | Dimension | Components |
