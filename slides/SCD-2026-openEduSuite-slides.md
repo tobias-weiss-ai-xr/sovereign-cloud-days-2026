@@ -141,7 +141,7 @@ full IaaS stack — lighter for 3 nodes, but the comparison informed our storage
   <img src="img/openEduSuite-icon.svg" alt="openEduSuite icon" style="max-height:80px; border:none; box-shadow:none; background:transparent; flex:0 0 auto;">
   <ul style="margin:0; font-size:18px; line-height:1.4;">
     <li>Whole sovereign workplace — identity, mail, collaboration, delivery</li>
-    <li>Runs on written-off iron (3 × Huawei RH2288E V2)</li>
+    <li>Real FOSS components</li>
     <li>Verified against SCS (6/6 KaaS standards PASS)</li>
   </ul>
 </div>
@@ -594,126 +594,9 @@ Point 5: runbooks, DPIAs, checklists — otherwise knowledge is a one-way street
 - Workshop element: opencode install + the prompts — try them at home
 - Contact: tobias-weiss.org · graphwiz.ai · ki-kompetenz-training.org
 
-<div class="card green"><strong>Backup slides:</strong> architecture diagram · agent trace · cluster fact sheet.</div>
+<div class="card green">Thanks — questions welcome, and let’s keep the conversation going.</div>
 
 <!--
 Speaker note: Q&A moderation: collect “what if” questions. For detailed questions on [verify] values,
 honestly point to the source/iBMC. Have backup slides ready. Contact links for follow-up.
--->
-
----
-
-<div class="kicker">Backup · Architecture</div>
-
-## Cluster architecture — full picture
-
-<div class="svg-wrap">
-<svg viewBox="0 0 1000 430" width="100%">
-  <g font-size="14" font-weight="700" text-anchor="middle">
-    <rect x="40" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="180" y="40" fill="#0b6e99">host1 — master</text>
-    <text x="180" y="62" font-size="13" fill="#14202e">K3s server (single) · Ceph MON · 4 OSDs</text>
-    <text x="180" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.11 · int .11</text>
-    <text x="180" y="100" font-size="13" fill="#5b6b7c">2× Xeon E5-2600 v2 · no GPU</text>
-    <rect x="360" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="500" y="40" fill="#0b6e99">host2 — worker</text>
-    <text x="500" y="62" font-size="13" fill="#14202e">K3s agent · Ceph MON · 2 OSDs</text>
-    <text x="500" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.12 · int .12</text>
-    <text x="500" y="100" font-size="13" fill="#5b6b7c">openEduSuite + llm workloads</text>
-    <rect x="680" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="820" y="40" fill="#0b6e99">host3 — worker</text>
-    <text x="820" y="62" font-size="13" fill="#14202e">K3s agent · Ceph MON · 2 OSDs</text>
-    <text x="820" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.13 · int .13</text>
-    <text x="820" y="100" font-size="13" fill="#5b6b7c">predictive-agent · monitoring</text>
-  </g>
-  <g font-size="15" font-weight="700">
-    <rect x="40" y="124" width="920" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b"/>
-    <text x="500" y="149" text-anchor="middle" fill="#1a5447">K3s v1.36.3+k3s1 · Flannel VXLAN 10.42.0.0/16 · MetalLB L2 · HAProxy Ingress · ArgoCD v2.12.6</text>
-    <rect x="40" y="172" width="920" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99"/>
-    <text x="500" y="197" text-anchor="middle" fill="#0b3a55">Ceph 18.2.8 Reef — 8 OSDs · 3 MONs · repl. 3 · RBD + CephFS · K8up/Restic → SeaweedFS S3</text>
-    <rect x="40" y="220" width="920" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c"/>
-    <text x="500" y="245" text-anchor="middle" fill="#5b6b7c">Ubuntu 24.04 LTS · containerd 2.3.3 · runc 1.4.3 · firewall SCS-FIREWALL on ens3f0</text>
-  </g>
-  <g font-size="14">
-    <rect x="40" y="276" width="140" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c"/>
-    <text x="110" y="301" text-anchor="middle" font-weight="700" fill="#5b6b7c">Mgmt</text>
-    <text x="200" y="301" fill="#14202e">192.0.2.11–13 · ens3f0 untagged · SSH</text>
-    <rect x="40" y="324" width="140" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b"/>
-    <text x="110" y="349" text-anchor="middle" font-weight="700" fill="#1a7f6b">Internal</text>
-    <text x="200" y="349" fill="#14202e">198.51.100.0/18 · .11/.12/.13 · Ceph only</text>
-    <rect x="40" y="372" width="140" height="40" rx="5" fill="#fff6e8" stroke="#b3560e"/>
-    <text x="110" y="397" text-anchor="middle" font-weight="700" fill="#b3560e">FIP</text>
-    <text x="200" y="397" fill="#14202e">203.0.113.181–.196 · .181 ingress · .182 argocd · .183–.186 mail/ldap</text>
-  </g>
-</svg>
-</div>
-
-<!--
-Speaker note: BACKUP — only show on demand. Generic documentation IPs (RFC 5737),
-not the real ones. Node roles, versions, networks in one picture.
--->
-
----
-
-<div class="kicker">Backup · Agent trace</div>
-
-## How an agent call traces through the cluster
-
-<div class="svg-wrap">
-<svg viewBox="0 0 1000 360" width="100%">
-  <g font-size="15" font-weight="700" text-anchor="middle">
-    <rect x="40" y="20" width="200" height="46" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="140" y="49" fill="#0b6e99">open-webui (ns llm)</text>
-    <rect x="380" y="20" width="200" height="46" rx="6" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
-    <text x="480" y="49" fill="#1a7f6b">Agent loop</text>
-    <rect x="720" y="20" width="240" height="46" rx="6" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
-    <text x="840" y="49" fill="#b3560e">Prometheus · Ollama</text>
-    <path d="M 140 66 L 140 300" stroke="#5b6b7c" stroke-width="2"/>
-    <path d="M 480 66 L 480 300" stroke="#5b6b7c" stroke-width="2"/>
-    <path d="M 840 66 L 840 300" stroke="#5b6b7c" stroke-width="2"/>
-  </g>
-  <g font-size="13" fill="#14202e">
-    <path d="M 245 110 L 470 110" stroke="#0b6e99" stroke-width="2.5" marker-end="url(#arr3)"/>
-    <text x="358" y="102" text-anchor="middle" font-weight="700">1 · question</text>
-    <path d="M 485 150 L 830 150" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/>
-    <text x="660" y="142" text-anchor="middle" font-weight="700">2 · tool call: query metrics</text>
-    <path d="M 830 190 L 495 190" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/>
-    <text x="660" y="182" text-anchor="middle" font-weight="700">3 · pod/node state (62 pods)</text>
-    <path d="M 485 230 L 830 230" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/>
-    <text x="660" y="222" text-anchor="middle" font-weight="700">4 · context + question → prompt</text>
-    <path d="M 830 270 L 495 270" stroke="#b3560e" stroke-width="2.5" marker-end="url(#arr3)"/>
-    <text x="660" y="262" text-anchor="middle" font-weight="700">5 · tokens (quantized, CPU)</text>
-    <path d="M 470 310 L 245 310" stroke="#0b6e99" stroke-width="2.5" marker-end="url(#arr3)"/>
-    <text x="358" y="302" text-anchor="middle" font-weight="700">6 · answer + sources</text>
-  </g>
-  <defs><marker id="arr3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/></marker></defs>
-</svg>
-</div>
-
-<div class="small center">Multi-step, tool-using, verifiable — not a single prompt. Same pattern as the predictive-agent risk loop.</div>
-
-<!--
-Speaker note: BACKUP — only show on demand. Walk the 6 steps left to right;
-emphasize the tool call (2–3) as what makes it “agentic”.
--->
-
----
-
-<div class="kicker">Backup · Cluster fact sheet</div>
-
-## openEduSuite cluster — fact sheet
-
-<div class="grid2">
-  <div class="kv"><b>Hardware</b>3 × Huawei RH2288E V2 · 2 × Xeon E5-2600 v2 · no GPU · 6 × 512 GB SSD each · 2 × Intel X540-AT2 10 GbE <span class="seal">[verify]</span></div>
-  <div class="kv"><b>Platform</b>K3s v1.36.3+k3s1 (single server) · Flannel VXLAN · MetalLB L2 · HAProxy Ingress · ArgoCD v2.12.6</div>
-  <div class="kv"><b>Storage</b>Ceph 18.2.8 Reef · 8 OSDs / 3 MONs · repl. 3 · RBD + CephFS · K8up/Restic → SeaweedFS S3</div>
-  <div class="kv"><b>SCS compliance</b>6/6 KaaS standards PASS · 444/444 CNCF · DevSecOps 78/100 (C+) · ~40 NetworkPolicies</div>
-  <div class="kv"><b>Workloads</b>openEduSuite (edu · staff · students · sme) · llm (open-webui, Ollama) · predictive-agent v8.11-nix · 62 pods</div>
-  <div class="kv"><b>OS / Ops</b>Ubuntu 24.04 LTS · containerd 2.3.3 · Prometheus + Grafana (7 dashboards) · firewall SCS-FIREWALL</div>
-</div>
-
-<div class="small">Nix-built images on GHCR → local Zot registry · opendesk-sme still Degraded (stale digests) · DPIA/TOM/ROPA documented, personal data approval pending.</div>
-
-<!--
-Speaker note: BACKUP — only show on demand. All values as of 2026-08, [verify] = readable only via iBMC/BIOS.
 -->
