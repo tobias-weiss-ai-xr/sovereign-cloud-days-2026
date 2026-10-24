@@ -437,7 +437,7 @@ yet cleared for personal data.
 
 <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin:4px 0 8px 0">
   <div style="display:flex; align-items:center; gap:10px"><img src="img/openEduSuite-icon.svg" alt="openEduSuite" style="max-height:48px"><a href="https://openedusuite.org" style="font-size:18px; font-weight:600">openedusuite.org</a></div>
-  <img src="img/hero-teaser.svg" alt="openEduSuite teaser" style="max-height:150px">
+  <img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:150px">
 </div>
 
 | Dimension | Components |
@@ -462,11 +462,11 @@ fully sovereign. Honestly call out opendesk-sme as Degraded.
 ## Cluster, login, agent trace
 
 <figure>
-<img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:260px">
-<figcaption class="center">openEduSuite — bird's-eye view of the platform</figcaption>
+<img src="img/hero-teaser.svg" alt="openEduSuite teaser" style="max-height:220px">
+<figcaption class="center">openEduSuite — agentic AI meets sovereign cloud</figcaption>
 </figure>
 
-<div class="center" style="font-size:15px; margin:4px 0 6px 0; font-style:italic">Ihr kollaborativer Arbeitsplatz — Alle openEduSuite-Dienste an einem Ort. Single Sign-On mit Ihrem Universitätskonto – integrierte Werkzeuge für Lehre, Forschung und Zusammenarbeit.</div>
+<div class="center" style="font-size:15px; margin:4px 0 6px 0; font-style:italic">Your collaborative workplace — all openEduSuite services in one place, single sign-on with your university account.</div>
 
 - Dashboard: 3 nodes · Ceph HEALTH OK (8/8) · SCS board
 - Login via Keycloak/OIDC → agentic workflow
