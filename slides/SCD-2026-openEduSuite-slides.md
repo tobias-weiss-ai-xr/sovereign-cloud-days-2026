@@ -648,7 +648,7 @@ self-assessment, not an official certification.
 </div>
 </div>
 
-<div class="card" style="font-size:14px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. <strong>Markov chain:</strong> predicts the next health state (OK → degraded → down) from the smoothed state. Combined → risk score before the user notices.</div>
+<div class="card" style="font-size:14px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. Combined → risk score before the user notices.</div>
 
 <div class="card green" style="font-size:18px"><strong>predictive-agent v8.11-nix</strong> (own tenant): Risk scoring (Kalman + Markov) for 62 pods — alerts before users notice.</div>
 
