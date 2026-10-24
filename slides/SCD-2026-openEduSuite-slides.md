@@ -435,6 +435,8 @@ yet cleared for personal data.
 
 ## The dimensions of openEduSuite
 
+<div class="center" style="margin:4px 0 8px 0"><img src="img/openEduSuite-icon.svg" alt="openEduSuite" style="max-height:48px; vertical-align:middle; margin-right:10px"><a href="https://openedusuite.org" style="font-size:18px; font-weight:600">openedusuite.org</a></div>
+
 | Dimension | Components |
 |---|---|
 | **Tenants — who** | edu · staff · students · sme · llm · predictive-agent |
