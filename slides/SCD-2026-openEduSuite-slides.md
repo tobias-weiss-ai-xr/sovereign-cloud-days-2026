@@ -565,9 +565,18 @@ fires when risk > threshold, before SLO breach.
 - Stale digests, default-deny NetworkPolicies, OIDC migration — all resolved and documented
 - Updates: Ceph-first, rolling, rollback script · backup: K8up → SeaweedFS S3
 
+<div class="card" style="font-size:14px"><strong>Stale digests:</strong> pinned image digests drifted from the registry; fixed with digest refresh + ArgoCD sync. <strong>Default-deny NetPolicies:</strong> 37 NetworkPolicies initially blocked DNS/DB traffic; fixed with explicit allow rules. <strong>OIDC migration:</strong> Keycloak/OIDC rolled out across all services. <strong>Updates:</strong> Ceph-first rolling upgrades with a rollback script. <strong>Backup:</strong> K8up → SeaweedFS S3.</div>
+
 <!--
 Speaker note: Frame it positively: every stumbling block was resolved and documented.
 Firewall: SCS-FIREWALL on ens3f0. 2–3 lessons as a story, not a complaint.
+
+Details:
+- Stale digests: container images pinned by digest went stale; reconciled via digest refresh and ArgoCD auto-sync.
+- Default-deny NetworkPolicies: a baseline deny-all across 8 namespaces broke DNS and DB access; added explicit allow rules (37 total) for required paths.
+- OIDC migration: moved all services from local auth to Keycloak/OIDC; documented the migration steps and rollback.
+- Updates: Ceph-first rolling node upgrades, then K3s/control plane, with a tested rollback script.
+- Backup: K8up schedules etcd + PVC snapshots to SeaweedFS S3; restore tested.
 -->
 
 ---
