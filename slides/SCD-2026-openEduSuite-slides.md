@@ -71,19 +71,11 @@ style: |
   .center{ text-align:center; }
   .svg-wrap{ text-align:center; }
   .svg-wrap svg{ max-width:100%; height:auto; filter:drop-shadow(0 2px 8px rgba(15,28,42,.08)); }
-  section.title{ justify-content:center; border-top:none;
-    background:linear-gradient(135deg,#0b6e99 0%,#1a7f6b 100%); color:#fff; }
-  section.title .brand{ font-size:16px; font-weight:700; color:rgba(255,255,255,.85);
-    letter-spacing:.18em; text-transform:uppercase; margin-bottom:14px; }
-  section.title h1{ font-size:58px; color:#fff; }
-  section.title .sub{ font-size:24px; color:rgba(255,255,255,.9); margin-bottom:24px; line-height:1.3; }
-  section.title .meta{ font-size:17px; color:rgba(255,255,255,.85); }
-  section.title .meta span{ color:rgba(255,255,255,.7); }
-  section.title img{ border:none; box-shadow:0 8px 30px rgba(0,0,0,.25); background:transparent; }
+  section.title{ justify-content:center; }
+  .brand{ font-size:17px; font-weight:700; color:var(--accent); letter-spacing:.16em;
+    text-transform:uppercase; margin-bottom:14px; }
 
 ---
-
-<!-- _class: title -->
 
 <div class="brand">Sovereign Cloud Days 2026 · Workshop Stage</div>
 
