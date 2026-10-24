@@ -564,6 +564,48 @@ self-assessment, not an official certification.
 </svg>
 </div>
 
+<div class="svg-wrap">
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px; margin:6px auto; display:block">
+  <!-- axes -->
+  <line x1="40" y1="150" x2="540" y2="150" stroke="#5b6b7c" stroke-width="1.5"/>
+  <line x1="40" y1="20" x2="40" y2="150" stroke="#5b6b7c" stroke-width="1.5"/>
+  <text x="290" y="172" text-anchor="middle" font-size="11" fill="#5b6b7c">time →</text>
+  <text x="12" y="85" text-anchor="middle" font-size="11" fill="#5b6b7c" transform="rotate(-90,12,85)">metric</text>
+  <!-- noisy measurements (raw Prometheus) -->
+  <g fill="#b3560e" opacity="0.7">
+    <circle cx="60" cy="120" r="3"/>
+    <circle cx="85" cy="95" r="3"/>
+    <circle cx="110" cy="135" r="3"/>
+    <circle cx="135" cy="88" r="3"/>
+    <circle cx="160" cy="128" r="3"/>
+    <circle cx="185" cy="78" r="3"/>
+    <circle cx="210" cy="118" r="3"/>
+    <circle cx="235" cy="92" r="3"/>
+    <circle cx="260" cy="132" r="3"/>
+    <circle cx="285" cy="82" r="3"/>
+    <circle cx="310" cy="122" r="3"/>
+    <circle cx="335" cy="90" r="3"/>
+    <circle cx="360" cy="130" r="3"/>
+    <circle cx="385" cy="85" r="3"/>
+    <circle cx="410" cy="125" r="3"/>
+    <circle cx="435" cy="95" r="3"/>
+    <circle cx="460" cy="128" r="3"/>
+    <circle cx="485" cy="88" r="3"/>
+    <circle cx="510" cy="120" r="3"/>
+  </g>
+  <!-- Kalman-filtered state estimate (smooth curve) -->
+  <path d="M 60 110 C 110 108, 160 105, 210 100 S 310 92, 360 88 S 460 82, 510 78"
+        fill="none" stroke="#1a7f6b" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- legend -->
+  <g font-size="10" fill="#5b6b7c">
+    <circle cx="60" cy="15" r="3" fill="#b3560e" opacity="0.7"/>
+    <text x="70" y="18">raw Prometheus metric (noisy)</text>
+    <line x1="230" y1="15" x2="260" y2="15" stroke="#1a7f6b" stroke-width="2.5"/>
+    <text x="270" y="18">Kalman state estimate (smoothed)</text>
+  </g>
+</svg>
+</div>
+
 <div class="card green" style="font-size:18px"><strong>predictive-agent v8.11-nix</strong> (own tenant): Risk scoring (Kalman + Markov) for 62 pods — alerts before users notice.</div>
 
 <div class="card" style="font-size:15px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. <strong>Markov chain:</strong> predicts the next health state (OK → degraded → down) from the smoothed state. Combined → risk score before the user notices.</div>
