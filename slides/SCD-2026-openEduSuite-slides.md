@@ -259,55 +259,53 @@ Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference run
       <path d="M0,0 L7,3 L0,6 Z" fill="#5b6b7c"/>
     </marker>
   </defs>
-  <!-- Servers (top) -->
+  <!-- LEFT: external-facing networks (Mgmt + FIP) -->
+  <rect x="30" y="30" width="200" height="50" rx="6" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="2"/>
+  <text x="130" y="52" text-anchor="middle" font-size="14" font-weight="700" fill="#5b6b7c">Mgmt</text>
+  <text x="130" y="70" text-anchor="middle" font-size="11" fill="#14202e">SSH · ens3f0 untagged</text>
+  <rect x="30" y="195" width="200" height="50" rx="6" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
+  <text x="130" y="217" text-anchor="middle" font-size="14" font-weight="700" fill="#b3560e">FIP</text>
+  <text x="130" y="235" text-anchor="middle" font-size="11" fill="#14202e">MetalLB L2 · external services</text>
+  <!-- Firewall wall (vertical) -->
+  <rect x="250" y="20" width="24" height="240" rx="4" fill="#fdeaea" stroke="#c0392b" stroke-width="2"/>
+  <text x="262" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#c0392b" transform="rotate(-90,262,145)">FIREWALL</text>
+  <!-- Connection: Mgmt/FIP -> firewall -->
+  <line x1="230" y1="55" x2="250" y2="55" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="230" y1="220" x2="250" y2="220" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <!-- CENTER: 3 servers (vertical stack) -->
   <g font-size="14" font-weight="700" fill="#14202e">
-    <rect x="110" y="8" width="120" height="40" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="170" y="33" text-anchor="middle">clrz14-06</text>
-    <rect x="310" y="8" width="120" height="40" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="370" y="33" text-anchor="middle">clrz14-07</text>
-    <rect x="510" y="8" width="120" height="40" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="570" y="33" text-anchor="middle">clrz14-08</text>
+    <rect x="300" y="30" width="190" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="395" y="62" text-anchor="middle" fill="#0b6e99">clrz14-06</text>
+    <rect x="300" y="112" width="190" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="395" y="144" text-anchor="middle" fill="#0b6e99">clrz14-07</text>
+    <rect x="300" y="195" width="190" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="395" y="227" text-anchor="middle" fill="#0b6e99">clrz14-08</text>
   </g>
-  <!-- Host verticals (each server down through all networks) -->
-  <g stroke="#9aa6b3" stroke-width="1.5" stroke-dasharray="3 3">
-    <line x1="170" y1="48" x2="170" y2="210"/>
-    <line x1="370" y1="48" x2="370" y2="210"/>
-    <line x1="570" y1="48" x2="570" y2="210"/>
-  </g>
-  <!-- Network bands -->
-  <rect x="40" y="70" width="620" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="1"/>
-  <text x="60" y="95" font-size="14" font-weight="700" fill="#5b6b7c">Mgmt</text>
-  <text x="350" y="95" font-size="13" fill="#14202e" text-anchor="middle">192.0.2.11–13 · ens3f0 untagged · SSH</text>
-  <rect x="40" y="120" width="620" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="1"/>
-  <text x="60" y="145" font-size="14" font-weight="700" fill="#1a7f6b">Internal</text>
-  <text x="350" y="145" font-size="13" fill="#14202e" text-anchor="middle">198.51.100.0/18 · .11/.12/.13 · Ceph cluster only</text>
-  <rect x="40" y="170" width="620" height="40" rx="5" fill="#fff6e8" stroke="#b3560e" stroke-width="1"/>
-  <text x="60" y="195" font-size="14" font-weight="700" fill="#b3560e">FIP</text>
-  <text x="350" y="195" font-size="13" fill="#14202e" text-anchor="middle">203.0.113.181–.196 · MetalLB L2 · .181 ingress …</text>
-  <!-- Intersection dots (server × network) -->
-  <g fill="#0b6e99">
-    <circle cx="170" cy="90" r="3"/><circle cx="170" cy="140" r="3"/><circle cx="170" cy="190" r="3"/>
-    <circle cx="370" cy="90" r="3"/><circle cx="370" cy="140" r="3"/><circle cx="370" cy="190" r="3"/>
-    <circle cx="570" cy="90" r="3"/><circle cx="570" cy="140" r="3"/><circle cx="570" cy="190" r="3"/>
-  </g>
-  <!-- Firewall wall -->
-  <rect x="680" y="70" width="240" height="140" rx="6" fill="#fdeaea" stroke="#c0392b" stroke-width="2"/>
-  <text x="800" y="95" text-anchor="middle" font-size="14" font-weight="700" fill="#c0392b">SCS-FIREWALL</text>
-  <text x="800" y="115" text-anchor="middle" font-size="12" fill="#7a3b32">allow: 80/443/22 · 5001/31080/31443</text>
-  <text x="800" y="132" text-anchor="middle" font-size="12" fill="#7a3b32">123/ICMP · drop: 6443/10250/8472</text>
-  <!-- External zone -->
-  <line x1="920" y1="140" x2="970" y2="140" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
-  <text x="985" y="145" text-anchor="end" font-size="13" font-weight="700" fill="#5b6b7c">External</text>
-  <text x="800" y="230" text-anchor="middle" font-size="12" fill="#5b6b7c">ens3f0: mgmt+FIP (VLAN 3) · ens6f0: internal (Ceph only) · 2 phys. switches · iBMC OOB</text>
+  <!-- firewall -> servers -->
+  <line x1="274" y1="55" x2="300" y2="57" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="274" y1="140" x2="300" y2="139" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="274" y1="220" x2="300" y2="222" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <!-- servers -> internal (right) -->
+  <line x1="490" y1="57" x2="520" y2="57" stroke="#5b6b7c" stroke-width="2"/>
+  <line x1="490" y1="139" x2="520" y2="139" stroke="#5b6b7c" stroke-width="2"/>
+  <line x1="490" y1="222" x2="520" y2="222" stroke="#5b6b7c" stroke-width="2"/>
+  <!-- RIGHT: internal network (Ceph only) -->
+  <rect x="520" y="20" width="450" height="240" rx="6" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
+  <text x="745" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#1a7f6b">Internal — Ceph only</text>
+  <text x="745" y="80" text-anchor="middle" font-size="12" fill="#14202e">198.51.100.0/18 · .11/.12/.13 · ens6f0</text>
+  <text x="745" y="100" text-anchor="middle" font-size="12" fill="#14202e">Ceph cluster traffic · replication · heartbeats</text>
+  <text x="745" y="125" text-anchor="middle" font-size="12" fill="#14202e">two physically separated switches (internal / external)</text>
+  <text x="745" y="150" text-anchor="middle" font-size="12" fill="#14202e">iBMC out-of-band</text>
+  <text x="745" y="245" text-anchor="middle" font-size="11" fill="#5b6b7c">not reachable from external · no K3s pods on this net</text>
 </svg>
 </div>
 
-<div class="small center">ens3f0: mgmt + FIP (VLAN 3) · ens6f0: internal (Ceph only) · two physically separated switches · iBMC OOB</div>
+<div class="small center">Left: Mgmt + FIP (external) → firewall → 3 nodes → Right: Internal (Ceph only) · two physically separated switches · iBMC OOB</div>
 
 <!--
-Speaker note: Three networks on 2× 10 GbE. Mgmt (SSH), internal (K3s pods),
-FIP (MetalLB L2, external services). Internal and external traffic run on two physically
-separated switches. Firewall on ens3f0. iBMC separate (out-of-band).
+Speaker note: Three networks on 2× 10 GbE. Left: Mgmt (SSH) + FIP (MetalLB L2, external)
+pass the firewall to reach the 3 nodes; right: Internal (Ceph only, replication/heartbeats).
+Internal and external run on two physically separated switches. iBMC separate (out-of-band).
 -->
 
 ---
