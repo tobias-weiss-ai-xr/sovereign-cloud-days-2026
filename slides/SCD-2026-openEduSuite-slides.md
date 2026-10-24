@@ -488,6 +488,8 @@ weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 crit
 | SOV-5 Supply Chain | 10 % | 50 % | SEAL-1 |
 | SOV-8 Environmental | 5 % | 19 % | SEAL-1 |
 
+<div class="small center" style="font-size:13px; margin:4px 0 6px 0">SOV = Sovereignty objective · W = weight · SEAL = Sovereignty Assurance Level (weakest link) · EAL = Evaluation Assurance Level · PUE = Power Usage Effectiveness · CSRD = Corporate Sustainability Reporting Directive</div>
+
 <div class="card warn" style="font-size:16px; margin:6px 0 4px 0">High score — low SEAL. SEAL is the <strong>weakest link</strong>: non-EU hardware
 (Huawei/Intel, SOV-5), no formal EAL certification (SOV-7), no PUE/emissions reporting (SOV-8).</div>
 
