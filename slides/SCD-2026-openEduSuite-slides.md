@@ -51,11 +51,11 @@ style: |
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:14px 24px; }
   .kv{ font-size:21px; line-height:1.3; }
   .kv b{ display:block; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:2px; font-weight:700; }
-  table{ display:table; border-collapse:separate; border-spacing:0; width:100%; font-size:15px; margin:6px auto;
+  table{ display:table; border-collapse:separate; border-spacing:0; width:100%; font-size:14px; margin:4px auto;
     border-radius:8px; overflow:hidden; box-shadow:var(--shadow); }
-  th{ background:#eef2f6; color:var(--ink); padding:5px 10px; text-align:center; font-size:11px;
+  th{ background:#eef2f6; color:var(--ink); padding:3px 8px; text-align:center; font-size:11px;
     letter-spacing:.06em; text-transform:uppercase; font-weight:700; border-bottom:2px solid var(--line); }
-  td{ padding:5px 10px; border-bottom:1px solid var(--line); vertical-align:middle; background:#fff;
+  td{ padding:3px 8px; border-bottom:1px solid var(--line); vertical-align:middle; background:#fff;
     text-align:center; }
   tr:last-child td{ border-bottom:none; }
   .seal{ font-weight:700; color:var(--warn); }
@@ -488,12 +488,9 @@ weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 crit
 | SOV-5 Supply Chain | 10 % | 50 % | SEAL-1 |
 | SOV-8 Environmental | 5 % | 19 % | SEAL-1 |
 
-<div class="small center" style="font-size:13px; margin:4px 0 6px 0">SOV = Sovereignty objective · W = weight · SEAL = Sovereignty Assurance Level (weakest link) · EAL = Evaluation Assurance Level · PUE = Power Usage Effectiveness · CSRD = Corporate Sustainability Reporting Directive</div>
+<div class="small center" style="font-size:12px; margin:2px 0 4px 0">SOV = Sovereignty objective · W = weight · SEAL = Sovereignty Assurance Level (weakest link) · EAL = Evaluation Assurance Level · PUE = Power Usage Effectiveness · CSRD = Corporate Sustainability Reporting Directive</div>
 
-<div class="card warn" style="font-size:16px; margin:6px 0 4px 0">High score — low SEAL. SEAL is the <strong>weakest link</strong>: non-EU hardware
-(Huawei/Intel, SOV-5), no formal EAL certification (SOV-7), no PUE/emissions reporting (SOV-8).</div>
-
-<div class="card green" style="font-size:16px; margin:0 0 4px 0">Levers to SEAL ≥ 3: EU-fabricated platform / hardware provenance · formal EAL cert · PUE &amp; CSRD reporting.</div>
+<div class="card warn" style="font-size:14px; margin:4px 0 2px 0">High score — low SEAL (weakest link): non-EU hardware (Huawei/Intel) · no EAL cert (SOV-7) · no PUE/CSRD reporting (SOV-8). Levers: EU hardware provenance · EAL cert · PUE reporting.</div>
 
 <!--
 Speaker note: This is a self-assessment against the EU framework, not an official certification.
