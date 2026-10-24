@@ -414,6 +414,8 @@ Compliance numbers come on the next slide — don't preempt them here.
 
 <div class="small center" style="font-size:14px; margin:4px 0 2px 0; color:var(--warn); font-weight:600">Open: OIDC as 2nd auth · Pod-Security on more NS · Loki/Trivy CI · Ceph at rest · GDPR clearance.</div>
 
+<div class="card warn"><strong>Honest status:</strong> `opendesk-sme` still Degraded (stale digests).</div>
+
 
 
 <!--
@@ -457,8 +459,6 @@ Watch the time — 4 min. hard stop.
 | **Communication** | Postfix (.185) · Stalwart (.183) · DKIMpy (.184) · Matrix |
 | **Collaboration** | Nextcloud · XWiki · SOGo6 · OpenProject |
 | **Delivery** | Own Nix builds on GHCR → local Zot registry |
-
-<div class="card warn"><strong>Honest status:</strong> `opendesk-sme` still Degraded (stale digests).</div>
 
 <!--
 Speaker note: The platform in five sorted dimensions: who (tenants), identity,
