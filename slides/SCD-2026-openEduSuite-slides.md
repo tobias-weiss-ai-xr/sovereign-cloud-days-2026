@@ -19,6 +19,7 @@ style: |
     font-size:22px; padding:44px 60px;
     border-top:4px solid var(--accent);
   }
+  table { display:inline-table; }
   section::after{ color:#9aa6b3; font-size:13px; font-weight:600; }
   footer{ font-size:11px; color:#9aa6b3; letter-spacing:.02em; }
   h1{ font-size:54px; line-height:1.05; margin:0 0 14px 0; font-weight:800; color:var(--ink);
@@ -51,7 +52,7 @@ style: |
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:14px 24px; }
   .kv{ font-size:21px; line-height:1.3; }
   .kv b{ display:block; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:2px; font-weight:700; }
-  table{ border-collapse:separate; border-spacing:0; width:auto; max-width:100%; font-size:16px; margin:6px auto;
+  table{ display:inline-table; border-collapse:separate; border-spacing:0; width:auto; max-width:100%; font-size:16px; margin:6px auto;
     border-radius:8px; overflow:hidden; box-shadow:var(--shadow); }
   th{ background:#eef2f6; color:var(--ink); padding:7px 12px; text-align:center; font-size:12px;
     letter-spacing:.06em; text-transform:uppercase; font-weight:700; border-bottom:2px solid var(--line); }
@@ -135,6 +136,11 @@ full IaaS stack — lighter for 3 nodes, but the comparison informed our storage
 - 3 × Huawei RH2288E V2 (~2013) → SCS-verified K3s cluster.
 
 <div class="card green">openEduSuite: HFD Digital Sovereignty Ideas Competition — winner 2026-10-06.</div>
+
+<div class="center" style="display:flex; gap:24px; align-items:center; justify-content:center; margin:8px 0;">
+  <img src="img/openEduSuite-logo.svg" alt="openEduSuite logo" style="max-height:60px; border:none; box-shadow:none; background:transparent;">
+  <img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:120px;">
+</div>
 
 <div class="ws"><span class="tag">WS</span>Who runs “legacy hardware” in production themselves?</div>
 
@@ -395,6 +401,7 @@ Compliance numbers come on the next slide — don't preempt them here.
 <figcaption class="center">SCS KaaS compliance check (2026-08-23)</figcaption>
 </figure>
 
+<div class="center">
 | Standard | Test | Result |
 |---|---|---|
 | **SCS-0201** CNCF conformance | `cncf-k8s-conformance` (444/444 specs) | ✅ PASS |
@@ -403,6 +410,7 @@ Compliance numbers come on the next slide — don't preempt them here.
 | **SCS-0214** node distribution | manual (3 nodes, zones a/b/c) | ✅ PASS |
 | **SCS-0217** pod security | manual (8 NS baseline; 2 system NS privileged) | ✅ PASS |
 | **SCS-0219** KaaS networking | `kaas-networking-check` (37 NetworkPolicies) | ✅ PASS |
+</div>
 
 <div class="small center" style="font-size:14px; margin:4px 0 2px 0; color:var(--warn); font-weight:600">Open: OIDC as 2nd auth · Pod-Security on more NS · Loki/Trivy CI · Ceph at rest · GDPR clearance.</div>
 
@@ -444,6 +452,7 @@ Watch the time — 4 min. hard stop.
 
 ## The dimensions of openEduSuite
 
+<div class="center">
 | Dimension | Components |
 |---|---|
 | **Tenants — who** | edu · staff · students · sme · llm · predictive-agent |
@@ -451,6 +460,7 @@ Watch the time — 4 min. hard stop.
 | **Communication** | Postfix (.185) · Stalwart (.183) · DKIMpy (.184) · Matrix |
 | **Collaboration** | Nextcloud · XWiki · SOGo6 · OpenProject |
 | **Delivery** | Own Nix builds on GHCR → local Zot registry |
+</div>
 
 <!--
 Speaker note: The platform in five sorted dimensions: who (tenants), identity,
@@ -467,6 +477,7 @@ fully sovereign. Honestly call out opendesk-sme as Degraded.
 Method: **EU Cloud Sovereignty Framework** (official calculator, Jun 2026) —
 weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 criteria).
 
+<div class="center">
 | Objective | W | Score | SEAL |
 |---|---|---|---|
 | SOV-1 Strategic | 20 % | <span class="ok">**94 %**</span> | SEAL-4 |
@@ -477,6 +488,7 @@ weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 crit
 | SOV-7 Security & Compliance | 15 % | 64 % | SEAL-1 |
 | SOV-5 Supply Chain | 10 % | 50 % | SEAL-1 |
 | SOV-8 Environmental | 5 % | 19 % | SEAL-1 |
+</div>
 
 <div class="card warn" style="font-size:16px; margin:6px 0 4px 0">High score — low SEAL. SEAL is the <strong>weakest link</strong>: non-EU hardware
 (Huawei/Intel, SOV-5), no formal EAL certification (SOV-7), no PUE/emissions reporting (SOV-8).</div>
