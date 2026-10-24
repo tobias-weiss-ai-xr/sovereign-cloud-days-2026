@@ -538,7 +538,7 @@ self-assessment, not an official certification.
 ## Cluster maintenance in 4 steps
 
 <div class="svg-wrap">
-<svg viewBox="0 0 1100 200" width="100%">
+<svg viewBox="0 0 1100 200" width="100%" style="max-height:160px">
   <g font-size="15" font-weight="600" text-anchor="middle">
     <rect x="20" y="50" width="230" height="100" rx="8" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
     <text x="135" y="80" fill="#0b6e99" font-weight="700">1 · Observe</text>
@@ -564,8 +564,9 @@ self-assessment, not an official certification.
 </svg>
 </div>
 
-<div class="svg-wrap">
-<svg viewBox="0 0 560 180" width="100%" style="max-width:560px; margin:6px auto; display:block">
+<div style="display:flex; gap:12px; align-items:stretch; margin:6px 0">
+<div style="flex:1">
+<svg viewBox="0 0 560 180" width="100%" style="max-width:560px; max-height:140px; margin:0 auto; display:block">
   <!-- axes -->
   <line x1="40" y1="150" x2="540" y2="150" stroke="#5b6b7c" stroke-width="1.5"/>
   <line x1="40" y1="20" x2="40" y2="150" stroke="#5b6b7c" stroke-width="1.5"/>
@@ -605,10 +606,53 @@ self-assessment, not an official certification.
   </g>
 </svg>
 </div>
+<div style="flex:1">
+<svg viewBox="0 0 320 180" width="100%" style="max-width:320px; max-height:140px; margin:0 auto; display:block">
+  <!-- Markov state machine: OK -> Degraded -> Down -->
+  <defs>
+    <marker id="marr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6b7c"/>
+    </marker>
+  </defs>
+  <!-- states -->
+  <circle cx="60" cy="90" r="34" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2.5"/>
+  <text x="60" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#1a7f6b">OK</text>
+  <text x="60" y="102" text-anchor="middle" font-size="9" fill="#5b6b7c">healthy</text>
+
+  <circle cx="160" cy="90" r="38" fill="#fff6e8" stroke="#b3560e" stroke-width="2.5"/>
+  <text x="160" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="#b3560e">Degraded</text>
+  <text x="160" y="100" text-anchor="middle" font-size="9" fill="#5b6b7c">risk rising</text>
+
+  <circle cx="260" cy="90" r="34" fill="#fde8e8" stroke="#9a4a3a" stroke-width="2.5"/>
+  <text x="260" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#9a4a3a">Down</text>
+  <text x="260" y="102" text-anchor="middle" font-size="9" fill="#5b6b7c">outage</text>
+
+  <!-- transitions -->
+  <path d="M 94 80 Q 110 55, 122 72" fill="none" stroke="#5b6b7c" stroke-width="2" marker-end="url(#marr)"/>
+  <text x="108" y="52" text-anchor="middle" font-size="9" fill="#5b6b7c">predict</text>
+
+  <path d="M 198 80 Q 214 55, 226 72" fill="none" stroke="#5b6b7c" stroke-width="2" marker-end="url(#marr)"/>
+  <text x="212" y="52" text-anchor="middle" font-size="9" fill="#5b6b7c">degrade</text>
+
+  <!-- recovery arrows (curved below) -->
+  <path d="M 226 108 Q 214 135, 198 108" fill="none" stroke="#1a7f6b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#marr)"/>
+  <path d="M 122 108 Q 110 135, 94 108" fill="none" stroke="#1a7f6b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#marr)"/>
+
+  <!-- self-loops -->
+  <path d="M 60 56 C 40 30, 80 30, 60 56" fill="none" stroke="#1a7f6b" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <path d="M 160 52 C 135 20, 185 20, 160 52" fill="none" stroke="#b3560e" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <path d="M 260 56 C 240 30, 280 30, 260 56" fill="none" stroke="#9a4a3a" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+  <text x="160" y="170" text-anchor="middle" font-size="10" fill="#5b6b7c">Markov chain: next state from smoothed estimate</text>
+</svg>
+</div>
+</div>
+
+<div class="card" style="font-size:14px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. <strong>Markov chain:</strong> predicts the next health state (OK → degraded → down) from the smoothed state. Combined → risk score before the user notices.</div>
 
 <div class="card green" style="font-size:18px"><strong>predictive-agent v8.11-nix</strong> (own tenant): Risk scoring (Kalman + Markov) for 62 pods — alerts before users notice.</div>
 
-<div class="card" style="font-size:15px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. <strong>Markov chain:</strong> predicts the next health state (OK → degraded → down) from the smoothed state. Combined → risk score before the user notices.</div>
+
 
 <!--
 Speaker note: “Agentic” = tool-using, multi-step (observe → predict → alert → verify),
