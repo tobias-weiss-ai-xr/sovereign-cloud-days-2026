@@ -462,9 +462,11 @@ fully sovereign. Honestly call out opendesk-sme as Degraded.
 ## Cluster, login, agent trace
 
 <figure>
-<img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:320px">
+<img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:260px">
 <figcaption class="center">openEduSuite — bird's-eye view of the platform</figcaption>
 </figure>
+
+<div class="center" style="font-size:15px; margin:4px 0 6px 0; font-style:italic">Ihr kollaborativer Arbeitsplatz — Alle openEduSuite-Dienste an einem Ort. Single Sign-On mit Ihrem Universitätskonto – integrierte Werkzeuge für Lehre, Forschung und Zusammenarbeit.</div>
 
 - Dashboard: 3 nodes · Ceph HEALTH OK (8/8) · SCS board
 - Login via Keycloak/OIDC → agentic workflow
