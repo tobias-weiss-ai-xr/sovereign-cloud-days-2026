@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="987" height="610" viewBox="0 0 987 610">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06101f"/>
+      <stop offset="55%" stop-color="#0d1f3a"/>
+      <stop offset="100%" stop-color="#06101f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="62%" cy="58%" r="45%">
+      <stop offset="0%" stop-color="#0b6e99" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#1a7f6b" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#06101f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="spiral" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4a017"/>
+      <stop offset="50%" stop-color="#1a7f6b"/>
+      <stop offset="100%" stop-color="#0b6e99"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowf" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="987" height="610" fill="url(#bg)"/>
+  <rect width="987" height="610" fill="url(#glow)"/>
+
+  <!-- starfield -->
+  <g fill="#ffffff" opacity="0.5">
+    <circle cx="80" cy="60" r="1.2"/>
+    <circle cx="220" cy="40" r="0.8"/>
+    <circle cx="360" cy="90" r="1.4"/>
+    <circle cx="500" cy="50" r="1"/>
+    <circle cx="720" cy="70" r="1.3"/>
+    <circle cx="880" cy="110" r="0.9"/>
+    <circle cx="140" cy="180" r="0.7"/>
+    <circle cx="900" cy="200" r="1.1"/>
+    <circle cx="60" cy="320" r="0.9"/>
+    <circle cx="930" cy="420" r="1.2"/>
+    <circle cx="180" cy="500" r="0.8"/>
+    <circle cx="760" cy="540" r="1"/>
+    <circle cx="420" cy="560" r="0.9"/>
+    <circle cx="300" cy="300" r="0.6"/>
+    <circle cx="650" cy="260" r="0.7"/>
+  </g>
+
+  <!-- golden spiral (logarithmic) approximated as cubic beziers -->
+  <path d="M 60 90
+           C 200 90, 300 120, 380 200
+           S 520 360, 610 377
+           S 760 420, 820 520"
+        fill="none" stroke="url(#spiral)" stroke-width="3" stroke-linecap="round"
+        filter="url(#soft)" opacity="0.9"/>
+  <path d="M 60 90
+           C 200 90, 300 120, 380 200
+           S 520 360, 610 377
+           S 760 420, 820 520"
+        fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round"
+        opacity="0.35"/>
+
+  <!-- agent nodes along the spiral -->
+  <g filter="url(#glowf)">
+    <circle cx="200" cy="105" r="9" fill="#d4a017"/>
+    <circle cx="380" cy="200" r="11" fill="#1a7f6b"/>
+    <circle cx="610" cy="377" r="16" fill="#0b6e99"/>
+    <circle cx="820" cy="520" r="10" fill="#d4a017"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="1">
+    <circle cx="200" cy="105" r="16"/>
+    <circle cx="380" cy="200" r="19"/>
+    <circle cx="610" cy="377" r="26"/>
+    <circle cx="820" cy="520" r="18"/>
+  </g>
+
+  <!-- sovereign cloud (stylized cloud at focal) -->
+  <g transform="translate(520,300)" filter="url(#soft)">
+    <path d="M 60 90
+             C 40 90, 30 70, 50 60
+             C 55 40, 80 35, 100 45
+             C 120 30, 155 35, 165 60
+             C 190 60, 200 80, 190 95
+             C 200 110, 185 125, 160 120
+             C 150 135, 120 135, 105 125
+             C 85 135, 55 130, 50 115
+             C 30 115, 20 100, 60 90 Z"
+          fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+  </g>
+
+  <!-- shield (sovereignty) -->
+  <g transform="translate(560,330)" filter="url(#soft)">
+    <path d="M 40 0 L 80 15 L 80 55 C 80 80, 60 95, 40 105 C 20 95, 0 80, 0 55 L 0 15 Z"
+          fill="none" stroke="#d4a017" stroke-width="2.5"/>
+    <path d="M 20 40 L 35 55 L 60 30" fill="none" stroke="#1a7f6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- title text -->
+  <text x="60" y="500" font-family="Inter, sans-serif" font-size="46" font-weight="800" fill="#ffffff">
+    Agentic AI
+  </text>
+  <text x="60" y="555" font-family="Inter, sans-serif" font-size="46" font-weight="800" fill="#1a7f6b">
+    meets Sovereign Cloud
+  </text>
+  <text x="62" y="585" font-family="Inter, sans-serif" font-size="16" fill="#ffffff" opacity="0.7">
+    openEduSuite · SCS-verified · legacy bare-metal hardware
+  </text>
+
+  <!-- small footer tag -->
+  <text x="920" y="595" font-family="Inter, sans-serif" font-size="11" fill="#ffffff" opacity="0.4" text-anchor="end">
+    #SCD2026
+  </text>
+</svg>
