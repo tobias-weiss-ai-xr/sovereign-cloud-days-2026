@@ -260,46 +260,57 @@ Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference run
     </marker>
   </defs>
   <!-- LEFT: external-facing networks (Mgmt + FIP) -->
-  <rect x="30" y="30" width="200" height="50" rx="6" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="2"/>
-  <text x="130" y="52" text-anchor="middle" font-size="14" font-weight="700" fill="#5b6b7c">Mgmt</text>
-  <text x="130" y="70" text-anchor="middle" font-size="11" fill="#14202e">SSH · ens3f0 untagged</text>
-  <rect x="30" y="195" width="200" height="50" rx="6" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
-  <text x="130" y="217" text-anchor="middle" font-size="14" font-weight="700" fill="#b3560e">FIP</text>
-  <text x="130" y="235" text-anchor="middle" font-size="11" fill="#14202e">MetalLB L2 · external services</text>
-  <!-- Connection: Mgmt/FIP -> servers (firewall runs on the hosts) -->
-  <line x1="230" y1="55" x2="300" y2="57" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
-  <line x1="230" y1="220" x2="300" y2="222" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
-  <line x1="230" y1="55" x2="300" y2="139" stroke="#5b6b7c" stroke-width="1.5" stroke-dasharray="4 3"/>
-  <line x1="230" y1="220" x2="300" y2="139" stroke="#5b6b7c" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="30" y="30" width="180" height="45" rx="6" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="2"/>
+  <text x="120" y="50" text-anchor="middle" font-size="14" font-weight="700" fill="#5b6b7c">Mgmt</text>
+  <text x="120" y="66" text-anchor="middle" font-size="10" fill="#14202e">SSH · ens3f0 untagged</text>
+  <rect x="30" y="205" width="180" height="45" rx="6" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
+  <text x="120" y="225" text-anchor="middle" font-size="14" font-weight="700" fill="#b3560e">FIP</text>
+  <text x="120" y="241" text-anchor="middle" font-size="10" fill="#14202e">MetalLB L2 · external</text>
+  <!-- LEFT SWITCH (10 GbE) -->
+  <rect x="225" y="95" width="70" height="90" rx="6" fill="#e8eef3" stroke="#0b6e99" stroke-width="2"/>
+  <text x="260" y="130" text-anchor="middle" font-size="12" font-weight="700" fill="#0b6e99">Switch</text>
+  <text x="260" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#0b6e99">10 GbE</text>
+  <!-- Mgmt/FIP -> left switch -->
+  <line x1="210" y1="52" x2="225" y2="110" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="210" y1="227" x2="225" y2="170" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
   <!-- CENTER: 3 servers (vertical stack) -->
   <g font-size="14" font-weight="700" fill="#14202e">
-    <rect x="300" y="30" width="190" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="395" y="62" text-anchor="middle" fill="#0b6e99">clrz14-06</text>
-    <text x="395" y="78" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
-    <rect x="300" y="112" width="190" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="395" y="144" text-anchor="middle" fill="#0b6e99">clrz14-07</text>
-    <text x="395" y="160" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
-    <rect x="300" y="195" width="190" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="395" y="227" text-anchor="middle" fill="#0b6e99">clrz14-08</text>
-    <text x="395" y="243" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
+    <rect x="315" y="30" width="170" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="400" y="62" text-anchor="middle" fill="#0b6e99">clrz14-06</text>
+    <text x="400" y="78" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
+    <rect x="315" y="112" width="170" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="400" y="144" text-anchor="middle" fill="#0b6e99">clrz14-07</text>
+    <text x="400" y="160" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
+    <rect x="315" y="195" width="170" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+    <text x="400" y="227" text-anchor="middle" fill="#0b6e99">clrz14-08</text>
+    <text x="400" y="243" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
   </g>
-  <!-- firewall runs on each host (SCS-FIREWALL) -->
-  <!-- servers -> internal (right) -->
-  <line x1="490" y1="57" x2="520" y2="57" stroke="#5b6b7c" stroke-width="2"/>
-  <line x1="490" y1="139" x2="520" y2="139" stroke="#5b6b7c" stroke-width="2"/>
-  <line x1="490" y1="222" x2="520" y2="222" stroke="#5b6b7c" stroke-width="2"/>
+  <!-- left switch -> servers -->
+  <line x1="295" y1="110" x2="315" y2="57" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="295" y1="140" x2="315" y2="139" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="295" y1="170" x2="315" y2="222" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <!-- servers -> right switch -->
+  <line x1="485" y1="57" x2="505" y2="110" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="485" y1="139" x2="505" y2="140" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="485" y1="222" x2="505" y2="170" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <!-- RIGHT SWITCH (10 GbE) -->
+  <rect x="505" y="95" width="70" height="90" rx="6" fill="#e8eef3" stroke="#0b6e99" stroke-width="2"/>
+  <text x="540" y="130" text-anchor="middle" font-size="12" font-weight="700" fill="#0b6e99">Switch</text>
+  <text x="540" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#0b6e99">10 GbE</text>
+  <!-- right switch -> internal (Ceph) -->
+  <line x1="575" y1="140" x2="595" y2="140" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
   <!-- RIGHT: internal network (Ceph only) -->
-  <rect x="520" y="20" width="450" height="240" rx="6" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
-  <text x="745" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#1a7f6b">Internal — Ceph only</text>
-  <text x="745" y="80" text-anchor="middle" font-size="12" fill="#14202e">198.51.100.0/18 · .11/.12/.13 · ens6f0</text>
-  <text x="745" y="100" text-anchor="middle" font-size="12" fill="#14202e">Ceph cluster traffic · replication · heartbeats</text>
-  <text x="745" y="125" text-anchor="middle" font-size="12" fill="#14202e">two physically separated switches (internal / external)</text>
-  <text x="745" y="150" text-anchor="middle" font-size="12" fill="#14202e">iBMC out-of-band</text>
-  <text x="745" y="245" text-anchor="middle" font-size="11" fill="#5b6b7c">not reachable from external · no K3s pods on this net</text>
+  <rect x="595" y="20" width="375" height="240" rx="6" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
+  <text x="782" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#1a7f6b">Internal — Ceph only</text>
+  <text x="782" y="80" text-anchor="middle" font-size="12" fill="#14202e">198.51.100.0/18 · .11/.12/.13 · ens6f0</text>
+  <text x="782" y="100" text-anchor="middle" font-size="12" fill="#14202e">Ceph cluster traffic · replication · heartbeats</text>
+  <text x="782" y="125" text-anchor="middle" font-size="12" fill="#14202e">two physically separated switches (internal / external)</text>
+  <text x="782" y="150" text-anchor="middle" font-size="12" fill="#14202e">iBMC out-of-band</text>
+  <text x="782" y="245" text-anchor="middle" font-size="11" fill="#5b6b7c">not reachable from external · no K3s pods on this net</text>
 </svg>
 </div>
 
-<div class="small center">Left: Mgmt + FIP (external) → 3 nodes (SCS-FIREWALL on each) → Right: Internal (Ceph only) · two physically separated switches · iBMC OOB</div>
+<div class="small center">Left: Mgmt + FIP (external) → Switch 10G → 3 nodes (SCS-FIREWALL) → Switch 10G → Right: Internal (Ceph only) · 2 phys. switches · iBMC OOB</div>
 
 <!--
 Speaker note: Three networks on 2× 10 GbE. Left: Mgmt (SSH) + FIP (MetalLB L2, external)
