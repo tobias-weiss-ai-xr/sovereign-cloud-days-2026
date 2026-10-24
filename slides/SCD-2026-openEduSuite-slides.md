@@ -435,7 +435,10 @@ yet cleared for personal data.
 
 ## The dimensions of openEduSuite
 
-<div class="center" style="margin:4px 0 8px 0"><img src="img/hero-teaser.svg" alt="openEduSuite teaser" style="max-height:180px; vertical-align:middle; margin-right:10px"><a href="https://openedusuite.org" style="font-size:18px; font-weight:600">openedusuite.org</a></div>
+<div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin:4px 0 8px 0">
+  <div style="display:flex; align-items:center; gap:10px"><img src="img/openEduSuite-icon.svg" alt="openEduSuite" style="max-height:48px"><a href="https://openedusuite.org" style="font-size:18px; font-weight:600">openedusuite.org</a></div>
+  <img src="img/hero-teaser.svg" alt="openEduSuite teaser" style="max-height:150px">
+</div>
 
 | Dimension | Components |
 |---|---|
