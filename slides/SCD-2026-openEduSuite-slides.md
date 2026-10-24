@@ -438,7 +438,7 @@ yet cleared for personal data.
 | **Communication** | Postfix (.185) · Stalwart (.183) · DKIMpy (.184) · Matrix |
 | **Collaboration** | Nextcloud · XWiki · SOGo6 · OpenProject · Typst · Toss |
 | **Workflows** | Dify · n8n · Ewoks |
-| **Delivery** | Own Nix builds on GHCR → local Zot registry |
+| **Delivery** | Own Nix builds on GHCR → local Zot registry · ArgoCD |
 
 <!--
 Speaker note: The platform in five sorted dimensions: who (tenants), identity,
