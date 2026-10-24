@@ -274,25 +274,32 @@ rate-limited, switch via /models. Share with a neighbor if you have no laptop. C
 
 ---
 
-<div class="kicker">Cluster · Hardware · 3 min</div>
+<div class="kicker">Quality · Spec-driven · 3 min</div>
 
-## 3 × Huawei RH2288E V2 — no GPU
+## Spec → Contract → Test pyramid
 
-<div class="grid2">
-  <div class="kv"><b>CPU</b>2× Xeon E5-2600 v2 (Ivy Bridge-EP) · 6–12 cores</div>
-  <div class="kv"><b>RAM</b>24× DDR3 ECC RDIMM · max 768 GB</div>
-  <div class="kv"><b>Storage</b>6× 512 GB SSD · Ceph 8 OSDs · Repl. 3</div>
-  <div class="kv"><b>Network</b>2× Intel X540-AT2 10 GbE</div>
+<div class="svg-wrap">
+<svg viewBox="0 0 600 320" width="60%" style="max-height:260px">
+  <!-- pyramid: 3 layers, top small, bottom wide -->
+  <polygon points="300,20 120,120 480,120" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
+  <text x="300" y="80" text-anchor="middle" font-size="16" font-weight="700" fill="#0b6e99">Spec (few)</text>
+  <text x="300" y="100" text-anchor="middle" font-size="12" fill="#14202e">via openspec</text>
+  <polygon points="120,125 480,125 520,225 80,225" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="2"/>
+  <text x="300" y="180" text-anchor="middle" font-size="16" font-weight="700" fill="#1a7f6b">Contracts (many)</text>
+  <polygon points="80,230 520,230 560,300 40,300" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
+  <text x="300" y="270" text-anchor="middle" font-size="16" font-weight="700" fill="#b3560e">Tests (many · many)</text>
+</svg>
 </div>
 
-<figure>
-<img src="img/scs-imana-hw.png" alt="iBMC iMana hardware view">
-<figcaption class="center">iBMC iMana — hardware view (host1/07/08)</figcaption>
-</figure>
+<div class="kv" style="font-size:18px"><b>Spec</b> (few) — the single source of truth, written with openspec.</div>
+<div class="kv" style="font-size:18px"><b>Contracts</b> (many) — derived from the spec, agreed between producer and consumer.</div>
+<div class="kv" style="font-size:18px"><b>Tests</b> (many · many) — fast, cheap, run on every change; the broad base.</div>
 
 <!--
-Speaker note: Rack: 8 servers, host1 (master) + host2/host3 (worker) in use. ~13 years old.
-Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference runs on CPU.
+Speaker note: The pyramid keeps the expensive, slow things (spec review) at the top and the
+cheap, fast things (tests) at the base. Spec via openspec → contracts → tests. Few specs,
+many contracts, many-many tests. Inverts the usual “write tests first” reflex: agree the spec
+and contract first, then let tests enforce them.
 -->
 
 ---
