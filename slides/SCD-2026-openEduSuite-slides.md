@@ -86,6 +86,36 @@ openEduSuite = HFD award winner 2026. Agenda: motivation → hands-on opencode �
 
 ---
 
+<div class="kicker">Context · project comparison</div>
+
+## Yaook vs. OSISM — two paths to sovereign OpenStack
+
+<div class="grid2">
+  <div class="card">
+    <strong>Yaook</strong> · <span class="small">yaook.cloud</span><br>
+    OpenStack <em>IN</em> Kubernetes (CRDs)<br>
+    ~12 core services · kubectl + yaookctl<br>
+    K8s-native, declarative, rolling releases<br>
+    Metal Controller + Netbox · CUE validation
+  </div>
+  <div class="card green">
+    <strong>OSISM</strong> · <span class="small">osism.tech</span><br>
+    OpenStack <em>ALONGSIDE</em> Kubernetes (Ansible)<br>
+    ~25 services · Web UI + Manager CLI (38 cmds)<br>
+    Full ops suite · 15+ security/monitoring tools<br>
+    Metalbox + Ironic + SONIC · CUE (adopted from Yaook)
+  </div>
+</div>
+
+<div class="small center">SCS: OSISM is the reference implementation; Yaook is an SCS member. Both Apache 2.0 · European.</div>
+
+<!--
+Speaker note: We compared both for openEduSuite. Picked bare-metal K3s instead of either
+full IaaS stack — lighter for 3 nodes, but the comparison informed our storage/network choices.
+-->
+
+---
+
 <div class="kicker">Motivation · 3 min</div>
 
 ## Legacy hardware isn't junk
