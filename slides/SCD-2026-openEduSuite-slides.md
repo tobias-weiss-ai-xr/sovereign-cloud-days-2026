@@ -504,10 +504,31 @@ weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 crit
 <div class="card warn" style="font-size:14px; margin:4px 0 2px 0">High score — low SEAL (weakest link): non-EU hardware (Huawei/Intel) · no EAL cert (SOV-7) · no PUE/CSRD reporting (SOV-8). Levers: EU hardware provenance · EAL cert · PUE reporting.</div>
 
 <!--
-Speaker note: This is a self-assessment against the EU framework, not an official certification.
-Honest framing on purpose: the reused Huawei/Intel hardware caps the SEAL at 1 despite a 73.5%
-score — strategy/ops/tech are strong, the supply chain and energy reporting are the drags.
-Re-run: sovereignity-score-self-assessment/self-assessment-score.js (48 criteria, mapped in EU-sovereignty-assessment.md).
+Speaker note (detailed): Self-assessment against the EU Cloud Sovereignty Framework (official
+calculator, Jun 2026) — 48 criteria, weighted Sovereignty Score + SEAL level (weakest link).
+
+Walk the table top-down (strongest first):
+- SOV-1 Strategic 94% / SEAL-4: vision, roadmap, governance, stakeholder alignment are in place.
+- SOV-4 Operational 83% / SEAL-3: runbooks, monitoring, incident response, change mgmt.
+- SOV-6 Technology 80% / SEAL-3: open standards, portability, interoperability, no lock-in.
+- SOV-3 Data & AI 75% / SEAL-1: data residency, encryption, AI transparency — capped by
+  non-EU model provenance and the still-pending GDPR clearance for the cluster.
+- SOV-2 Legal & Jurisdictional 71% / SEAL-1: EU entity, contracts, jurisdiction — capped by
+  third-country components (Huawei/Intel) and the absence of an EU-only supply chain.
+- SOV-7 Security & Compliance 64% / SEAL-1: baseline + network policies, but no EAL
+  certification and no formal assurance yet.
+- SOV-5 Supply Chain 50% / SEAL-1: reused 13-year-old Huawei/Intel hardware, no EU
+  provenance, no second source.
+- SOV-8 Environmental 19% / SEAL-1: no PUE measurement, no CSRD reporting, no energy data.
+
+Key message: a high weighted score (73.5%) does NOT mean high sovereignty. SEAL is the
+weakest link across all 8 objectives — one weak objective drags the whole level down to SEAL-1.
+This is the honest framing for public authorities and universities: name the gaps, then show
+the levers (EU hardware provenance, EAL certification, PUE/CSRD reporting).
+
+Numbers come from sovereignity-score-self-assessment/self-assessment-score.js (48 criteria,
+mapped in EU-sovereignty-assessment.md). Re-run after any change to recompute. Note this is a
+self-assessment, not an official certification.
 -->
 
 ---
