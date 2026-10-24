@@ -86,7 +86,7 @@ style: |
 <div class="meta">Sun, 25.10.2026 · 11:15 · 60 min incl. Q&A<br>
 <span>Tobias Weiß</span></div>
 
-![w:780](img/hero-teaser.svg)
+![w:780](img/hero-agentic-scs.svg)
 
 <!--
 Speaker note: Welcome. Thesis: a sovereign, AI-capable setup on written-off iron.
@@ -435,7 +435,7 @@ yet cleared for personal data.
 
 ## The dimensions of openEduSuite
 
-<div class="center" style="margin:4px 0 8px 0"><img src="img/openEduSuite-icon.svg" alt="openEduSuite" style="max-height:48px; vertical-align:middle; margin-right:10px"><a href="https://openedusuite.org" style="font-size:18px; font-weight:600">openedusuite.org</a></div>
+<div class="center" style="margin:4px 0 8px 0"><img src="img/hero-teaser.svg" alt="openEduSuite teaser" style="max-height:180px; vertical-align:middle; margin-right:10px"><a href="https://openedusuite.org" style="font-size:18px; font-weight:600">openedusuite.org</a></div>
 
 | Dimension | Components |
 |---|---|
