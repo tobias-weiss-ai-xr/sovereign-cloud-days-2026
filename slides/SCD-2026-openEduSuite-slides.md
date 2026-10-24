@@ -137,11 +137,14 @@ full IaaS stack — lighter for 3 nodes, but the comparison informed our storage
 
 <div class="card green">openEduSuite: HFD Digital Sovereignty Ideas Competition — winner 2026-10-06.</div>
 
-<div class="center" style="display:flex; gap:24px; align-items:center; justify-content:center; margin:8px 0;">
-  <img src="img/openEduSuite-icon.svg" alt="openEduSuite icon" style="max-height:80px; border:none; box-shadow:none; background:transparent;">
+<div style="display:flex; gap:24px; align-items:center; margin:8px 0;">
+  <img src="img/openEduSuite-icon.svg" alt="openEduSuite icon" style="max-height:80px; border:none; box-shadow:none; background:transparent; flex:0 0 auto;">
+  <ul style="margin:0; font-size:18px; line-height:1.4;">
+    <li>Whole sovereign workplace — identity, mail, collaboration, delivery</li>
+    <li>Runs on written-off iron (3 × Huawei RH2288E V2)</li>
+    <li>Verified against SCS (6/6 KaaS standards PASS)</li>
+  </ul>
 </div>
-
-<div class="small center">openEduSuite runs the whole sovereign workplace — identity, mail, collaboration, delivery — on written-off iron, verified against SCS.</div>
 
 <div class="ws"><span class="tag">WS</span>Who runs “legacy hardware” in production themselves?</div>
 
