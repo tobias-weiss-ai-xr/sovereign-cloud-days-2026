@@ -255,25 +255,6 @@ append `<IP> opencode.ai` to /etc/hosts (verified 19 Oct 2026: 172.65.90.20).
 
 ---
 
-<div class="kicker">Hands-on · Prompt ideas · 6 min</div>
-
-## Starter prompts to try
-
-- “Explain what SCS (Sovereign Cloud Stack) is in 3 sentences.”
-- “Write a default-deny NetworkPolicy YAML for a namespace.”
-- “Show a Kubernetes Pod manifest with a PVC on a storage class.”
-- “My local Ollama model is slow — give 3 debugging steps.”
-- “Outline: user question → retrieval → local LLM → answer (RAG flow).”
-
-<div class="ws"><span class="tag">WS</span>Who has opencode running in 5 min? → walk around, help.</div>
-
-<!--
-Speaker note: The heart of the interactive part. 7 min for your own prompts. If a model is
-rate-limited, switch via /models. Share with a neighbor if you have no laptop. Collect questions for Q&A.
--->
-
----
-
 <div class="kicker">Quality · Spec-driven · 3 min</div>
 
 ## Spec → Contract → Test pyramid
@@ -302,6 +283,27 @@ many contracts, many-many tests. Inverts the usual “write tests first” refle
 and contract first, then let tests enforce them.
 -->
 
+---
+<div class="kicker">Cluster · Hardware · 3 min</div>
+
+## 3 × Huawei RH2288E V2 — no GPU
+
+<div class="grid2">
+  <div class="kv"><b>CPU</b>2× Xeon E5-2600 v2 (Ivy Bridge-EP) · 6–12 cores</div>
+  <div class="kv"><b>RAM</b>24× DDR3 ECC RDIMM · max 768 GB</div>
+  <div class="kv"><b>Storage</b>6× 512 GB SSD · Ceph 8 OSDs · Repl. 3</div>
+  <div class="kv"><b>Network</b>2× Intel X540-AT2 10 GbE</div>
+</div>
+
+<figure>
+<img src="img/scs-imana-hw.png" alt="iBMC iMana hardware view">
+<figcaption class="center">iBMC iMana — hardware view (host1/host2/host3)</figcaption>
+</figure>
+
+<!--
+Speaker note: Rack: 8 servers, host1 (master) + host2/host3 (worker) in use. ~13 years old.
+Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference runs on CPU.
+-->
 ---
 
 <div class="kicker">Cluster · Network · 3 min</div>
