@@ -408,11 +408,6 @@ Compliance numbers come on the next slide — don't preempt them here.
 
 ## 6/6 KaaS standards PASS — measurable
 
-<figure>
-<img src="img/scs-compliance-check.png" alt="SCS KaaS compliance report" style="max-height:80px">
-<figcaption class="center">SCS KaaS compliance check (2026-08-23)</figcaption>
-</figure>
-
 | Standard | Test | Result |
 |---|---|---|
 | **SCS-0201** CNCF conformance | `cncf-k8s-conformance` (444/444 specs) | ✅ PASS |
