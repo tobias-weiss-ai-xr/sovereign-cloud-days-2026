@@ -321,7 +321,7 @@ Compliance numbers come on the next slide — don't preempt them here.
 ## 6/6 KaaS standards PASS — measurable
 
 <figure>
-<img src="img/scs-compliance-check.png" alt="SCS KaaS compliance report" style="max-height:110px">
+<img src="img/scs-compliance-check.png" alt="SCS KaaS compliance report" style="max-height:80px">
 <figcaption class="center">SCS KaaS compliance check (2026-08-23)</figcaption>
 </figure>
 
@@ -334,7 +334,7 @@ Compliance numbers come on the next slide — don't preempt them here.
 | **SCS-0217** pod security | manual (8 NS baseline; 2 system NS privileged) | ✅ PASS |
 | **SCS-0219** KaaS networking | `kaas-networking-check` (37 NetworkPolicies) | ✅ PASS |
 
-<div class="card warn" style="font-size:15px; margin:4px 0 2px 0">Open: OIDC as 2nd auth · Pod-Security on more NS · Loki/Trivy CI · Ceph at rest · GDPR clearance.</div>
+<div class="small center" style="font-size:14px; margin:4px 0 2px 0; color:var(--warn); font-weight:600">Open: OIDC as 2nd auth · Pod-Security on more NS · Loki/Trivy CI · Ceph at rest · GDPR clearance.</div>
 
 
 
