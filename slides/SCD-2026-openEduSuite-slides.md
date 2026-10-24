@@ -51,9 +51,9 @@ style: |
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:14px 24px; }
   .kv{ font-size:21px; line-height:1.3; }
   .kv b{ display:block; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:2px; font-weight:700; }
-  table{ display:table; border-collapse:separate; border-spacing:0; width:100%; font-size:14px; margin:4px auto;
+  table{ display:table; border-collapse:separate; border-spacing:0; width:100%; font-size:15px; margin:4px auto;
     border-radius:8px; overflow:hidden; box-shadow:var(--shadow); }
-  th{ background:#eef2f6; color:var(--ink); padding:3px 8px; text-align:center; font-size:11px;
+  th{ background:#eef2f6; color:var(--ink); padding:3px 8px; text-align:center; font-size:12px;
     letter-spacing:.06em; text-transform:uppercase; font-weight:700; border-bottom:2px solid var(--line); }
   td{ padding:3px 8px; border-bottom:1px solid var(--line); vertical-align:middle; background:#fff;
     text-align:center; }
