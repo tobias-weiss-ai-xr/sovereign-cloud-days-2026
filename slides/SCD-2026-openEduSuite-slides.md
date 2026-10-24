@@ -436,7 +436,7 @@ yet cleared for personal data.
 | **Tenants — who** | edu · staff · students · sme · llm · predictive-agent |
 | **Identity & access** | Keycloak / OIDC · OpenLDAP |
 | **Communication** | Postfix · Stalwart · DKIMpy · Matrix |
-| **Collaboration** | Nextcloud · XWiki · SOGo6 · OpenProject · Typst · Toss |
+| **Collaboration** | Nextcloud · XWiki · SOGo · OpenProject · Typst · Toss |
 | **Workflows** | Dify · n8n · Ewoks |
 | **Delivery** | Own Nix builds on GHCR → local Zot registry · ArgoCD |
 
