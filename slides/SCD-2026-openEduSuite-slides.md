@@ -139,8 +139,9 @@ full IaaS stack — lighter for 3 nodes, but the comparison informed our storage
 
 <div class="center" style="display:flex; gap:24px; align-items:center; justify-content:center; margin:8px 0;">
   <img src="img/openEduSuite-icon.svg" alt="openEduSuite icon" style="max-height:80px; border:none; box-shadow:none; background:transparent;">
-  <img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:120px;">
 </div>
+
+<div class="small center">openEduSuite runs the whole sovereign workplace — identity, mail, collaboration, delivery — on written-off iron, verified against SCS.</div>
 
 <div class="ws"><span class="tag">WS</span>Who runs “legacy hardware” in production themselves?</div>
 
