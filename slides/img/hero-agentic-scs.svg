@@ -34,9 +34,9 @@
   <rect x="610" y="35" width="250" height="130" rx="12" fill="#f7f9fb" stroke="#0b6e99" stroke-width="2"/>
   <text x="735" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#0b6e99">Loop</text>
   <text x="735" y="90" text-anchor="middle" font-size="14" fill="#5b6b7c">the work cycle</text>
-  <g transform="translate(0,16)">
-  <path d="M 715 108 A 22 14 0 1 1 755 108" fill="none" stroke="#b3560e" stroke-width="2.5" marker-end="url(#scs-ar)"/>
-  <path d="M 755 120 A 22 14 0 1 0 715 120" fill="none" stroke="#b3560e" stroke-width="2.5" marker-end="url(#scs-ar)"/>
+  <g transform="translate(0,0)">
+  <path d="M 713 126 A 22 22 0 0 0 757 126" fill="none" stroke="#b3560e" stroke-width="2.5" marker-end="url(#scs-ar)"/>
+  <path d="M 757 126 A 22 22 0 0 0 713 126" fill="none" stroke="#b3560e" stroke-width="2.5" marker-end="url(#scs-ar)"/>
   </g>
   <text x="735" y="148" text-anchor="middle" font-size="13" fill="#5b6b7c">plan · act · check · correct</text>
 
