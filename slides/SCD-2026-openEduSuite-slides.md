@@ -643,12 +643,11 @@ self-assessment, not an official certification.
   <path d="M 160 52 C 135 20, 185 20, 160 52" fill="none" stroke="#b3560e" stroke-width="1.2" stroke-dasharray="3,2"/>
   <path d="M 260 56 C 240 30, 280 30, 260 56" fill="none" stroke="#9a4a3a" stroke-width="1.2" stroke-dasharray="3,2"/>
 
-  <text x="160" y="170" text-anchor="middle" font-size="10" fill="#5b6b7c">Markov chain: next state from smoothed estimate</text>
 </svg>
 </div>
 </div>
 
-<div class="card" style="font-size:14px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. Combined → risk score before the user notices.</div>
+<div class="card" style="font-size:14px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. <strong>Markov chain:</strong> predicts the next health state (OK → degraded → down) from the smoothed state. Combined → risk score before the user notices.</div>
 
 <div class="card green" style="font-size:18px"><strong>predictive-agent v8.11-nix</strong> (own tenant): Risk scoring (Kalman + Markov) for 62 pods — alerts before users notice.</div>
 

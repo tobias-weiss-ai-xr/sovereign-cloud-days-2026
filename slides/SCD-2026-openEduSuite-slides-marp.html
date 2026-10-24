@@ -1547,11 +1547,10 @@ section.title{ justify-content:center; }
   <path d="M 60 56 C 40 30, 80 30, 60 56" fill="none" stroke="#1a7f6b" stroke-width="1.2" stroke-dasharray="3,2" />
   <path d="M 160 52 C 135 20, 185 20, 160 52" fill="none" stroke="#b3560e" stroke-width="1.2" stroke-dasharray="3,2" />
   <path d="M 260 56 C 240 30, 280 30, 260 56" fill="none" stroke="#9a4a3a" stroke-width="1.2" stroke-dasharray="3,2" />
-<p><text x="160" y="170" text-anchor="middle" font-size="10" fill="#5b6b7c">Markov chain: next state from smoothed estimate</text><br />
-</svg></p>
+</svg>
 </div>
 </div>
-<div class="card" style="font-size:14px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. Combined → risk score before the user notices.</div>
+<div class="card" style="font-size:14px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. <strong>Markov chain:</strong> predicts the next health state (OK → degraded → down) from the smoothed state. Combined → risk score before the user notices.</div>
 <div class="card green" style="font-size:18px"><strong>predictive-agent v8.11-nix</strong> (own tenant): Risk scoring (Kalman + Markov) for 62 pods — alerts before users notice.</div>
 <footer>#SCD2026 Agentic AI meets Sovereign Cloud <a href="https://github.com/tobias-weiss-ai-xr/sovereign-cloud-days-2026">https://github.com/tobias-weiss-ai-xr/sovereign-cloud-days-2026</a></footer>
 </section>
