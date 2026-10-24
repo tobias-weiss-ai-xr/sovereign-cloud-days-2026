@@ -434,8 +434,8 @@ yet cleared for personal data.
 | Dimension | Components |
 |---|---|
 | **Tenants — who** | edu · staff · students · sme · llm · predictive-agent |
-| **Identity & access** | Keycloak / OIDC · OpenLDAP (.186) |
-| **Communication** | Postfix (.185) · Stalwart (.183) · DKIMpy (.184) · Matrix |
+| **Identity & access** | Keycloak / OIDC · OpenLDAP |
+| **Communication** | Postfix · Stalwart · DKIMpy · Matrix |
 | **Collaboration** | Nextcloud · XWiki · SOGo6 · OpenProject · Typst · Toss |
 | **Workflows** | Dify · n8n · Ewoks |
 | **Delivery** | Own Nix builds on GHCR → local Zot registry · ArgoCD |
