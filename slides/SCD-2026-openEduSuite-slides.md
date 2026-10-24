@@ -427,6 +427,26 @@ yet cleared for personal data.
 
 ---
 
+<div class="kicker">openEduSuite · Workload · 4 min</div>
+
+## The dimensions of openEduSuite
+
+| Dimension | Components |
+|---|---|
+| **Tenants — who** | edu · staff · students · sme · llm · predictive-agent |
+| **Identity & access** | Keycloak / OIDC · OpenLDAP (.186) |
+| **Communication** | Postfix (.185) · Stalwart (.183) · DKIMpy (.184) · Matrix |
+| **Collaboration** | Nextcloud · XWiki · SOGo6 · OpenProject |
+| **Delivery** | Own Nix builds on GHCR → local Zot registry |
+
+<!--
+Speaker note: The platform in five sorted dimensions: who (tenants), identity,
+communication, collaboration, delivery. Auth via Keycloak/OIDC. Email stack
+fully sovereign. Honestly call out opendesk-sme as Degraded.
+-->
+
+---
+
 <div class="kicker">openEduSuite · Live demo · 4 min</div>
 
 ## Cluster, login, agent trace
@@ -445,26 +465,6 @@ yet cleared for personal data.
 Speaker note: Test beforehand: tunnel/login, Ceph status, open-webui.
 If it stalls: calmly switch to the screenshots and the stack diagram — no screencast exists.
 Watch the time — 4 min. hard stop.
--->
-
----
-
-<div class="kicker">openEduSuite · Workload · 4 min</div>
-
-## The dimensions of openEduSuite
-
-| Dimension | Components |
-|---|---|
-| **Tenants — who** | edu · staff · students · sme · llm · predictive-agent |
-| **Identity & access** | Keycloak / OIDC · OpenLDAP (.186) |
-| **Communication** | Postfix (.185) · Stalwart (.183) · DKIMpy (.184) · Matrix |
-| **Collaboration** | Nextcloud · XWiki · SOGo6 · OpenProject |
-| **Delivery** | Own Nix builds on GHCR → local Zot registry |
-
-<!--
-Speaker note: The platform in five sorted dimensions: who (tenants), identity,
-communication, collaboration, delivery. Auth via Keycloak/OIDC. Email stack
-fully sovereign. Honestly call out opendesk-sme as Degraded.
 -->
 
 ---
