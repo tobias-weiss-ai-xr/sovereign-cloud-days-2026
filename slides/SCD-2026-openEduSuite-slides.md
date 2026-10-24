@@ -84,7 +84,7 @@ style: |
 <div class="sub">openEduSuite on SCS-verified legacy bare-metal hardware</div>
 
 <div class="meta">Sun, 25.10.2026 · 11:15 · 60 min incl. Q&A<br>
-<span>Tobias Weiß · HRZ Philipps-Universität Marburg</span></div>
+<span>Tobias Weiß</span></div>
 
 ![w:780](img/hero-agentic-scs.svg)
 
