@@ -4,6 +4,7 @@ size: 16:9
 paginate: true
 html: true
 theme: default
+footer: '#SCD2026 Agentic AI meets Sovereign Cloud https://github.com/tobias-weiss-ai-xr/sovereign-cloud-days-2026'
 style: |
   :root{
     --bg:#e9edf1; --slide:#f7f9fb; --ink:#14202e; --muted:#5b6b7c;
@@ -15,6 +16,7 @@ style: |
     font-size:22px; padding:48px 64px;
   }
   section::after{ color:#9aa6b3; font-size:14px; font-weight:700; }
+  footer{ font-size:12px; color:#9aa6b3; }
   h1{ font-size:52px; line-height:1.1; margin:0 0 12px 0; font-weight:800; color:var(--ink); }
   h2{ font-size:34px; line-height:1.15; margin:0 0 20px 0; font-weight:750; color:var(--ink); }
   p{ margin:0 0 12px 0; line-height:1.32; }
@@ -37,8 +39,9 @@ style: |
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:16px 30px; }
   .kv{ font-size:21px; line-height:1.3; }
   .kv b{ display:block; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:2px; }
-  table{ border-collapse:collapse; width:100%; font-size:18px; margin:8px 0; }
-  th{ background:#0f1c2a; color:#fff; padding:7px 12px; text-align:left; font-size:14px; letter-spacing:.05em; text-transform:uppercase; }
+  table{ border-collapse:collapse; width:100%; font-size:16px; margin:6px 0; }
+  th{ background:#0f1c2a; color:#fff; padding:5px 10px; text-align:left; font-size:13px; letter-spacing:.05em; text-transform:uppercase; }
+  td{ padding:5px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
   td{ padding:7px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
   tr:nth-child(even) td{ background:#f0f4f7; }
   .seal{ font-weight:700; color:var(--warn); }
@@ -124,6 +127,9 @@ The HFD prize as a signal of trust, not self-congratulation.
 </svg>
 </div>
 
+<div class="card warn" style="font-size:16px; margin:8px 0 6px 0">
+<strong>What broke in OVN 25.03.1:</strong> gateway redirect bug · floating IPs (FIPs) unreachable · DHCP leases lost · OVN northd/southbound DB + OVS bridges on every node · “reboot destroys the fix” — every node restart re-triggered it.
+</div>
 <div class="small center">The VM/SDN abstraction was too heavy for 3 nodes — bare metal is leaner.</div>
 
 <!--
@@ -235,8 +241,6 @@ rate-limited, switch via /models. Share with a neighbor if you have no laptop. C
 <figcaption class="center">iBMC iMana — hardware view (clrz14-06/07/08)</figcaption>
 </figure>
 
-<div class="small center">CPU model / RAM size: readable only via iBMC/BIOS → [verify]</div>
-
 <!--
 Speaker note: Rack clrz14: 8 servers, 06 (master) + 07/08 (worker) in use. ~13 years old.
 Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference runs on CPU.
@@ -317,7 +321,7 @@ Compliance numbers come on the next slide — don't preempt them here.
 ## 6/6 KaaS standards PASS — measurable
 
 <figure>
-<img src="img/scs-compliance-check.png" alt="SCS KaaS compliance report" style="max-height:300px">
+<img src="img/scs-compliance-check.png" alt="SCS KaaS compliance report" style="max-height:110px">
 <figcaption class="center">SCS KaaS compliance check (2026-08-23)</figcaption>
 </figure>
 
@@ -330,9 +334,9 @@ Compliance numbers come on the next slide — don't preempt them here.
 | **SCS-0217** pod security | manual (8 NS baseline; 2 system NS privileged) | ✅ PASS |
 | **SCS-0219** KaaS networking | `kaas-networking-check` (37 NetworkPolicies) | ✅ PASS |
 
-<div class="card warn">Open: OIDC as 2nd auth · Pod-Security on more NS · Loki/Trivy CI · Ceph at rest · GDPR clearance.</div>
+<div class="card warn" style="font-size:15px; margin:4px 0 2px 0">Open: OIDC as 2nd auth · Pod-Security on more NS · Loki/Trivy CI · Ceph at rest · GDPR clearance.</div>
 
-<div class="small center">Tests: SCS test suite + CNCF conformance image registry.k8s.io/conformance:v1.36.3 (7482 s, 0 failed).</div>
+
 
 <!--
 Speaker note: “Verified” = measurable tests, no bullshit bingo. But name the open gaps clearly
@@ -360,10 +364,10 @@ weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 crit
 | SOV-5 Supply Chain | 10 % | 50 % | SEAL-1 |
 | SOV-8 Environmental | 5 % | 19 % | SEAL-1 |
 
-<div class="card warn">High score — low SEAL. SEAL is the <strong>weakest link</strong>: non-EU hardware
+<div class="card warn" style="font-size:16px; margin:6px 0 4px 0">High score — low SEAL. SEAL is the <strong>weakest link</strong>: non-EU hardware
 (Huawei/Intel, SOV-5), no formal EAL certification (SOV-7), no PUE/emissions reporting (SOV-8).</div>
 
-<div class="card green">Levers to SEAL ≥ 3: EU-fabricated platform / hardware provenance · formal EAL cert · PUE &amp; CSRD reporting.</div>
+<div class="card green" style="font-size:16px; margin:0 0 4px 0">Levers to SEAL ≥ 3: EU-fabricated platform / hardware provenance · formal EAL cert · PUE &amp; CSRD reporting.</div>
 
 <!--
 Speaker note: This is a self-assessment against the EU framework, not an official certification.
@@ -462,8 +466,8 @@ on the demo slide. Version [verify].
 ## Cluster, login, agent trace
 
 <figure>
-<img src="img/scs-ibmc-desktop-kvm.png" alt="iBMC KVM console (live)" style="max-height:320px">
-<figcaption class="center">Live iBMC KVM console — server console via Pale Moon + Java Web Start</figcaption>
+<img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:320px">
+<figcaption class="center">openEduSuite — bird's-eye view of the platform</figcaption>
 </figure>
 
 - Dashboard: 3 nodes · Ceph HEALTH OK (8/8) · SCS board

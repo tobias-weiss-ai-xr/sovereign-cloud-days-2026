@@ -9,8 +9,10 @@
   <rect x="30" y="35" width="250" height="130" rx="12" fill="#f7f9fb" stroke="#0b6e99" stroke-width="2"/>
   <text x="155" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#0b6e99">Model</text>
   <text x="155" y="90" text-anchor="middle" font-size="14" fill="#5b6b7c">the reasoning engine</text>
+  <g transform="translate(0,16)">
   <path d="M 131 102 C 125 94 129 84 139 82 C 141 74 153 72 159 76 C 169 74 177 82 175 90 C 181 96 179 106 171 108 C 169 114 159 116 153 112 C 145 116 135 114 133 108 C 129 106 129 102 131 102 Z" fill="none" stroke="#14202e" stroke-width="2" stroke-linejoin="round"/>
   <path d="M 147 98 C 153 92 161 94 163 100" fill="none" stroke="#14202e" stroke-width="1.5" opacity="0.6"/>
+  </g>
   <text x="155" y="148" text-anchor="middle" font-size="13" fill="#5b6b7c">thinks · reasons · decides</text>
 
   <!-- arrow 1 -->
@@ -32,8 +34,10 @@
   <rect x="610" y="35" width="250" height="130" rx="12" fill="#f7f9fb" stroke="#0b6e99" stroke-width="2"/>
   <text x="735" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#0b6e99">Loop</text>
   <text x="735" y="90" text-anchor="middle" font-size="14" fill="#5b6b7c">the work cycle</text>
+  <g transform="translate(0,16)">
   <path d="M 715 108 A 22 14 0 1 1 755 108" fill="none" stroke="#b3560e" stroke-width="2.5" marker-end="url(#scs-ar)"/>
   <path d="M 755 120 A 22 14 0 1 0 715 120" fill="none" stroke="#b3560e" stroke-width="2.5" marker-end="url(#scs-ar)"/>
+  </g>
   <text x="735" y="148" text-anchor="middle" font-size="13" fill="#5b6b7c">plan · act · check · correct</text>
 
   <!-- arrow 3 -->
