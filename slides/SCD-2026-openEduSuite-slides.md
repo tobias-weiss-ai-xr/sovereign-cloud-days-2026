@@ -424,38 +424,6 @@ yet cleared for personal data.
 
 ---
 
-<div class="kicker">Self-check · EU Cloud Sovereignty score · 2 min</div>
-
-## 73.5 % Sovereignty Score — SEAL-1
-
-Method: **EU Cloud Sovereignty Framework** (official calculator, Jun 2026) —
-weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 criteria).
-
-| Objective | W | Score | SEAL |
-|---|---|---|---|
-| SOV-1 Strategic | 20 % | <span class="ok">**94 %**</span> | SEAL-4 |
-| SOV-4 Operational | 15 % | <span class="ok">**83 %**</span> | SEAL-3 |
-| SOV-6 Technology | 15 % | <span class="ok">**80 %**</span> | SEAL-3 |
-| SOV-3 Data & AI | 10 % | 75 % | SEAL-1 |
-| SOV-2 Legal & Jurisdictional | 10 % | 71 % | SEAL-1 |
-| SOV-7 Security & Compliance | 15 % | 64 % | SEAL-1 |
-| SOV-5 Supply Chain | 10 % | 50 % | SEAL-1 |
-| SOV-8 Environmental | 5 % | 19 % | SEAL-1 |
-
-<div class="card warn" style="font-size:16px; margin:6px 0 4px 0">High score — low SEAL. SEAL is the <strong>weakest link</strong>: non-EU hardware
-(Huawei/Intel, SOV-5), no formal EAL certification (SOV-7), no PUE/emissions reporting (SOV-8).</div>
-
-<div class="card green" style="font-size:16px; margin:0 0 4px 0">Levers to SEAL ≥ 3: EU-fabricated platform / hardware provenance · formal EAL cert · PUE &amp; CSRD reporting.</div>
-
-<!--
-Speaker note: This is a self-assessment against the EU framework, not an official certification.
-Honest framing on purpose: the reused Huawei/Intel hardware caps the SEAL at 1 despite a 73.5%
-score — strategy/ops/tech are strong, the supply chain and energy reporting are the drags.
-Re-run: sovereignity-score-self-assessment/self-assessment-score.js (48 criteria, mapped in EU-sovereignty-assessment.md).
--->
-
----
-
 <div class="kicker">openEduSuite · Live demo · 4 min</div>
 
 ## Cluster, login, agent trace
@@ -496,6 +464,38 @@ Watch the time — 4 min. hard stop.
 Speaker note: The platform in five sorted dimensions: who (tenants), identity,
 communication, collaboration, delivery. Auth via Keycloak/OIDC. Email stack
 fully sovereign. Honestly call out opendesk-sme as Degraded.
+-->
+
+---
+
+<div class="kicker">Self-check · EU Cloud Sovereignty score · 2 min</div>
+
+## 73.5 % Sovereignty Score — SEAL-1
+
+Method: **EU Cloud Sovereignty Framework** (official calculator, Jun 2026) —
+weighted **Sovereignty Score** + **SEAL** level (weakest link across all 48 criteria).
+
+| Objective | W | Score | SEAL |
+|---|---|---|---|
+| SOV-1 Strategic | 20 % | <span class="ok">**94 %**</span> | SEAL-4 |
+| SOV-4 Operational | 15 % | <span class="ok">**83 %**</span> | SEAL-3 |
+| SOV-6 Technology | 15 % | <span class="ok">**80 %**</span> | SEAL-3 |
+| SOV-3 Data & AI | 10 % | 75 % | SEAL-1 |
+| SOV-2 Legal & Jurisdictional | 10 % | 71 % | SEAL-1 |
+| SOV-7 Security & Compliance | 15 % | 64 % | SEAL-1 |
+| SOV-5 Supply Chain | 10 % | 50 % | SEAL-1 |
+| SOV-8 Environmental | 5 % | 19 % | SEAL-1 |
+
+<div class="card warn" style="font-size:16px; margin:6px 0 4px 0">High score — low SEAL. SEAL is the <strong>weakest link</strong>: non-EU hardware
+(Huawei/Intel, SOV-5), no formal EAL certification (SOV-7), no PUE/emissions reporting (SOV-8).</div>
+
+<div class="card green" style="font-size:16px; margin:0 0 4px 0">Levers to SEAL ≥ 3: EU-fabricated platform / hardware provenance · formal EAL cert · PUE &amp; CSRD reporting.</div>
+
+<!--
+Speaker note: This is a self-assessment against the EU framework, not an official certification.
+Honest framing on purpose: the reused Huawei/Intel hardware caps the SEAL at 1 despite a 73.5%
+score — strategy/ops/tech are strong, the supply chain and energy reporting are the drags.
+Re-run: sovereignity-score-self-assessment/self-assessment-score.js (48 criteria, mapped in EU-sovereignty-assessment.md).
 -->
 
 ---
