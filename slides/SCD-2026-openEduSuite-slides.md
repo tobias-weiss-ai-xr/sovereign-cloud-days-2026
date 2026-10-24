@@ -138,7 +138,7 @@ full IaaS stack — lighter for 3 nodes, but the comparison informed our storage
 <div class="card green">openEduSuite: HFD Digital Sovereignty Ideas Competition — winner 2026-10-06.</div>
 
 <div class="center" style="display:flex; gap:24px; align-items:center; justify-content:center; margin:8px 0;">
-  <img src="img/openEduSuite-logo.svg" alt="openEduSuite logo" style="max-height:60px; border:none; box-shadow:none; background:transparent;">
+  <img src="img/openEduSuite-icon.svg" alt="openEduSuite icon" style="max-height:80px; border:none; box-shadow:none; background:transparent;">
   <img src="img/openEduSuite_Birdeye.webp" alt="openEduSuite birdeye view" style="max-height:120px;">
 </div>
 

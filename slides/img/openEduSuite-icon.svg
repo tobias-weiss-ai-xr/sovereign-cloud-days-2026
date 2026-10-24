@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <!-- openEduSuite — abstract mark (bilateral, mirrored on x=500):
+       an open book with ascending pages (education),
+       a glowing knowledge orb on the golden point of the symmetry axis
+       (cx=500 mirror axis, cy=382 = 0.382*H), orbited by a ring with
+       three nodes (the connected digital workplace) — Fibonacci sizes 13/21. -->
+  <defs>
+    <radialGradient id="bgGrad" cx="0.5" cy="0.42" r="0.85">
+      <stop offset="0%" stop-color="#571EFA"/>
+      <stop offset="100%" stop-color="#341291"/>
+    </radialGradient>
+    <linearGradient id="pageGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#DDD6FE"/>
+    </linearGradient>
+    <radialGradient id="orbGrad" cx="0.5" cy="0.4" r="0.9">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#DDD6FE"/>
+      <stop offset="100%" stop-color="#927AFA"/>
+    </radialGradient>
+    <filter id="orbGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="26" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- badge -->
+  <rect width="1000" height="1000" rx="180" fill="url(#bgGrad)"/>
+  <rect x="24" y="24" width="952" height="952" rx="160" fill="none" stroke="#927AFA" stroke-opacity="0.35" stroke-width="8"/>
+
+  <!-- orbit ring + mirrored node pair + axis node (all symmetric on x=500) -->
+  <g>
+    <ellipse cx="500" cy="382" rx="210" ry="68" fill="none" stroke="#927AFA" stroke-opacity="0.7" stroke-width="7"/>
+    <circle cx="700" cy="361" r="21" fill="#DDD6FE"/>
+    <circle cx="300" cy="361" r="21" fill="#DDD6FE"/>
+    <circle cx="500" cy="314" r="13" fill="#DDD6FE"/>
+  </g>
+
+  <!-- knowledge orb on the symmetry axis, golden y -->
+  <g filter="url(#orbGlow)">
+    <circle cx="500" cy="382" r="100" fill="url(#orbGrad)"/>
+  </g>
+
+  <!-- ascending open-book pages (mirror pair) -->
+  <g fill="url(#pageGrad)" stroke="#f0f6fc" stroke-width="24" stroke-linejoin="round">
+    <path d="M486 584 L214 470 L214 566 L486 680 Z"/>
+    <path d="M514 584 L786 470 L786 566 L514 680 Z"/>
+  </g>
+
+  <!-- spine: rising seed of knowledge (on the axis) -->
+  <path d="M500 566 L530 632 L500 698 L470 632 Z" fill="#927AFA" stroke="#927AFA" stroke-width="18" stroke-linejoin="round"/>
+</svg>
