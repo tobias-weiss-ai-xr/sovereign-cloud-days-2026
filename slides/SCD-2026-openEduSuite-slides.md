@@ -421,29 +421,12 @@ Compliance numbers come on the next slide — don't preempt them here.
 
 <div class="small center" style="font-size:13px; margin:2px 0 4px 0">Criteria &amp; tests: <a href="https://github.com/SovereignCloudStack/standards">github.com/SovereignCloudStack/standards</a></div>
 
+<div class="small center" style="font-size:12px; margin:2px 0 4px 0; color:var(--muted)">Footnote — PRs to SCS: <a href="https://github.com/SovereignCloudStack/standards/pull/1267">standards #1267</a> (bare-metal K3s notes for SCS-0217) · <a href="https://github.com/SovereignCloudStack/docs/pull/397">docs #397</a> (deployment guide).</div>
+
 <!--
 Speaker note: “Verified” = measurable tests, no bullshit bingo. But name the open gaps clearly
 — that's the selling point with public authorities and universities. GDPR: the cluster is NOT
 yet cleared for personal data.
--->
-
----
-
-<div class="kicker">Contributions · SCS · 2 min</div>
-
-## PRs I sent to SCS repositories
-
-| Repository | PR | Title | Status |
-|---|---|---|---|
-| **SovereignCloudStack/standards** | [#1267](https://github.com/SovereignCloudStack/standards/pull/1267) | feat: add bare-metal K3s implementation notes for SCS-0217 | closed |
-| **SovereignCloudStack/docs** | [#397](https://github.com/SovereignCloudStack/docs/pull/397) | feat: add bare-metal K3s deployment guide | closed |
-
-<div class="small center" style="font-size:13px; margin:4px 0 2px 0">Both PRs document how the bare-metal K3s deployment satisfies SCS-0217 (KaaS networking) and the wider KaaS standard set.</div>
-
-<!--
-Speaker note: Two contributions upstream: standards PR adds implementation notes for SCS-0217
-(bare-metal K3s), docs PR adds a deployment guide. Both closed (under review / superseded by
-upstream rework). Honest framing: contributing back is part of operating sovereign infrastructure.
 -->
 
 ---
