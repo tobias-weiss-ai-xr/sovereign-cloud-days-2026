@@ -259,11 +259,11 @@ append `<IP> opencode.ai` to /etc/hosts (verified 19 Oct 2026: 172.65.90.20).
 
 ## Starter prompts to try
 
-- “Explain SCS-0217 Pod-Security in 3 sentences.”
-- “Write a default-deny NetworkPolicy for the `llm` namespace.”
-- “PVC on ceph-rbd, 3× replication — show the manifest.”
-- “Ceph is HEALTH_WARN — give 3 first debugging steps.”
-- “Outline: student question → retrieval → Ollama CPU → answer.”
+- “Explain what SCS (Sovereign Cloud Stack) is in 3 sentences.”
+- “Write a default-deny NetworkPolicy YAML for a namespace.”
+- “Show a Kubernetes Pod manifest with a PVC on a storage class.”
+- “My local Ollama model is slow — give 3 debugging steps.”
+- “Outline: user question → retrieval → local LLM → answer (RAG flow).”
 
 <div class="ws"><span class="tag">WS</span>Who has opencode running in 5 min? → walk around, help.</div>
 
