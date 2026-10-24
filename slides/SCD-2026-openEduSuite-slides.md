@@ -541,6 +541,14 @@ Speaker note: “Agentic” = tool-using, multi-step (observe → predict → al
 not a single prompt. The agent carries the cluster state with it — the bridge
 “Agentic AI meets Sovereign Cloud.” Student Q&A flow (open-webui) is shown live
 on the demo slide. Version [verify].
+
+Kalman filter details: per-pod state vector (CPU, memory, restart rate, latency)
+updated each scrape interval with a predict step (linear motion model) and an
+update step (measurement residual weighted by Kalman gain). Handles missing
+samples and noisy spikes without overreacting. Markov transition matrix built
+from historical state sequences; emits P(next state | current). Risk score =
+probability of transitioning to "degraded"/"down" within the horizon. Alert
+fires when risk > threshold, before SLO breach.
 -->
 
 ---

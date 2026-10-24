@@ -1752,7 +1752,15 @@ score — strategy/ops/tech are strong, the supply chain and energy reporting ar
 Re-run: sovereignity-score-self-assessment/self-assessment-score.js (48 criteria, mapped in EU-sovereignty-assessment.md).</p></div><div class="bespoke-marp-note" data-index="14" tabindex="0"><p>Speaker note: “Agentic” = tool-using, multi-step (observe → predict → alert → verify),
 not a single prompt. The agent carries the cluster state with it — the bridge
 “Agentic AI meets Sovereign Cloud.” Student Q&amp;A flow (open-webui) is shown live
-on the demo slide. Version [verify].</p></div><div class="bespoke-marp-note" data-index="15" tabindex="0"><p>Speaker note: Frame it positively: every stumbling block was resolved and documented.
+on the demo slide. Version [verify].
+
+Kalman filter details: per-pod state vector (CPU, memory, restart rate, latency)
+updated each scrape interval with a predict step (linear motion model) and an
+update step (measurement residual weighted by Kalman gain). Handles missing
+samples and noisy spikes without overreacting. Markov transition matrix built
+from historical state sequences; emits P(next state | current). Risk score =
+probability of transitioning to &quot;degraded&quot;/&quot;down&quot; within the horizon. Alert
+fires when risk &gt; threshold, before SLO breach.</p></div><div class="bespoke-marp-note" data-index="15" tabindex="0"><p>Speaker note: Frame it positively: every stumbling block was resolved and documented.
 Firewall: SCS-FIREWALL on ens3f0. 2–3 lessons as a story, not a complaint.</p></div><div class="bespoke-marp-note" data-index="16" tabindex="0"><p>Speaker note: The essence. Stress point 4: Verified opens doors with public authorities and universities — but only with honest gaps.
 Point 5: runbooks, DPIAs, checklists — otherwise knowledge is a one-way street.</p></div><div class="bespoke-marp-note" data-index="17" tabindex="0"><p>Speaker note: Q&amp;A moderation: collect “what if” questions. For detailed questions on [verify] values,
 honestly point to the source/iBMC. Have backup slides ready. Contact links for follow-up.</p></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@4.5.1/lib/bespoke.js.LICENSE.txt */
