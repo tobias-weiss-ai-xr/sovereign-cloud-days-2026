@@ -1037,30 +1037,51 @@ section.title .meta span{ color:var(--muted); }
 <h2 id="three-networks-one-firewall">Three networks, one firewall</h2>
 <div class="svg-wrap">
 <svg viewBox="0 0 1000 280" width="100%">
+  <defs>
+    <marker id="net-ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#5b6b7c" />
+    </marker>
+  </defs>
+  
   <g font-size="14" font-weight="700" fill="#14202e">
-    <rect x="130" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="190" y="45" text-anchor="middle">clrz14-06</text>
-    <rect x="290" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="350" y="45" text-anchor="middle">clrz14-07</text>
-    <rect x="450" y="20" width="120" height="40" rx="5" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
-    <text x="510" y="45" text-anchor="middle">clrz14-08</text>
+    <rect x="110" y="8" width="120" height="40" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
+    <text x="170" y="33" text-anchor="middle">clrz14-06</text>
+    <rect x="310" y="8" width="120" height="40" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
+    <text x="370" y="33" text-anchor="middle">clrz14-07</text>
+    <rect x="510" y="8" width="120" height="40" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2" />
+    <text x="570" y="33" text-anchor="middle">clrz14-08</text>
   </g>
-  <rect x="40" y="90" width="620" height="46" rx="5" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="1" />
-  <text x="60" y="118" font-size="15" font-weight="700" fill="#5b6b7c">Mgmt RZ24</text>
-  <text x="350" y="118" font-size="14" fill="#14202e" text-anchor="middle">192.0.2.11–13 · ens3f0 untagged · SSH</text>
-  <rect x="40" y="150" width="620" height="46" rx="5" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="1" />
-  <text x="60" y="178" font-size="15" font-weight="700" fill="#1a7f6b">Internal</text>
-  <text x="350" y="178" font-size="14" fill="#14202e" text-anchor="middle">VLAN 424 · 198.51.100.0/18 · .11/.12/.13 · Flannel VXLAN</text>
-  <rect x="40" y="210" width="620" height="46" rx="5" fill="#fff6e8" stroke="#b3560e" stroke-width="1" />
-  <text x="60" y="238" font-size="15" font-weight="700" fill="#b3560e">FIP RZ03</text>
-  <text x="350" y="238" font-size="14" fill="#14202e" text-anchor="middle">203.0.113.181–.196 · MetalLB L2 · .181 ingress · .182 argocd · .183–.186 …</text>
-  <rect x="700" y="90" width="260" height="166" rx="5" fill="#fdeaea" stroke="#c0392b" stroke-width="1.5" />
-  <text x="830" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#c0392b">SCS-FIREWALL</text>
-  <text x="830" y="142" text-anchor="middle" font-size="13" fill="#7a3b32">allow: 80/443/22</text>
-  <text x="830" y="160" text-anchor="middle" font-size="13" fill="#7a3b32">5001/31080/31443</text>
-  <text x="830" y="178" text-anchor="middle" font-size="13" fill="#7a3b32">123/ICMP</text>
-  <text x="830" y="200" text-anchor="middle" font-size="13" fill="#7a3b32">drop: 6443/10250</text>
-  <text x="830" y="218" text-anchor="middle" font-size="13" fill="#7a3b32">8472</text>
+  
+  <g stroke="#9aa6b3" stroke-width="1.5" stroke-dasharray="3 3">
+    <line x1="170" y1="48" x2="170" y2="210" />
+    <line x1="370" y1="48" x2="370" y2="210" />
+    <line x1="570" y1="48" x2="570" y2="210" />
+  </g>
+  
+  <rect x="40" y="70" width="620" height="40" rx="5" fill="#f0f4f7" stroke="#5b6b7c" stroke-width="1" />
+  <text x="60" y="95" font-size="14" font-weight="700" fill="#5b6b7c">Mgmt RZ24</text>
+  <text x="350" y="95" font-size="13" fill="#14202e" text-anchor="middle">192.0.2.11–13 · ens3f0 untagged · SSH</text>
+  <rect x="40" y="120" width="620" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="1" />
+  <text x="60" y="145" font-size="14" font-weight="700" fill="#1a7f6b">Internal</text>
+  <text x="350" y="145" font-size="13" fill="#14202e" text-anchor="middle">VLAN 424 · 198.51.100.0/18 · .11/.12/.13 · Flannel VXLAN</text>
+  <rect x="40" y="170" width="620" height="40" rx="5" fill="#fff6e8" stroke="#b3560e" stroke-width="1" />
+  <text x="60" y="195" font-size="14" font-weight="700" fill="#b3560e">FIP RZ03</text>
+  <text x="350" y="195" font-size="13" fill="#14202e" text-anchor="middle">203.0.113.181–.196 · MetalLB L2 · .181 ingress …</text>
+  
+  <g fill="#0b6e99">
+    <circle cx="170" cy="90" r="3" /><circle cx="170" cy="140" r="3" /><circle cx="170" cy="190" r="3" />
+    <circle cx="370" cy="90" r="3" /><circle cx="370" cy="140" r="3" /><circle cx="370" cy="190" r="3" />
+    <circle cx="570" cy="90" r="3" /><circle cx="570" cy="140" r="3" /><circle cx="570" cy="190" r="3" />
+  </g>
+  
+  <rect x="680" y="70" width="240" height="140" rx="6" fill="#fdeaea" stroke="#c0392b" stroke-width="2" />
+  <text x="800" y="95" text-anchor="middle" font-size="14" font-weight="700" fill="#c0392b">SCS-FIREWALL</text>
+  <text x="800" y="115" text-anchor="middle" font-size="12" fill="#7a3b32">allow: 80/443/22 · 5001/31080/31443</text>
+  <text x="800" y="132" text-anchor="middle" font-size="12" fill="#7a3b32">123/ICMP · drop: 6443/10250/8472</text>
+  
+  <line x1="920" y1="140" x2="970" y2="140" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)" />
+  <text x="985" y="145" text-anchor="end" font-size="13" font-weight="700" fill="#5b6b7c">External</text>
+  <text x="800" y="230" text-anchor="middle" font-size="12" fill="#5b6b7c">ens3f0: mgmt+FIP (VLAN 3) · ens6f0: internal (VLAN 424) · iBMC OOB</text>
 </svg>
 </div>
 <div class="small center">ens3f0: mgmt + FIP (VLAN 3) · ens6f0: internal (VLAN 424) · iBMC out-of-band</div>
