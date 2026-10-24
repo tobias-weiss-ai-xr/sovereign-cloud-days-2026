@@ -534,6 +534,8 @@ Re-run: sovereignity-score-self-assessment/self-assessment-score.js (48 criteria
 
 <div class="card green" style="font-size:18px"><strong>predictive-agent v8.11-nix</strong> (own tenant): Risk scoring (Kalman + Markov) for 62 pods — alerts before users notice.</div>
 
+<div class="card" style="font-size:15px"><strong>Kalman filter:</strong> smooths noisy Prometheus metrics into a state estimate per pod. <strong>Markov chain:</strong> predicts the next health state (OK → degraded → down) from the smoothed state. Combined → risk score before the user notices.</div>
+
 <!--
 Speaker note: “Agentic” = tool-using, multi-step (observe → predict → alert → verify),
 not a single prompt. The agent carries the cluster state with it — the bridge
