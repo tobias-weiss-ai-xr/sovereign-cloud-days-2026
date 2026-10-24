@@ -280,7 +280,7 @@ Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference run
   <text x="350" y="95" font-size="13" fill="#14202e" text-anchor="middle">192.0.2.11–13 · ens3f0 untagged · SSH</text>
   <rect x="40" y="120" width="620" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b" stroke-width="1"/>
   <text x="60" y="145" font-size="14" font-weight="700" fill="#1a7f6b">Internal</text>
-  <text x="350" y="145" font-size="13" fill="#14202e" text-anchor="middle">198.51.100.0/18 · .11/.12/.13 · Flannel VXLAN</text>
+  <text x="350" y="145" font-size="13" fill="#14202e" text-anchor="middle">198.51.100.0/18 · .11/.12/.13 · Ceph cluster only</text>
   <rect x="40" y="170" width="620" height="40" rx="5" fill="#fff6e8" stroke="#b3560e" stroke-width="1"/>
   <text x="60" y="195" font-size="14" font-weight="700" fill="#b3560e">FIP</text>
   <text x="350" y="195" font-size="13" fill="#14202e" text-anchor="middle">203.0.113.181–.196 · MetalLB L2 · .181 ingress …</text>
@@ -298,15 +298,16 @@ Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference run
   <!-- External zone -->
   <line x1="920" y1="140" x2="970" y2="140" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
   <text x="985" y="145" text-anchor="end" font-size="13" font-weight="700" fill="#5b6b7c">External</text>
-  <text x="800" y="230" text-anchor="middle" font-size="12" fill="#5b6b7c">ens3f0: mgmt+FIP (VLAN 3) · ens6f0: internal · iBMC OOB</text>
+  <text x="800" y="230" text-anchor="middle" font-size="12" fill="#5b6b7c">ens3f0: mgmt+FIP (VLAN 3) · ens6f0: internal (Ceph only) · 2 phys. switches · iBMC OOB</text>
 </svg>
 </div>
 
-<div class="small center">ens3f0: mgmt + FIP (VLAN 3) · ens6f0: internal · iBMC out-of-band</div>
+<div class="small center">ens3f0: mgmt + FIP (VLAN 3) · ens6f0: internal (Ceph only) · two physically separated switches · iBMC OOB</div>
 
 <!--
 Speaker note: Three networks on 2× 10 GbE. Mgmt (SSH), internal (K3s pods),
-FIP (MetalLB L2, external services). Firewall on ens3f0. iBMC separate (out-of-band).
+FIP (MetalLB L2, external services). Internal and external traffic run on two physically
+separated switches. Firewall on ens3f0. iBMC separate (out-of-band).
 -->
 
 ---
@@ -575,7 +576,7 @@ honestly point to the source/iBMC. Have backup slides ready. Contact links for f
     <text x="200" y="301" fill="#14202e">192.0.2.11–13 · ens3f0 untagged · SSH</text>
     <rect x="40" y="324" width="140" height="40" rx="5" fill="#e8f5ee" stroke="#1a7f6b"/>
     <text x="110" y="349" text-anchor="middle" font-weight="700" fill="#1a7f6b">Internal</text>
-    <text x="200" y="349" fill="#14202e">198.51.100.0/18 · .11/.12/.13</text>
+    <text x="200" y="349" fill="#14202e">198.51.100.0/18 · .11/.12/.13 · Ceph only</text>
     <rect x="40" y="372" width="140" height="40" rx="5" fill="#fff6e8" stroke="#b3560e"/>
     <text x="110" y="397" text-anchor="middle" font-weight="700" fill="#b3560e">FIP</text>
     <text x="200" y="397" fill="#14202e">203.0.113.181–.196 · .181 ingress · .182 argocd · .183–.186 mail/ldap</text>
