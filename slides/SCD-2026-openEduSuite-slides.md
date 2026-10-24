@@ -421,10 +421,6 @@ Compliance numbers come on the next slide — don't preempt them here.
 
 <div class="small center" style="font-size:13px; margin:2px 0 4px 0">Criteria &amp; tests: <a href="https://github.com/SovereignCloudStack/standards">github.com/SovereignCloudStack/standards</a></div>
 
-<div class="card warn"><strong>Honest status:</strong> `opendesk-sme` still Degraded (stale digests).</div>
-
-
-
 <!--
 Speaker note: “Verified” = measurable tests, no bullshit bingo. But name the open gaps clearly
 — that's the selling point with public authorities and universities. GDPR: the cluster is NOT
