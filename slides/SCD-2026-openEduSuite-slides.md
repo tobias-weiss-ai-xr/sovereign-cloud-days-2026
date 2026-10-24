@@ -51,12 +51,12 @@ style: |
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:14px 24px; }
   .kv{ font-size:21px; line-height:1.3; }
   .kv b{ display:block; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:2px; font-weight:700; }
-  table{ border-collapse:separate; border-spacing:0; width:100%; font-size:16px; margin:6px 0;
+  table{ border-collapse:separate; border-spacing:0; width:100%; font-size:16px; margin:6px auto;
     border-radius:8px; overflow:hidden; box-shadow:var(--shadow); }
-  th{ background:var(--accent); color:#fff; padding:7px 12px; text-align:left; font-size:12px;
-    letter-spacing:.06em; text-transform:uppercase; font-weight:700; }
-  td{ padding:7px 12px; border-bottom:1px solid var(--line); vertical-align:top; background:#fff; }
-  tr:nth-child(even) td{ background:#f4f7fa; }
+  th{ background:#eef2f6; color:var(--ink); padding:7px 12px; text-align:center; font-size:12px;
+    letter-spacing:.06em; text-transform:uppercase; font-weight:700; border-bottom:2px solid var(--line); }
+  td{ padding:7px 12px; border-bottom:1px solid var(--line); vertical-align:middle; background:#fff;
+    text-align:center; }
   tr:last-child td{ border-bottom:none; }
   .seal{ font-weight:700; color:var(--warn); }
   .big{ font-size:34px; font-weight:800; letter-spacing:-.01em; }
