@@ -238,11 +238,11 @@ rate-limited, switch via /models. Share with a neighbor if you have no laptop. C
 
 <figure>
 <img src="img/scs-imana-hw.png" alt="iBMC iMana hardware view">
-<figcaption class="center">iBMC iMana — hardware view (clrz14-06/07/08)</figcaption>
+<figcaption class="center">iBMC iMana — hardware view (host1/07/08)</figcaption>
 </figure>
 
 <!--
-Speaker note: Rack clrz14: 8 servers, 06 (master) + 07/08 (worker) in use. ~13 years old.
+Speaker note: Rack: 8 servers, host1 (master) + host2/host3 (worker) in use. ~13 years old.
 Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference runs on CPU.
 -->
 
@@ -276,13 +276,13 @@ Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference run
   <!-- CENTER: 3 servers (vertical stack) -->
   <g font-size="14" font-weight="700" fill="#14202e">
     <rect x="315" y="30" width="170" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="400" y="62" text-anchor="middle" fill="#0b6e99">clrz14-06</text>
+    <text x="400" y="62" text-anchor="middle" fill="#0b6e99">host1</text>
     <text x="400" y="78" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
     <rect x="315" y="112" width="170" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="400" y="144" text-anchor="middle" fill="#0b6e99">clrz14-07</text>
+    <text x="400" y="144" text-anchor="middle" fill="#0b6e99">host2</text>
     <text x="400" y="160" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
     <rect x="315" y="195" width="170" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="400" y="227" text-anchor="middle" fill="#0b6e99">clrz14-08</text>
+    <text x="400" y="227" text-anchor="middle" fill="#0b6e99">host3</text>
     <text x="400" y="243" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
   </g>
   <!-- left switch -> servers -->
@@ -555,17 +555,17 @@ honestly point to the source/iBMC. Have backup slides ready. Contact links for f
 <svg viewBox="0 0 1000 430" width="100%">
   <g font-size="14" font-weight="700" text-anchor="middle">
     <rect x="40" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="180" y="40" fill="#0b6e99">clrz14-06 — master</text>
+    <text x="180" y="40" fill="#0b6e99">host1 — master</text>
     <text x="180" y="62" font-size="13" fill="#14202e">K3s server (single) · Ceph MON · 4 OSDs</text>
     <text x="180" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.11 · int .11</text>
     <text x="180" y="100" font-size="13" fill="#5b6b7c">2× Xeon E5-2600 v2 · no GPU</text>
     <rect x="360" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="500" y="40" fill="#0b6e99">clrz14-07 — worker</text>
+    <text x="500" y="40" fill="#0b6e99">host2 — worker</text>
     <text x="500" y="62" font-size="13" fill="#14202e">K3s agent · Ceph MON · 2 OSDs</text>
     <text x="500" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.12 · int .12</text>
     <text x="500" y="100" font-size="13" fill="#5b6b7c">openEduSuite + llm workloads</text>
     <rect x="680" y="16" width="280" height="92" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
-    <text x="820" y="40" fill="#0b6e99">clrz14-08 — worker</text>
+    <text x="820" y="40" fill="#0b6e99">host3 — worker</text>
     <text x="820" y="62" font-size="13" fill="#14202e">K3s agent · Ceph MON · 2 OSDs</text>
     <text x="820" y="82" font-size="13" fill="#5b6b7c">mgmt 192.0.2.13 · int .13</text>
     <text x="820" y="100" font-size="13" fill="#5b6b7c">predictive-agent · monitoring</text>
