@@ -266,25 +266,24 @@ Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference run
   <rect x="30" y="195" width="200" height="50" rx="6" fill="#fff6e8" stroke="#b3560e" stroke-width="2"/>
   <text x="130" y="217" text-anchor="middle" font-size="14" font-weight="700" fill="#b3560e">FIP</text>
   <text x="130" y="235" text-anchor="middle" font-size="11" fill="#14202e">MetalLB L2 · external services</text>
-  <!-- Firewall wall (vertical) -->
-  <rect x="250" y="20" width="24" height="240" rx="4" fill="#fdeaea" stroke="#c0392b" stroke-width="2"/>
-  <text x="262" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#c0392b" transform="rotate(-90,262,145)">FIREWALL</text>
-  <!-- Connection: Mgmt/FIP -> firewall -->
-  <line x1="230" y1="55" x2="250" y2="55" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
-  <line x1="230" y1="220" x2="250" y2="220" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <!-- Connection: Mgmt/FIP -> servers (firewall runs on the hosts) -->
+  <line x1="230" y1="55" x2="300" y2="57" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="230" y1="220" x2="300" y2="222" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <line x1="230" y1="55" x2="300" y2="139" stroke="#5b6b7c" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="230" y1="220" x2="300" y2="139" stroke="#5b6b7c" stroke-width="1.5" stroke-dasharray="4 3"/>
   <!-- CENTER: 3 servers (vertical stack) -->
   <g font-size="14" font-weight="700" fill="#14202e">
     <rect x="300" y="30" width="190" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
     <text x="395" y="62" text-anchor="middle" fill="#0b6e99">clrz14-06</text>
+    <text x="395" y="78" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
     <rect x="300" y="112" width="190" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
     <text x="395" y="144" text-anchor="middle" fill="#0b6e99">clrz14-07</text>
+    <text x="395" y="160" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
     <rect x="300" y="195" width="190" height="55" rx="6" fill="#e8f0f7" stroke="#0b6e99" stroke-width="2"/>
     <text x="395" y="227" text-anchor="middle" fill="#0b6e99">clrz14-08</text>
+    <text x="395" y="243" text-anchor="middle" font-size="10" fill="#c0392b">SCS-FIREWALL</text>
   </g>
-  <!-- firewall -> servers -->
-  <line x1="274" y1="55" x2="300" y2="57" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
-  <line x1="274" y1="140" x2="300" y2="139" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
-  <line x1="274" y1="220" x2="300" y2="222" stroke="#5b6b7c" stroke-width="2" marker-end="url(#net-ar)"/>
+  <!-- firewall runs on each host (SCS-FIREWALL) -->
   <!-- servers -> internal (right) -->
   <line x1="490" y1="57" x2="520" y2="57" stroke="#5b6b7c" stroke-width="2"/>
   <line x1="490" y1="139" x2="520" y2="139" stroke="#5b6b7c" stroke-width="2"/>
@@ -300,11 +299,11 @@ Honestly: CPU SKU and RAM size are [verify]. No GPU framing — AI inference run
 </svg>
 </div>
 
-<div class="small center">Left: Mgmt + FIP (external) → firewall → 3 nodes → Right: Internal (Ceph only) · two physically separated switches · iBMC OOB</div>
+<div class="small center">Left: Mgmt + FIP (external) → 3 nodes (SCS-FIREWALL on each) → Right: Internal (Ceph only) · two physically separated switches · iBMC OOB</div>
 
 <!--
 Speaker note: Three networks on 2× 10 GbE. Left: Mgmt (SSH) + FIP (MetalLB L2, external)
-pass the firewall to reach the 3 nodes; right: Internal (Ceph only, replication/heartbeats).
+reach the 3 nodes (SCS-FIREWALL runs on each host); right: Internal (Ceph only).
 Internal and external run on two physically separated switches. iBMC separate (out-of-band).
 -->
 
